@@ -1,0 +1,106 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Data;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class WebContent_fb2hb_WFB2HB0300_Upd : BasePage
+{
+    //Service 物件
+    private CFB2HB0300BO service = new CFB2HB0300BO();
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        string emp_id = "";
+        string hr_chg_no = "";
+
+        emp_id = Request.QueryString["emp_id"] == null ? "" : Request.QueryString["emp_id"].ToString();
+        hr_chg_no = Request.QueryString["hr_chg_no"] == null ? "" : Request.QueryString["hr_chg_no"].ToString();
+        //第一次進入頁面執行
+        if (!IsPostBack)
+        {       
+            getDate(emp_id, hr_chg_no);
+        }
+    }
+
+
+    private void getDate(string emp_id, string hr_chg_no)
+    {
+        try
+        {
+            DataTable dt = new DataTable();
+            //顯示資料
+            dt = new DataTable();
+            dt = service.getiniData(emp_id, hr_chg_no);
+            if (dt.Rows.Count > 0)
+            {
+                lb_HR_CHG_NO.Text = hr_chg_no;
+                txt_EMP_ID.Text = dt.Rows[0]["EMP_ID"].ToString();
+                txt_EMP_NAME.Text = dt.Rows[0]["EMP_NAME"].ToString();
+                txt_ORI_DEPT_NO.Text = dt.Rows[0]["ORI_DEPT_NO"].ToString();
+                txt_START_DEPT_NAME.Text = dt.Rows[0]["ORI_DEPT_NAME"].ToString();
+                txt_PLAN_END_DT.Text = dt.Rows[0]["PLAN_END_DT"].ToString();
+                txt_END_DT.Text = dt.Rows[0]["END_DT"].ToString();
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message.Replace("\r\n", "").Replace("'", "\"") + "');", true);
+        }
+    }
+
+
+    //儲存
+    protected void btn_Save_Click(object sender, EventArgs e)
+    {
+        try
+        {
+
+            CFB2HB0300DAO hb030DAO = new CFB2HB0300DAO();
+            hb030DAO.HR_CHG_NO = lb_HR_CHG_NO.Text;
+            hb030DAO.EMP_ID = txt_EMP_ID.Text;
+            hb030DAO.ORI_DEPT_NO = txt_ORI_DEPT_NO.Text;
+            hb030DAO.END_DT = txt_END_DT.Text;
+            hb030DAO.PLAN_END_DT = txt_PLAN_END_DT.Text;
+            hb030DAO.CHK_END_DT = txt_END_DT.Text;
+            hb030DAO.UPDATED_BY = SessionHandle.Current.emp_id;
+            hb030DAO.FUNC_ID = "FB2HB030";
+
+            string msg = service.update(hb030DAO);
+            if (msg != "0")
+            {
+                //showMessage("modFailMessage", msg);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Message", "alert('"+msg+"'); $.unblockUI();", true);
+                return;
+            }
+            else
+            {
+                Session["HB0300_Is_Search"] = "Y";
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Message", "alert('修改成功');$(location).attr('href','WFB2HB0300_Qry.aspx');", true);
+            }
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message.Replace("\r\n", "").Replace("'", "\"") + "');", true);
+        }
+    }
+
+    protected void btn_back_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            Session["HB0300_Is_Search"] = "Y";
+            Response.Redirect("WFB2HB0300_Qry.aspx");
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message.Replace("\r\n", "").Replace("'", "\"") + "');", true);
+        }
+    }
+}

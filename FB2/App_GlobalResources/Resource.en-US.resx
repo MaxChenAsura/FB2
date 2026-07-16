@@ -1,0 +1,2946 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="title" xml:space="preserve">
+    <value />
+  </data>
+  <data name="wfb2df_btn_clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="wfb2df_equal" xml:space="preserve">
+    <value>Equal</value>
+  </data>
+  <data name="wfb2df_ERR_LEAVE_DT_E" xml:space="preserve">
+    <value>Error Leave Date End Format</value>
+  </data>
+  <data name="wfb2df_ERR_LEAVE_DT_S" xml:space="preserve">
+    <value>Error Leave Date Start Format</value>
+  </data>
+  <data name="wfb2df_ERR_START_DATE" xml:space="preserve">
+    <value>Error Start Date Format</value>
+  </data>
+  <data name="wfb2df_greater" xml:space="preserve">
+    <value>Greater</value>
+  </data>
+  <data name="wfb2df_lb_ACCOM" xml:space="preserve">
+    <value>ACCOM</value>
+  </data>
+  <data name="wfb2df_lb_ACCOM_BUILDING" xml:space="preserve">
+    <value>ACCOM_BUILDING</value>
+  </data>
+  <data name="wfb2df_lb_AGE" xml:space="preserve">
+    <value>AGE</value>
+  </data>
+  <data name="wfb2df_lb_AMOUNT" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="wfb2df_lb_DEPT_NAME" xml:space="preserve">
+    <value>Dept Name</value>
+  </data>
+  <data name="wfb2df_lb_DEPT_NO" xml:space="preserve">
+    <value>DEPT_NO</value>
+  </data>
+  <data name="wfb2df_lb_EMP_CD" xml:space="preserve">
+    <value>Emp CD</value>
+  </data>
+  <data name="wfb2df_lb_EMP_CHG_CD" xml:space="preserve">
+    <value>EMP_CHG_CD</value>
+  </data>
+  <data name="wfb2df_lb_EMP_ID" xml:space="preserve">
+    <value>EMP_ID</value>
+  </data>
+  <data name="wfb2df_lb_EMP_NAME" xml:space="preserve">
+    <value>Emp Name</value>
+  </data>
+  <data name="wfb2df_lb_JOIN_DT" xml:space="preserve">
+    <value>Join Date</value>
+  </data>
+  <data name="wfb2df_lb_JOIN_YEARS" xml:space="preserve">
+    <value>Join Years</value>
+  </data>
+  <data name="wfb2df_lb_LEAVE_DT" xml:space="preserve">
+    <value>LEAVE_DATE</value>
+  </data>
+  <data name="wfb2df_lb_OTHER_AMOUNT" xml:space="preserve">
+    <value>Other Amount</value>
+  </data>
+  <data name="wfb2df_lb_REGISTER_ADDR" xml:space="preserve">
+    <value>Register Address</value>
+  </data>
+  <data name="wfb2df_lb_ROOM_NO" xml:space="preserve">
+    <value>ROOM_NUMBER</value>
+  </data>
+  <data name="wfb2df_lb_START_DT" xml:space="preserve">
+    <value>Start_Date</value>
+  </data>
+  <data name="wfb2df_lb_WORK_SHIFT_CD" xml:space="preserve">
+    <value>Work Shift CD</value>
+  </data>
+  <data name="wfb2df_less" xml:space="preserve">
+    <value>Less</value>
+  </data>
+  <data name="wfb2df_WFB2DF0200Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="wfb2df_WFB2DF0200Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="wfb2df_WFB2DF0200Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="wfb2df_WFB2DF0200ExcelDown" xml:space="preserve">
+    <value>Export excel</value>
+  </data>
+  <data name="wfb2df_WFB2DF0200Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfd2de_gv_manager_ym" xml:space="preserve">
+    <value>Manager_YM</value>
+  </data>
+  <data name="wfd2de_lb_manager_ym" xml:space="preserve">
+    <value>Manager_YM</value>
+  </data>
+  <data name="wfb2df_ERR_END_DATE" xml:space="preserve">
+    <value>Error End Date Format</value>
+  </data>
+  <data name="wfb2df_START_DATE" xml:space="preserve">
+    <value>Start_Date is required field</value>
+  </data>
+  <data name="wfb2df_btn_back" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2df_lb_CAR_NO" xml:space="preserve">
+    <value>Car Number</value>
+  </data>
+  <data name="wfb2df_lb_CONTACT_ADDR" xml:space="preserve">
+    <value>Contact Address</value>
+  </data>
+  <data name="wfb2df_lb_CONTACT_TEL" xml:space="preserve">
+    <value>Home Number</value>
+  </data>
+  <data name="wfb2df_lb_END_DT" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="wfb2df_lb_MOBILE_TEL_1" xml:space="preserve">
+    <value>Cell Phone Number</value>
+  </data>
+  <data name="wfb2df_lb_MOTOR_NO" xml:space="preserve">
+    <value>Motor Number</value>
+  </data>
+  <data name="wfb2df_lb_PJOB_DESC" xml:space="preserve">
+    <value>Job Desc</value>
+  </data>
+  <data name="wfb2df_lb_PUBLIC_CAR" xml:space="preserve">
+    <value>Public Car</value>
+  </data>
+  <data name="wfb2df_lb_REMARK" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="wfb2df_WFB2DF0200Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="wfb2df_EMP_ID" xml:space="preserve">
+    <value>EMP_ID is required field</value>
+  </data>
+  <data name="wfb2df_REMARK" xml:space="preserve">
+    <value>Remark is required field if Other Amount &gt; 0</value>
+  </data>
+  <data name="wfb2df_ROOM_NO" xml:space="preserve">
+    <value>ROOM_NO is required field</value>
+  </data>
+  <data name="wfb2df_RowNumber" xml:space="preserve">
+    <value>Seq</value>
+  </data>
+  <data name="wfb2df_Start_End_Date" xml:space="preserve">
+    <value>End Date must greater than Start Date</value>
+  </data>
+  <data name="wfb2df_ERR_LEAVE_DT" xml:space="preserve">
+    <value>LEAVE_DT_E must greater than LEAVE_DT_S</value>
+  </data>
+  <data name="wfb2ha_btn_clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="wfb2ha_lb_DEPT_LEVEL" xml:space="preserve">
+    <value>Dept level</value>
+  </data>
+  <data name="wfb2ha_RowNumber" xml:space="preserve">
+    <value>RowNumber</value>
+  </data>
+  <data name="wfb2ha_WFB2HA010Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2ha_btn_Detail" xml:space="preserve">
+    <value>Dept Detail</value>
+  </data>
+  <data name="wfb2ha_DEPT_LEVEL" xml:space="preserve">
+    <value>Dept level is required field</value>
+  </data>
+  <data name="wfb2ha_DEPT_LEVEL_DESC" xml:space="preserve">
+    <value>Dept level desc is required field</value>
+  </data>
+  <data name="wfb2ha_lb_DEPT_LEVEL_DESC" xml:space="preserve">
+    <value>Dept level desc</value>
+  </data>
+  <data name="wfb2ha_lb_function" xml:space="preserve">
+    <value>Function</value>
+  </data>
+  <data name="wfb2ha_lb_IS_VALID" xml:space="preserve">
+    <value>Is valid</value>
+  </data>
+  <data name="wfb2ha_lb_LEVEL_TYPE_DESC" xml:space="preserve">
+    <value>Level type desc</value>
+  </data>
+  <data name="wfb2ha_lb_REMARK" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="wfb2ha_LEVEL_TYPE" xml:space="preserve">
+    <value>Level type desc is required field</value>
+  </data>
+  <data name="wfb2ha_WFB2HA010Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="wfb2ha_WFB2HA010Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2ha_WFB2HA010Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="wfb2ha_WFB2HA010Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="wfb2ha_WFB2HA010Save" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="wfb2ha_ACC_CD" xml:space="preserve">
+    <value>Acc cd is required field</value>
+  </data>
+  <data name="wfb2ha_ACC_DEPT_DESC" xml:space="preserve">
+    <value>Acc Dept Desc</value>
+  </data>
+  <data name="wfb2ha_ACC_DEPT_NO" xml:space="preserve">
+    <value>Acc Dept no is required field</value>
+  </data>
+  <data name="wfb2ha_ACC_DESC" xml:space="preserve">
+    <value>Acc Desc</value>
+  </data>
+  <data name="wfb2ha_ACC_SALARY_CD" xml:space="preserve">
+    <value>Acc Salary cd is required field</value>
+  </data>
+  <data name="wfb2ha_ACC_SALARY_DESC" xml:space="preserve">
+    <value>Acc Salary Desc</value>
+  </data>
+  <data name="wfb2ha_btn_back" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2ha_btn_SubDetail" xml:space="preserve">
+    <value>Sub Dept Detail</value>
+  </data>
+  <data name="wfb2ha_DEPT_NAME" xml:space="preserve">
+    <value>Dept Name</value>
+  </data>
+  <data name="wfb2ha_DEPT_SNAME" xml:space="preserve">
+    <value>Dept Short Name is required field</value>
+  </data>
+  <data name="wfb2ha_DEPT_WS_DESC" xml:space="preserve">
+    <value>DEPT WS TYPE</value>
+  </data>
+  <data name="wfb2ha_DEPT_WS_TYPE" xml:space="preserve">
+    <value>Dept WS Type is required field</value>
+  </data>
+  <data name="wfb2ha_EMP_NAME" xml:space="preserve">
+    <value>Manager Name</value>
+  </data>
+  <data name="wfb2ha_END_DT" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="wfb2ha_ERR_END_DT" xml:space="preserve">
+    <value>Error End Date Format</value>
+  </data>
+  <data name="wfb2ha_ERR_START_DT" xml:space="preserve">
+    <value>Error Start Date Format</value>
+  </data>
+  <data name="wfb2ha_HEAD_EMP_ID" xml:space="preserve">
+    <value>Head Emp Id is required field</value>
+  </data>
+  <data name="wfb2ha_lb_ACC_CD" xml:space="preserve">
+    <value>Acc Code</value>
+  </data>
+  <data name="wfb2ha_lb_ACC_DEPT_NO" xml:space="preserve">
+    <value>Acc Dept No</value>
+  </data>
+  <data name="wfb2ha_lb_ACC_SALARY_CD" xml:space="preserve">
+    <value>Acc Salary Code</value>
+  </data>
+  <data name="wfb2ha_lb_DEPT_ENAME" xml:space="preserve">
+    <value>Dept English Name</value>
+  </data>
+  <data name="wfb2ha_lb_DEPT_NAME" xml:space="preserve">
+    <value>Dept Name</value>
+  </data>
+  <data name="wfb2ha_lb_DEPT_NO" xml:space="preserve">
+    <value>Dept No</value>
+  </data>
+  <data name="wfb2ha_lb_DEPT_SNAME" xml:space="preserve">
+    <value>Dept Short Name</value>
+  </data>
+  <data name="wfb2ha_lb_DEPT_WS_TYPE" xml:space="preserve">
+    <value>Dept WS Type</value>
+  </data>
+  <data name="wfb2ha_lb_END_DT" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="wfb2ha_lb_HEAD_EMP_ID" xml:space="preserve">
+    <value>Dept Manager Name</value>
+  </data>
+  <data name="wfb2ha_lb_ORG_TYPE" xml:space="preserve">
+    <value>Org Type</value>
+  </data>
+  <data name="wfb2ha_lb_START_DT" xml:space="preserve">
+    <value>Valid Date</value>
+  </data>
+  <data name="wfb2ha_ORG_TYPE" xml:space="preserve">
+    <value>Org Type is required field</value>
+  </data>
+  <data name="wfb2ha_ORG_TYPE_DESC" xml:space="preserve">
+    <value>Org Type</value>
+  </data>
+  <data name="wfb2ha_REMARK" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="wfb2ha_Required_DEPT_LEVEL" xml:space="preserve">
+    <value>Dept Level is required field</value>
+  </data>
+  <data name="wfb2ha_Required_DEPT_NAME" xml:space="preserve">
+    <value>Dept Name is required field</value>
+  </data>
+  <data name="wfb2ha_Required_END_DT" xml:space="preserve">
+    <value>End Date is required field</value>
+  </data>
+  <data name="wfb2ha_START_DT" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="wfb2ha_Start_End_Date" xml:space="preserve">
+    <value>End Date must greater than Start Date</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0200Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0200Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0200Dtl" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0200Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0200Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0200Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2ha_Required_DEPT_NO" xml:space="preserve">
+    <value>Dept no is required field</value>
+  </data>
+  <data name="wfb2ha_Required_START_DT" xml:space="preserve">
+    <value>Start date is required field</value>
+  </data>
+  <data name="wfb2ha_lb_UP_DEPT_NO" xml:space="preserve">
+    <value>Up Dept No</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0210Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0210Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0210Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0210Save" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0210Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2ha_BUSINESS_TRIP_GRP" xml:space="preserve">
+    <value>Business trip grp</value>
+  </data>
+  <data name="wfb2ha_ERR_START_DT_S" xml:space="preserve">
+    <value>Error Start Date Format</value>
+  </data>
+  <data name="wfb2ha_lb_BUSINESS_TRIP_GRP" xml:space="preserve">
+    <value>Business trip grp</value>
+  </data>
+  <data name="wfb2ha_lb_LEVEL_CD" xml:space="preserve">
+    <value>Level code</value>
+  </data>
+  <data name="wfb2ha_lb_MANAGEMENT_ALLOWANCE" xml:space="preserve">
+    <value>Management allowance</value>
+  </data>
+  <data name="wfb2ha_lb_PJOB_AGE_LIMIT" xml:space="preserve">
+    <value>Pjob age limit</value>
+  </data>
+  <data name="wfb2ha_lb_PJOB_CD" xml:space="preserve">
+    <value>Pjon code</value>
+  </data>
+  <data name="wfb2ha_lb_PJOB_DESC" xml:space="preserve">
+    <value>Pjob Desc</value>
+  </data>
+  <data name="wfb2ha_lb_PJOB_FLOW_LEVEL" xml:space="preserve">
+    <value>Pjob &lt;br/&gt; flow level</value>
+  </data>
+  <data name="wfb2ha_lb_PJOB_LEVEL" xml:space="preserve">
+    <value>Pjob level</value>
+  </data>
+  <data name="wfb2ha_lb_PROFESSION_ALLOWANCE" xml:space="preserve">
+    <value>Profession allowance</value>
+  </data>
+  <data name="wfb2ha_lb_WS_CD" xml:space="preserve">
+    <value>WS code</value>
+  </data>
+  <data name="wfb2ha_PJOB_AGE_LIMIT" xml:space="preserve">
+    <value>Pjob age limit</value>
+  </data>
+  <data name="wfb2ha_PJOB_CD" xml:space="preserve">
+    <value>Pjob cd is required field</value>
+  </data>
+  <data name="wfb2ha_PJOB_DESC" xml:space="preserve">
+    <value>Pjob desc is required field</value>
+  </data>
+  <data name="wfb2ha_Required_BUSINESS_TRIP_GRP" xml:space="preserve">
+    <value>Business trip grp is required field</value>
+  </data>
+  <data name="wfb2ha_Required_LEVEL_CD" xml:space="preserve">
+    <value>Level cd is required field</value>
+  </data>
+  <data name="wfb2ha_Required_PJOB_AGE_LIMIT" xml:space="preserve">
+    <value>Pjob age limit is required field</value>
+  </data>
+  <data name="wfb2ha_Required_PJOB_FLOW_LEVEL" xml:space="preserve">
+    <value>Pjob flow level is required field</value>
+  </data>
+  <data name="wfb2ha_Required_PJOB_LEVEL" xml:space="preserve">
+    <value>Pjob level is required field</value>
+  </data>
+  <data name="wfb2ha_Required_WS_CD" xml:space="preserve">
+    <value>WS cd is required field</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0500Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0500Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0500Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0500Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0500Save" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0500Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2hb_btn_clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="wfb2hb_lb_DEPT_NAME_20" xml:space="preserve">
+    <value>Dept Name</value>
+  </data>
+  <data name="wfb2hb_lb_EMP_ID" xml:space="preserve">
+    <value>Emp ID</value>
+  </data>
+  <data name="wfb2hb_lb_EMP_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="wfb2hb_lb_END_DEPT_NO" xml:space="preserve">
+    <value>End Dept No</value>
+  </data>
+  <data name="wfb2hb_lb_END_DT" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="wfb2hb_lb_HR_CHG_CD" xml:space="preserve">
+    <value>Hr Chg Cd</value>
+  </data>
+  <data name="wfb2hb_lb_HR_CHG_NO" xml:space="preserve">
+    <value>HR Change Code</value>
+  </data>
+  <data name="wfb2hb_lb_ICT_TYPE" xml:space="preserve">
+    <value>ICT Type</value>
+  </data>
+  <data name="wfb2hb_lb_ORI_DEPT_NAME_20D" xml:space="preserve">
+    <value>Ori Dept Name</value>
+  </data>
+  <data name="wfb2hb_lb_ORI_LEVEL_CD" xml:space="preserve">
+    <value>Ori Level Code</value>
+  </data>
+  <data name="wfb2hb_lb_PLAN_END_DT" xml:space="preserve">
+    <value>Plan&lt;br/&gt;End Date</value>
+  </data>
+  <data name="wfb2hb_lb_SKILL_GRADE" xml:space="preserve">
+    <value>Skill Grade</value>
+  </data>
+  <data name="wfb2hb_lb_SKILL_TYPE" xml:space="preserve">
+    <value>Skill Type</value>
+  </data>
+  <data name="wfb2hb_lb_START_DEPT_NO" xml:space="preserve">
+    <value>Start Dept No</value>
+  </data>
+  <data name="wfb2hb_lb_START_DT" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="wfb2hb_lb_START_DT_SE" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="wfb2hb_lb_START_DT_SE2" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="wfb2hb_lb_START_DT_S_E" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="wfb2hb_lb_TRAINING_COMPANY" xml:space="preserve">
+    <value>Training Company</value>
+  </data>
+  <data name="wfb2hb_lb_TRAINING_GOAL" xml:space="preserve">
+    <value>Training Goal</value>
+  </data>
+  <data name="wfb2hb_lb_TRANSFER_COMPANY" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="wfb2hb_lb_TRANSFER_COMPANY_CD" xml:space="preserve">
+    <value>Transfer Company CD</value>
+  </data>
+  <data name="wfb2hb_lb_TRANSFER_DEPT" xml:space="preserve">
+    <value>Dept</value>
+  </data>
+  <data name="wfb2hb_lb_TRANSFER_NATION" xml:space="preserve">
+    <value>Nation</value>
+  </data>
+  <data name="wfb2hb_lb_TRANSFER_NATION_CD" xml:space="preserve">
+    <value>Transfer Nation CD</value>
+  </data>
+  <data name="wfb2hb_RowNumber" xml:space="preserve">
+    <value>Num</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0200Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0300Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0400Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0400Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0400Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0400Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0400Save" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0400Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0400Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0500Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0500Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0500Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0500Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0500Save" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0500Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0500Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="wfb2hb_lb_END_DEPT_NAME" xml:space="preserve">
+    <value>End Dept Name</value>
+  </data>
+  <data name="wfb2hb_lb_ORI_DEPT_NAME" xml:space="preserve">
+    <value>Ori Dept Name</value>
+  </data>
+  <data name="wfb2hb_lb_START_DEPT_NAME" xml:space="preserve">
+    <value>Start Dept Name</value>
+  </data>
+  <data name="wfb2da_WORK_DAY_CD_N" xml:space="preserve">
+    <value />
+  </data>
+  <data name="wfb2da_WORK_DAY_CD_PlaceChoice" xml:space="preserve">
+    <value />
+  </data>
+  <data name="wfb2da_WORK_DAY_CD_Y" xml:space="preserve">
+    <value />
+  </data>
+  <data name="wfb2hb_btn_back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="wfb2hb_END_DT" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="wfb2hb_ERR_END_DT" xml:space="preserve">
+    <value>Error End Date Format</value>
+  </data>
+  <data name="wfb2hb_ERR_START_DT" xml:space="preserve">
+    <value>Error Start Date Format</value>
+  </data>
+  <data name="wfb2hb_ERR_START_DT_Compare" xml:space="preserve">
+    <value>End Date must greater than Start Date</value>
+  </data>
+  <data name="wfb2hb_lb_TemplateDownload" xml:space="preserve">
+    <value>Download Excel Template</value>
+  </data>
+  <data name="wfb2hb_lb_type" xml:space="preserve">
+    <value>Please choose type</value>
+  </data>
+  <data name="wfb2hb_lb_UploadExcel" xml:space="preserve">
+    <value>Upload Excel</value>
+  </data>
+  <data name="wfb2hb_ORI_DEPT_NO" xml:space="preserve">
+    <value>Ori Dept No</value>
+  </data>
+  <data name="wfb2hb_Required_EMP_ID" xml:space="preserve">
+    <value>Emp ID is required field</value>
+  </data>
+  <data name="wfb2hb_Required_END_DT" xml:space="preserve">
+    <value>End Date is required Date</value>
+  </data>
+  <data name="wfb2hb_Required_START_DT" xml:space="preserve">
+    <value>Start Date is required field</value>
+  </data>
+  <data name="wfb2hb_Required_TRAINING_COMPANY" xml:space="preserve">
+    <value>TRAINING_COMPANY is required field</value>
+  </data>
+  <data name="wfb2hb_Required_TRAINING_GOAL" xml:space="preserve">
+    <value>TRAINING_GOAL is required field</value>
+  </data>
+  <data name="wfb2hb_START_DT" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0401ExcelDown" xml:space="preserve">
+    <value>Export Excel</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0401ExcelImport" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="wfb2hb_AWARD_DT" xml:space="preserve">
+    <value>Award Date</value>
+  </data>
+  <data name="wfb2hb_ERR_AWARD_DT" xml:space="preserve">
+    <value>Error Award Date Format</value>
+  </data>
+  <data name="wfb2hb_Required_SKILL_DESC" xml:space="preserve">
+    <value>Skill Desc is required field</value>
+  </data>
+  <data name="wfb2hb_Required_SKILL_TYPE" xml:space="preserve">
+    <value>Skill Type is required field</value>
+  </data>
+  <data name="wfb2hb_SKILL_DESC" xml:space="preserve">
+    <value>Skill Desc</value>
+  </data>
+  <data name="wfb2hb_SKILL_GRADE" xml:space="preserve">
+    <value>Skill Grade</value>
+  </data>
+  <data name="wfb2hb_SKILL_ORG" xml:space="preserve">
+    <value>Skill Org</value>
+  </data>
+  <data name="wfb2hb_SKILL_TYPE" xml:space="preserve">
+    <value>Skill Type</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0501ExcelDown" xml:space="preserve">
+    <value>Export Excel</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0501ExcelImport" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="wfb2hb_lb_AGE" xml:space="preserve">
+    <value>AGE</value>
+  </data>
+  <data name="wfb2hb_lb_DEPT_NAME" xml:space="preserve">
+    <value>Dept name</value>
+  </data>
+  <data name="wfb2hb_lb_DEPT_NO" xml:space="preserve">
+    <value>Dept No</value>
+  </data>
+  <data name="wfb2hb_lb_EMP_CHG_CD" xml:space="preserve">
+    <value>Emp Chg Cd</value>
+  </data>
+  <data name="wfb2hb_lb_LEVEL_CD" xml:space="preserve">
+    <value>Level CD</value>
+  </data>
+  <data name="wfb2hb_lb_PJOB_CD" xml:space="preserve">
+    <value>Pjob cd</value>
+  </data>
+  <data name="wfb2hb_lb_RECENT_LEVEL_WORK_DAYS" xml:space="preserve">
+    <value>Recent Level Work Days</value>
+  </data>
+  <data name="wfb2hb_lb_WORK_YEARS" xml:space="preserve">
+    <value>Join Years</value>
+  </data>
+  <data name="wfb2hb_lb_WS_CD" xml:space="preserve">
+    <value>WS CD</value>
+  </data>
+  <data name="wfb2hb_LEVEL_CD" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="wfb2hb_PJOB_CD" xml:space="preserve">
+    <value>Pjob</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0600Dtl" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0600ExcelDown" xml:space="preserve">
+    <value>Export Excel</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0600Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2hb_lb_BASE_SALARY" xml:space="preserve">
+    <value>Base Salary</value>
+  </data>
+  <data name="wfb2hb_lb_BIRTH_DT" xml:space="preserve">
+    <value>Birth Date</value>
+  </data>
+  <data name="wfb2hb_lb_COMPANY_EMAIL" xml:space="preserve">
+    <value>COMPANY_EMAIL</value>
+  </data>
+  <data name="wfb2hb_lb_COMPANY_EXT" xml:space="preserve">
+    <value>COMPANY_EXT</value>
+  </data>
+  <data name="wfb2hb_lb_CONTACT_ADDR" xml:space="preserve">
+    <value>CONTACT_ADDR</value>
+  </data>
+  <data name="wfb2hb_lb_CONTACT_TEL" xml:space="preserve">
+    <value>CONTACT_TEL</value>
+  </data>
+  <data name="wfb2hb_lb_ENG_TOTAL_SCORE" xml:space="preserve">
+    <value>Toeic</value>
+  </data>
+  <data name="wfb2hb_lb_JOIN_DT" xml:space="preserve">
+    <value>Join Date</value>
+  </data>
+  <data name="wfb2hb_lb_JP_TOTAL_SCORE" xml:space="preserve">
+    <value>Japan</value>
+  </data>
+  <data name="wfb2hb_lb_MOBILE_TEL_1" xml:space="preserve">
+    <value>MOBILE_TEL_1</value>
+  </data>
+  <data name="wfb2hb_lb_MOBILE_TEL_2" xml:space="preserve">
+    <value>MOBILE_TEL_2</value>
+  </data>
+  <data name="wfb2hb_lb_MODEL_YEAR" xml:space="preserve">
+    <value>Model Year</value>
+  </data>
+  <data name="wfb2hb_lb_PERSONAL_EMAIL" xml:space="preserve">
+    <value>PERSONAL_EMAIL</value>
+  </data>
+  <data name="wfb2hb_lb_REGISTER_ADDR" xml:space="preserve">
+    <value>REGISTER_ADDR</value>
+  </data>
+  <data name="wfb2hb_lb_REGISTER_TEL" xml:space="preserve">
+    <value>REGISTER_TEL</value>
+  </data>
+  <data name="wfb2hb_lb_SEX_CD" xml:space="preserve">
+    <value>Sex</value>
+  </data>
+  <data name="wfb2hb_lb_URGENT_CONTACT_NAME" xml:space="preserve">
+    <value>URGENT_CONTACT_NAME</value>
+  </data>
+  <data name="wfb2hb_lb_URGENT_CONTACT_RELATION" xml:space="preserve">
+    <value>URGENT_CONTACT_RELATION</value>
+  </data>
+  <data name="wfb2hb_lb_URGENT_CONTACT_TEL" xml:space="preserve">
+    <value>URGENT_CONTACT_TEL</value>
+  </data>
+  <data name="wfb2hb_PLANT_CD" xml:space="preserve">
+    <value>Plant cd</value>
+  </data>
+  <data name="wfb2da_Copy_NotChoiceMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="wfb2da_Del_NotChoiceMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="wfb2da_dll_CALENDAR_CD_PlaceChoice" xml:space="preserve">
+    <value />
+  </data>
+  <data name="wfb2da_Dtl_NotChoiceMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="wfb2da_Mod_NotChoiceMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="wfb2da_WFB2DA0100Cancel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="wfb2hb_EDUCATION_CD" xml:space="preserve">
+    <value>Education</value>
+  </data>
+  <data name="wfb2hb_FAMILY_BIRTH_DT" xml:space="preserve">
+    <value>Birth Date</value>
+  </data>
+  <data name="wfb2hb_FAMILY_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="wfb2hb_FAMILY_RELATION" xml:space="preserve">
+    <value>Relation</value>
+  </data>
+  <data name="wfb2hb_lb_DEPARTMENT_NAME" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="wfb2hb_lb_END_DT2" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="wfb2hb_lb_FAMILY_WORK_DESC" xml:space="preserve">
+    <value>Work</value>
+  </data>
+  <data name="wfb2hb_lb_GRADUATION_YEAR" xml:space="preserve">
+    <value>GRADUATION_YEAR</value>
+  </data>
+  <data name="wfb2hb_OTHER_DEPT_NO" xml:space="preserve">
+    <value>Other Dept Name</value>
+  </data>
+  <data name="wfb2hb_OTHER_PJOB_CD" xml:space="preserve">
+    <value>Pjob Desc</value>
+  </data>
+  <data name="wfb2hb_SCHOOL_NAME" xml:space="preserve">
+    <value>School Name</value>
+  </data>
+  <data name="wfb2hb_SCHOOL_NATION_CD" xml:space="preserve">
+    <value>Nation</value>
+  </data>
+  <data name="wfb2hb_DEPT_FULL_NAME" xml:space="preserve">
+    <value>Dept Name</value>
+  </data>
+  <data name="wfb2hb_HR_CHG_DESC" xml:space="preserve">
+    <value>HR_CHG_DESC</value>
+  </data>
+  <data name="wfb2hb_lb_PJOB_DESC" xml:space="preserve">
+    <value>Pjob Desc</value>
+  </data>
+  <data name="wfb2hb_START_DT2" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="wfb2hb_lb_SCORE_TYPE" xml:space="preserve">
+    <value>Score Type</value>
+  </data>
+  <data name="wfb2hb_lb_SCORE_TYPE_DESC1" xml:space="preserve">
+    <value>SCORE_TYPE1</value>
+  </data>
+  <data name="wfb2hb_lb_SCORE_TYPE_DESC2" xml:space="preserve">
+    <value>SCORE_TYPE2</value>
+  </data>
+  <data name="wfb2hb_OTHER_DEPT_NO2" xml:space="preserve">
+    <value>Dept no</value>
+  </data>
+  <data name="wfb2hb_OTHER_PJOB_CD2" xml:space="preserve">
+    <value>Pjob</value>
+  </data>
+  <data name="wfb2hb_cb_IS_DUTY_CHECK" xml:space="preserve">
+    <value>Is Duty Check</value>
+  </data>
+  <data name="wfb2hb_cb_IS_UPD_HEAD" xml:space="preserve">
+    <value>Not Up Head</value>
+  </data>
+  <data name="wfb2hb_cb_MODEL" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="wfb2hb_cb_OVERTIME_CTL_CD" xml:space="preserve">
+    <value>Overtime Ctl CD</value>
+  </data>
+  <data name="wfb2hb_cb_UNION_PJOB_CD" xml:space="preserve">
+    <value>Is Union </value>
+  </data>
+  <data name="wfb2hb_lb_BE_CONTRACT_DT" xml:space="preserve">
+    <value>Be Contract Date</value>
+  </data>
+  <data name="wfb2hb_lb_BE_EMP_DT" xml:space="preserve">
+    <value>Be Emp Date</value>
+  </data>
+  <data name="wfb2hb_lb_COMPANY_CD" xml:space="preserve">
+    <value>Company CD</value>
+  </data>
+  <data name="wfb2hb_lb_DIRECT_HEAD_EMP_ID" xml:space="preserve">
+    <value>Head Emp Name</value>
+  </data>
+  <data name="wfb2hb_lb_EMP_CD" xml:space="preserve">
+    <value>Emp CD</value>
+  </data>
+  <data name="wfb2hb_lb_IS_DUTY_CHECK2" xml:space="preserve">
+    <value>IS_DUTY_CHECK</value>
+  </data>
+  <data name="wfb2hb_lb_IS_UPD_HEAD2" xml:space="preserve">
+    <value>Is Upd Head</value>
+  </data>
+  <data name="wfb2hb_lb_JPN_CD" xml:space="preserve">
+    <value>JPN CD</value>
+  </data>
+  <data name="wfb2hb_lb_LEAVE_DT" xml:space="preserve">
+    <value>Leave Date</value>
+  </data>
+  <data name="wfb2hb_lb_LEAVE_REASON" xml:space="preserve">
+    <value>Leave Reason</value>
+  </data>
+  <data name="wfb2hb_lb_LEVEL_CD2" xml:space="preserve">
+    <value>Level cd</value>
+  </data>
+  <data name="wfb2hb_lb_LICENSE_ID" xml:space="preserve">
+    <value>ICENSE ID</value>
+  </data>
+  <data name="wfb2hb_lb_OVERTIME_CTL_CD2" xml:space="preserve">
+    <value>Overtime Ctl</value>
+  </data>
+  <data name="wfb2hb_lb_PASSPORT_ID" xml:space="preserve">
+    <value>Passport ID</value>
+  </data>
+  <data name="wfb2hb_lb_PLANT_CD" xml:space="preserve">
+    <value>Plant CD</value>
+  </data>
+  <data name="wfb2hb_lb_SERVICE_YEARS" xml:space="preserve">
+    <value>Service Years</value>
+  </data>
+  <data name="wfb2hb_lb_SP_EMP" xml:space="preserve">
+    <value>SP EMP</value>
+  </data>
+  <data name="wfb2hb_lb_UNION_PJOB_CD" xml:space="preserve">
+    <value>Union Pjob CD</value>
+  </data>
+  <data name="wfb2hb_lb_WORK_CD" xml:space="preserve">
+    <value>Work CD</value>
+  </data>
+  <data name="wfb2hb_lb_WORK_SHIFT_CD" xml:space="preserve">
+    <value>Work Shift CD</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0100Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0100Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0100Detail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0100Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0100Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0100UpdHead" xml:space="preserve">
+    <value>Update Head</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0100Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0101ExcelDown" xml:space="preserve">
+    <value>Download Excel</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0101ExcelImport" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="wfb2hb_EXP_COMPANY_NAME" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="wfb2hb_EXP_TITLE_DESC" xml:space="preserve">
+    <value>Title Desc</value>
+  </data>
+  <data name="wfb2hb_FAMILY_LICENSE_ID" xml:space="preserve">
+    <value>License id</value>
+  </data>
+  <data name="wfb2hb_FAMILY_NATION_CD" xml:space="preserve">
+    <value>Nation cd</value>
+  </data>
+  <data name="wfb2hb_FAMILY_PASSPORT_ID" xml:space="preserve">
+    <value>Passwort ID</value>
+  </data>
+  <data name="wfb2hb_FAMILY_SEX_CD" xml:space="preserve">
+    <value>Sex cd</value>
+  </data>
+  <data name="wfb2hb_lb_APPROVE_WORK_YEARS" xml:space="preserve">
+    <value>Approve Work Year</value>
+  </data>
+  <data name="wfb2hb_lb_BIRTHPLACE" xml:space="preserve">
+    <value>Birthplace</value>
+  </data>
+  <data name="wfb2hb_lb_BIRTH_BLOOD" xml:space="preserve">
+    <value>Birth/ Blood</value>
+  </data>
+  <data name="wfb2hb_lb_EMP_PHOTO" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="wfb2hb_lb_END_YEAR" xml:space="preserve">
+    <value>End Year</value>
+  </data>
+  <data name="wfb2hb_lb_HEIGHT_WEIGHT" xml:space="preserve">
+    <value>Height / Weight</value>
+  </data>
+  <data name="wfb2hb_lb_IS_ALLOWANCE" xml:space="preserve">
+    <value>IS_ALLOWANCE</value>
+  </data>
+  <data name="wfb2hb_lb_IS_SALARY_SCHOOL" xml:space="preserve">
+    <value>IS_SALARY_SCHOOL</value>
+  </data>
+  <data name="wfb2hb_lb_IS_VIRTUAL_SCHOOL" xml:space="preserve">
+    <value>IS_VIRTUAL_SCHOOL</value>
+  </data>
+  <data name="wfb2hb_lb_LICENSE_ID2" xml:space="preserve">
+    <value>License ID</value>
+  </data>
+  <data name="wfb2hb_lb_NATION_JPN_CD" xml:space="preserve">
+    <value>Nation / Jpn</value>
+  </data>
+  <data name="wfb2hb_lb_SALARY_ACCOUNT_NO" xml:space="preserve">
+    <value>Salary Account No</value>
+  </data>
+  <data name="wfb2hb_lb_SEX_ARMY" xml:space="preserve">
+    <value>Sex / Army</value>
+  </data>
+  <data name="wfb2hb_START_YEAR" xml:space="preserve">
+    <value>Start Year</value>
+  </data>
+  <data name="wfb2hb_lb_ACC_CD" xml:space="preserve">
+    <value>Acc Cd</value>
+  </data>
+  <data name="wfb2hb_lb_BACK_PLANT_DT" xml:space="preserve">
+    <value>Back Plant Dt</value>
+  </data>
+  <data name="wfb2hb_lb_BACK_SCHOOL_DT" xml:space="preserve">
+    <value>Back School Dt</value>
+  </data>
+  <data name="wfb2hb_lb_BE_DESPATCH_DT" xml:space="preserve">
+    <value>Be Despatch Date</value>
+  </data>
+  <data name="wfb2hb_lb_CALENDAR_CD" xml:space="preserve">
+    <value>Calendar CD</value>
+  </data>
+  <data name="wfb2hb_lb_CONTACT_ADDR2" xml:space="preserve">
+    <value>Addr</value>
+  </data>
+  <data name="wfb2hb_lb_CONTACT_TEL2" xml:space="preserve">
+    <value>Tel</value>
+  </data>
+  <data name="wfb2hb_lb_CONTACT_ZIP" xml:space="preserve">
+    <value>Zip Code</value>
+  </data>
+  <data name="wfb2hb_lb_EXAM_EXPIRE_DT" xml:space="preserve">
+    <value>Exam Expire Date</value>
+  </data>
+  <data name="wfb2hb_lb_HONOR_YEAR" xml:space="preserve">
+    <value>Honor Year</value>
+  </data>
+  <data name="wfb2hb_lb_INCOME_CD" xml:space="preserve">
+    <value>Income Cd</value>
+  </data>
+  <data name="wfb2hb_lb_IS_DUTY_CHECK" xml:space="preserve">
+    <value>Is Duty Check</value>
+  </data>
+  <data name="wfb2hb_lb_IS_MASTER" xml:space="preserve">
+    <value>Is Master</value>
+  </data>
+  <data name="wfb2hb_lb_IS_UPD_HEAD" xml:space="preserve">
+    <value>Is Upd Head</value>
+  </data>
+  <data name="wfb2hb_lb_JOIN_DT2" xml:space="preserve">
+    <value>Join Date</value>
+  </data>
+  <data name="wfb2hb_lb_KEEP_DESPATCH_DT" xml:space="preserve">
+    <value>Keep Despatch Date</value>
+  </data>
+  <data name="wfb2hb_lb_K_WORK_DAYS" xml:space="preserve">
+    <value>Kuozui Work Days</value>
+  </data>
+  <data name="wfb2hb_lb_LEAVE_REASON_DESC" xml:space="preserve">
+    <value>Leave reason</value>
+  </data>
+  <data name="wfb2hb_lb_LEVEL_GRADE" xml:space="preserve">
+    <value>Level / Grade</value>
+  </data>
+  <data name="wfb2hb_lb_OVERTIME_HEALTH_YEAR" xml:space="preserve">
+    <value>Overtime ctl/Health year</value>
+  </data>
+  <data name="wfb2hb_lb_PLAN_DESPATCH_DT" xml:space="preserve">
+    <value>Plan Despatch Date</value>
+  </data>
+  <data name="wfb2hb_lb_PLAN_RETENTION_EDT" xml:space="preserve">
+    <value>Plan Retention Edt</value>
+  </data>
+  <data name="wfb2hb_lb_PLAN_TRANSFER_EDT" xml:space="preserve">
+    <value>Plan Transfer Edt</value>
+  </data>
+  <data name="wfb2hb_lb_RECENT_DEPT_DT" xml:space="preserve">
+    <value>Recent Dept Date</value>
+  </data>
+  <data name="wfb2hb_lb_RECENT_DEPT_WORK_DAYS" xml:space="preserve">
+    <value>Recent Dept Work Days</value>
+  </data>
+  <data name="wfb2hb_lb_RECENT_DIV_DT" xml:space="preserve">
+    <value>Recent Div Date</value>
+  </data>
+  <data name="wfb2hb_lb_RECENT_DIV_WORK_DAYS" xml:space="preserve">
+    <value>Recent Div Work Days</value>
+  </data>
+  <data name="wfb2hb_lb_RECENT_LEVEL_DT" xml:space="preserve">
+    <value>Recent Level Date</value>
+  </data>
+  <data name="wfb2hb_lb_RECENT_LEVEL_WORK_DAYS2" xml:space="preserve">
+    <value>Recent Level Work Days</value>
+  </data>
+  <data name="wfb2hb_lb_RECENT_PJOB_DT" xml:space="preserve">
+    <value>Recent Pjob Date</value>
+  </data>
+  <data name="wfb2hb_lb_RECENT_PJOB_WORK_DAYS" xml:space="preserve">
+    <value>Recent Pjob Work Days</value>
+  </data>
+  <data name="wfb2hb_lb_REGISTER_ADD" xml:space="preserve">
+    <value>Register Add</value>
+  </data>
+  <data name="wfb2hb_lb_REGISTER_TEL2" xml:space="preserve">
+    <value>Tel</value>
+  </data>
+  <data name="wfb2hb_lb_RELATIVES" xml:space="preserve">
+    <value>Relatives</value>
+  </data>
+  <data name="wfb2hb_lb_REMARK" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="wfb2hb_lb_RETENTION_EDT" xml:space="preserve">
+    <value>Retention Edt</value>
+  </data>
+  <data name="wfb2hb_lb_SALARY" xml:space="preserve">
+    <value>Salary</value>
+  </data>
+  <data name="wfb2hb_lb_SERVICE_YEARS2" xml:space="preserve">
+    <value>Service Years</value>
+  </data>
+  <data name="wfb2hb_lb_STUDENT_WORK_DAYS" xml:space="preserve">
+    <value>Student Work Days</value>
+  </data>
+  <data name="wfb2hb_lb_TRANSFER_EDT" xml:space="preserve">
+    <value>Transfer Edt</value>
+  </data>
+  <data name="wfb2hb_lb_TRANSFER_REASON_DESC" xml:space="preserve">
+    <value>Transfer Reason</value>
+  </data>
+  <data name="wfb2hb_lb_TRANSFER_SDT" xml:space="preserve">
+    <value>Transfer Sdt</value>
+  </data>
+  <data name="wfb2hb_lb_T_WORK_DAYS" xml:space="preserve">
+    <value>T Work Days</value>
+  </data>
+  <data name="wfb2hb_lb_URGENT_CONTACT_NAME2" xml:space="preserve">
+    <value>Urgent Contact Name</value>
+  </data>
+  <data name="wfb2hb_lb_WORK_SHIFT_CD2" xml:space="preserve">
+    <value>Work Shift Cd</value>
+  </data>
+  <data name="wfb2hb_lb_WORK_YEARS2" xml:space="preserve">
+    <value>Work Years</value>
+  </data>
+  <data name="wfb2hb_lb_ZIP" xml:space="preserve">
+    <value>Zip Code</value>
+  </data>
+  <data name="wfb2ha_ERR_FAMILY_BIRTH_DT" xml:space="preserve">
+    <value>Error  FAMILY_BIRTH_DT</value>
+  </data>
+  <data name="wfb2ha_Err_FAMILY_LICENSE_ID" xml:space="preserve">
+    <value>Error FAMILY_LICENSE_ID</value>
+  </data>
+  <data name="wfb2ha_required_APPROVE_WORK_YEARS" xml:space="preserve">
+    <value>Approve Work Year is required</value>
+  </data>
+  <data name="wfb2ha_required_BIRTHPLACE" xml:space="preserve">
+    <value>Birthplace is required</value>
+  </data>
+  <data name="wfb2ha_required_BIRTH_DT" xml:space="preserve">
+    <value>Birth Date is required</value>
+  </data>
+  <data name="wfb2ha_required_DIRECT_HEAD_EMP_ID" xml:space="preserve">
+    <value>Head Emp Id is required</value>
+  </data>
+  <data name="wfb2ha_required_EDUCATION_CD" xml:space="preserve">
+    <value>Education cd is required</value>
+  </data>
+  <data name="wfb2ha_required_EMP_NAME" xml:space="preserve">
+    <value>Name is required</value>
+  </data>
+  <data name="wfb2ha_required_END_YEAR" xml:space="preserve">
+    <value>End Year is required</value>
+  </data>
+  <data name="wfb2ha_required_EXP_COMPANY_NAME" xml:space="preserve">
+    <value>Company name is required</value>
+  </data>
+  <data name="wfb2ha_required_EXP_TITLE_DESC" xml:space="preserve">
+    <value>Title is required</value>
+  </data>
+  <data name="wfb2ha_required_FAMILY_BIRTH_DT" xml:space="preserve">
+    <value>Family Birth Date is required</value>
+  </data>
+  <data name="wfb2ha_required_FAMILY_LICENSE_ID" xml:space="preserve">
+    <value>Family License is required</value>
+  </data>
+  <data name="wfb2ha_required_FAMILY_NAME" xml:space="preserve">
+    <value>Family Name is required</value>
+  </data>
+  <data name="wfb2ha_required_FAMILY_NATION_CD" xml:space="preserve">
+    <value>Family Nation cd is required</value>
+  </data>
+  <data name="wfb2ha_required_FAMILY_RELATION" xml:space="preserve">
+    <value>Family Relation is required</value>
+  </data>
+  <data name="wfb2ha_required_FAMILY_SEX_CD" xml:space="preserve">
+    <value>Family Sex CD is required</value>
+  </data>
+  <data name="wfb2ha_required_GRADUATION_YEAR" xml:space="preserve">
+    <value>Graduation Year is required</value>
+  </data>
+  <data name="wfb2ha_required_HEIGHT" xml:space="preserve">
+    <value>Height is required</value>
+  </data>
+  <data name="wfb2ha_required_INCOME_CD" xml:space="preserve">
+    <value>Income is required</value>
+  </data>
+  <data name="wfb2ha_required_LICENSE_ID" xml:space="preserve">
+    <value>LicenseID is required</value>
+  </data>
+  <data name="wfb2ha_required_SCHOOL_NAME" xml:space="preserve">
+    <value>School Name is required</value>
+  </data>
+  <data name="wfb2ha_required_START_YEAR" xml:space="preserve">
+    <value>Start Year is required</value>
+  </data>
+  <data name="wfb2ha_required_URGENT_CONTACT_NAME" xml:space="preserve">
+    <value>Urgent Contact Name is required</value>
+  </data>
+  <data name="wfb2ha_required_URGENT_CONTACT_RELATION" xml:space="preserve">
+    <value>Urgent Contact Relation is required </value>
+  </data>
+  <data name="wfb2ha_required_URGENT_CONTACT_TEL" xml:space="preserve">
+    <value>Urgent Contact Tel is required</value>
+  </data>
+  <data name="wfb2ha_required_WEIGHT" xml:space="preserve">
+    <value>Weight is required</value>
+  </data>
+  <data name="wfb2ha_WFB2HB0100Save" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="wfb2ha_required_COMPANY_CD" xml:space="preserve">
+    <value>Company cd is required</value>
+  </data>
+  <data name="wfb2ha_required_EMP_CD" xml:space="preserve">
+    <value>Emp Cd is required</value>
+  </data>
+  <data name="wfb2ha_required_EXAM_EXPIRE_DT" xml:space="preserve">
+    <value>Exam Expire Date is required</value>
+  </data>
+  <data name="wfb2ha_required_JOIN_DT" xml:space="preserve">
+    <value>Join Date is required</value>
+  </data>
+  <data name="wfb2ha_required_PJOB_CD" xml:space="preserve">
+    <value>Pjob is required</value>
+  </data>
+  <data name="wfb2ha_required_PLANT_CD" xml:space="preserve">
+    <value>Plant cd is required</value>
+  </data>
+  <data name="wfb2ha_required_WORK_CD" xml:space="preserve">
+    <value>Work cd is required</value>
+  </data>
+  <data name="wfb2ha_required_WORK_SHIFT_CD" xml:space="preserve">
+    <value>Work Shift Cd is required</value>
+  </data>
+  <data name="wfb2hb_btn_photo_upload" xml:space="preserve">
+    <value>upload</value>
+  </data>
+  <data name="wfb2hb_lb_ACCOUNT_BANK" xml:space="preserve">
+    <value>Account Bank</value>
+  </data>
+  <data name="wfb2hb_lb_DUR_END_DT" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="wfb2hb_lb_DUR_START_DT" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="wfb2hb_lb_RENT_SUBSIDY" xml:space="preserve">
+    <value>Rent Subsidy</value>
+  </data>
+  <data name="wfb2dc_CARD_MID_NO" xml:space="preserve">
+    <value>Card No</value>
+  </data>
+  <data name="wfb2dc_CARD_SEQ" xml:space="preserve">
+    <value>Card Seq</value>
+  </data>
+  <data name="wfb2dc_ERR_BE_EMP_DT" xml:space="preserve">
+    <value>Error Date Format</value>
+  </data>
+  <data name="wfb2dc_ERR_END_DT" xml:space="preserve">
+    <value>Error End Date format</value>
+  </data>
+  <data name="wfb2dc_ERR_START_DT" xml:space="preserve">
+    <value>Error Start Date format</value>
+  </data>
+  <data name="wfb2dc_lb_CARD_HANDLE" xml:space="preserve">
+    <value>Card Handle</value>
+  </data>
+  <data name="wfb2dc_lb_CARD_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="wfb2dc_lb_CARD_STATUS" xml:space="preserve">
+    <value>Card Status</value>
+  </data>
+  <data name="wfb2dc_lb_CARD_TYPE" xml:space="preserve">
+    <value>Card Type</value>
+  </data>
+  <data name="wfb2dc_lb_CARD_USED_CD" xml:space="preserve">
+    <value>Card Used CD</value>
+  </data>
+  <data name="wfb2dc_lb_CHANGE_DT" xml:space="preserve">
+    <value>Change Date</value>
+  </data>
+  <data name="wfb2dc_lb_END_DT" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="wfb2dc_lb_NOTES" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="wfb2dc_lb_PERSON_ID" xml:space="preserve">
+    <value>Person ID</value>
+  </data>
+  <data name="wfb2dc_lb_START_DT" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="wfb2dc_lb_TEMP_CARD_CD" xml:space="preserve">
+    <value>Temp Card CD</value>
+  </data>
+  <data name="wfb2ha_WFB2DC0400Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="wfb2ha_WFB2DC0400Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2ha_WFB2DC0400Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="wfb2ha_WFB2DC0400Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="wfb2ha_WFB2DC0400Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="wfb2ha_WFB2DC0400ExportToMake" xml:space="preserve">
+    <value>Export to Make</value>
+  </data>
+  <data name="wfb2ha_WFB2DC0400NoMakeCard" xml:space="preserve">
+    <value>Process</value>
+  </data>
+  <data name="wfb2ha_WFB2DC0400Save" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="wfb2ha_WFB2DC0400Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2dc_CARD_TYPE" xml:space="preserve">
+    <value>Card Type is required field</value>
+  </data>
+  <data name="wfb2dc_ERR_CHANGE_DT" xml:space="preserve">
+    <value>ERR format CHANGE DT</value>
+  </data>
+  <data name="wfb2dc_lb_BE_EMP_DT" xml:space="preserve">
+    <value>Be Emp Date</value>
+  </data>
+  <data name="wfb2dc_lb_CARD_NO" xml:space="preserve">
+    <value>Card No</value>
+  </data>
+  <data name="wfb2dc_END_DT" xml:space="preserve">
+    <value>End Dt is required field</value>
+  </data>
+  <data name="wfb2dc_START_DT" xml:space="preserve">
+    <value>Start dt is required field</value>
+  </data>
+  <data name="wfb2dc_ERR_ABNORMAL_DT" xml:space="preserve">
+    <value>Abnormal Date E must greater than Abnormal Date S</value>
+  </data>
+  <data name="wfb2dc_ERR_ABNORMAL_DT_E" xml:space="preserve">
+    <value>Error Abnormal Date E format</value>
+  </data>
+  <data name="wfb2dc_ERR_ABNORMAL_DT_S" xml:space="preserve">
+    <value>Error Abnormal Date S format</value>
+  </data>
+  <data name="wfb2dc_lb_ABNORMAL_DT" xml:space="preserve">
+    <value>Abnormal Date</value>
+  </data>
+  <data name="wfb2dc_lb_ABNORMAL_REASON_CD" xml:space="preserve">
+    <value>Abnormal Reason CD</value>
+  </data>
+  <data name="wfb2dc_lb_ABNORMAL_SOURCE_CD" xml:space="preserve">
+    <value>Abnormal Source CD</value>
+  </data>
+  <data name="wfb2dc_lb_ABNORMAL_TYPE" xml:space="preserve">
+    <value>Abnormal Type</value>
+  </data>
+  <data name="wfb2dc_lb_DEPT_NO" xml:space="preserve">
+    <value>Dept no</value>
+  </data>
+  <data name="wfb2dc_lb_EMP_ID" xml:space="preserve">
+    <value>Emp ID</value>
+  </data>
+  <data name="wfb2dc_lb_IFLOW_APPROVE_DT" xml:space="preserve">
+    <value>IFLOW Approve DT</value>
+  </data>
+  <data name="wfb2dc_lb_IFLOW_NO" xml:space="preserve">
+    <value>IFLOW NO</value>
+  </data>
+  <data name="wfb2dc_WFB2DC0600ApplyImport" xml:space="preserve">
+    <value>Apply Import</value>
+  </data>
+  <data name="wfb2dc_WFB2DC0600Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="wfb2dc_WFB2DC0600BatchApply" xml:space="preserve">
+    <value>Batch Apply</value>
+  </data>
+  <data name="wfb2dc_WFB2DC0600Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="wfb2dc_WFB2DC0600Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="wfb2dc_WFB2DC0600Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2df_ERR_IFLOW_APPROVE_DT" xml:space="preserve">
+    <value>Error IFLOW Approve DT format</value>
+  </data>
+  <data name="wfb2dc_ERR_ABNORMAL_DT_format" xml:space="preserve">
+    <value>Error Abnormal DT Format</value>
+  </data>
+  <data name="wfb2dc_ERR_CALENDAR_DT" xml:space="preserve">
+    <value>Error Calendar Dt</value>
+  </data>
+  <data name="wfb2dc_ERR_JOIN_DT" xml:space="preserve">
+    <value>Error Joint DT Format</value>
+  </data>
+  <data name="wfb2dc_lb_ABNORMAL_DT2" xml:space="preserve">
+    <value>Abnormal DT</value>
+  </data>
+  <data name="wfb2dc_lb_CALENDAR_DT" xml:space="preserve">
+    <value>Calendar Date</value>
+  </data>
+  <data name="wfb2dc_lb_DEP_NO" xml:space="preserve">
+    <value>Dept Name</value>
+  </data>
+  <data name="wfb2dc_lb_DUTY_CHECK_RESULT" xml:space="preserve">
+    <value>Duty Check Result</value>
+  </data>
+  <data name="wfb2dc_lb_EMP_NAME" xml:space="preserve">
+    <value>Emp Name</value>
+  </data>
+  <data name="wfb2dc_lb_IS_CONFIRM" xml:space="preserve">
+    <value>Is Confirm</value>
+  </data>
+  <data name="wfb2dc_lb_IS_RE_MAKE" xml:space="preserve">
+    <value>Is Re Make</value>
+  </data>
+  <data name="wfb2dc_lb_JOIN_DT" xml:space="preserve">
+    <value>JOIN DT</value>
+  </data>
+  <data name="wfb2dc_lb_WORK_SHIFT_CD" xml:space="preserve">
+    <value>Work Shift CD</value>
+  </data>
+  <data name="wfb2dc_Required_CALENDAR_DT_E" xml:space="preserve">
+    <value>Calendar Dt E is required field</value>
+  </data>
+  <data name="wfb2dc_Required_CALENDAR_DT_S" xml:space="preserve">
+    <value>Calendar Dt S is required field</value>
+  </data>
+  <data name="wfb2dc_WFB2DC0600Add2" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="wfb2dc_WFB2DC0600Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2dc_WFB2DC0600Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="wfb2dc_WFB2DC0800CardImport" xml:space="preserve">
+    <value>Card Import</value>
+  </data>
+  <data name="wfb2dc_WFB2DC0800Export" xml:space="preserve">
+    <value>Export Excel</value>
+  </data>
+  <data name="wfb2dc_WFB2DC0800Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2dc_DEPT_NAME" xml:space="preserve">
+    <value>Dept Name</value>
+  </data>
+  <data name="wfb2dc_WORK_SHIFT_CD" xml:space="preserve">
+    <value>Work Shift</value>
+  </data>
+  <data name="wfb2dc_lb_CLOCK_IN_DT" xml:space="preserve">
+    <value>Clock in dt</value>
+  </data>
+  <data name="wfb2dc_lb_CLOCK_OUT_DT" xml:space="preserve">
+    <value>Clock out DT</value>
+  </data>
+  <data name="wfb2dc_lb_DUTY_ETIME" xml:space="preserve">
+    <value>Duty Etime</value>
+  </data>
+  <data name="wfb2dc_lb_DUTY_HOUR" xml:space="preserve">
+    <value>Duty Hour</value>
+  </data>
+  <data name="wfb2dc_lb_DUTY_STIME" xml:space="preserve">
+    <value>Duty Stime</value>
+  </data>
+  <data name="wfb2dc_lb_IN_DATA_SOURCE_CD" xml:space="preserve">
+    <value>In Data Source CD</value>
+  </data>
+  <data name="wfb2dc_lb_LACK_HOUR" xml:space="preserve">
+    <value>Lack Hour</value>
+  </data>
+  <data name="wfb2dc_lb_LATE_HOUR" xml:space="preserve">
+    <value>Late Hour</value>
+  </data>
+  <data name="wfb2dc_lb_LEAVE_EARLY_HOUR" xml:space="preserve">
+    <value>Leave Early Hour</value>
+  </data>
+  <data name="wfb2dc_lb_LEAVE_HOUR" xml:space="preserve">
+    <value>Leave Hour</value>
+  </data>
+  <data name="wfb2dc_lb_LEAVE_INFO" xml:space="preserve">
+    <value>Leave Info</value>
+  </data>
+  <data name="wfb2dc_lb_OUT_DATA_SOURCE_CD" xml:space="preserve">
+    <value>Out Data Source cd</value>
+  </data>
+  <data name="wfb2dc_lb_OVERTIME_HOUR_APPLY" xml:space="preserve">
+    <value>Overtime Hour Applyt</value>
+  </data>
+  <data name="wfb2dc_lb_OVERTIME_HOUR_APPROVE" xml:space="preserve">
+    <value>Overtime Hour Approve</value>
+  </data>
+  <data name="wfb2dc_lb_OVERTIME_INFO" xml:space="preserve">
+    <value>Overtime Info</value>
+  </data>
+  <data name="wfb2dc_lb_VIOLATE_AFTER_HOUR" xml:space="preserve">
+    <value>Violate After Hour</value>
+  </data>
+  <data name="wfb2dc_lb_VIOLATE_BEFORE_HOUR" xml:space="preserve">
+    <value>Violate Before Hour</value>
+  </data>
+  <data name="wfb2dc_lb_VIOLATE_RULE_HOUR" xml:space="preserve">
+    <value>Violate Rule Hour</value>
+  </data>
+  <data name="wfb2dc_lb_WORK_DAY_CD" xml:space="preserve">
+    <value>Work Day CD</value>
+  </data>
+  <data name="wfb2dc_lb_WORK_SHIFT_ALLOWANCE_TYPE" xml:space="preserve">
+    <value>Work Shift Allowance Type</value>
+  </data>
+  <data name="wfb2dc_ABNORMAL_DT" xml:space="preserve">
+    <value>Abnormal Date is required field</value>
+  </data>
+  <data name="wfb2dc_ABNORMAL_DT_HOUR" xml:space="preserve">
+    <value>Abnormal Date Hour is required field</value>
+  </data>
+  <data name="wfb2dc_ABNORMAL_DT_MINUTE" xml:space="preserve">
+    <value>Abnormal Date Minute is required field</value>
+  </data>
+  <data name="wfb2dc_ABNORMAL_REASON_CD" xml:space="preserve">
+    <value>Abnormal Reason cd is required</value>
+  </data>
+  <data name="wfb2dc_ABNORMAL_TYPE" xml:space="preserve">
+    <value>Abnormal Type is required</value>
+  </data>
+  <data name="wfb2dc_CALENDAR_DT" xml:space="preserve">
+    <value>Calendar DT is required field</value>
+  </data>
+  <data name="wfb2dc_EMP_ID" xml:space="preserve">
+    <value>Emp is required field</value>
+  </data>
+  <data name="wfb2dc_IS_CONFIRM" xml:space="preserve">
+    <value>Is Confirm is required field</value>
+  </data>
+  <data name="wfb2dc_lb_CALENDAR_DT2" xml:space="preserve">
+    <value>Calendar DT</value>
+  </data>
+  <data name="wfb2dc_lb_COUNT" xml:space="preserve">
+    <value>COUNT≧</value>
+  </data>
+  <data name="wfb2dc_lb_DUTY_CHECK_RESULT2" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="wfb2dc_Required_CALENDAR_DT" xml:space="preserve">
+    <value>Calendar dt is required field</value>
+  </data>
+  <data name="wfb2dc_WFB2DC0900Export" xml:space="preserve">
+    <value>Export Excel</value>
+  </data>
+  <data name="wfb2dc_WFB2DC1100Export" xml:space="preserve">
+    <value>Export Excel</value>
+  </data>
+  <data name="wfb2dc_WFB2DC1300Export" xml:space="preserve">
+    <value>Export Excel</value>
+  </data>
+  <data name="wfb2dc_lb_LINE_CD" xml:space="preserve">
+    <value>Line cd</value>
+  </data>
+  <data name="WFB2IB_WFB2IB0100Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="WFB2IB_WFB2IB0100Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="WFB2IB_WFB2IB0100Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="WFB2IB_WFB2IB0100Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="WFB2IB_WFB2IB0100Save" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0300Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0300Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0300Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0300Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0300Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0300Save" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="wfb2ha_WFB2HA0300Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2sa_btn_clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="wfb2sa_ERR_SEND_DT" xml:space="preserve">
+    <value>error Send Dt Format</value>
+  </data>
+  <data name="wfb2sa_lb_DATA_YEAR" xml:space="preserve">
+    <value>Data YM</value>
+  </data>
+  <data name="wfb2sa_lb_EMP_ID" xml:space="preserve">
+    <value>Emp ID</value>
+  </data>
+  <data name="wfb2sa_lb_MAIL_DESC" xml:space="preserve">
+    <value>Mail Desc</value>
+  </data>
+  <data name="wfb2sa_lb_MAIL_TITLE" xml:space="preserve">
+    <value>Mail Title</value>
+  </data>
+  <data name="wfb2sa_lb_SEND_DT" xml:space="preserve">
+    <value>Send Dt</value>
+  </data>
+  <data name="wfb2sa_Required_DATA_YEAR" xml:space="preserve">
+    <value>Data YM is required Field</value>
+  </data>
+  <data name="wfb2sa_Required_MAIL_DESC" xml:space="preserve">
+    <value>Mail Desc is required field</value>
+  </data>
+  <data name="wfb2sa_Required_MAIL_TITLE" xml:space="preserve">
+    <value>Mail Title is required field</value>
+  </data>
+  <data name="wfb2sa_Required_SEND_DT" xml:space="preserve">
+    <value>Send Dt is required Field</value>
+  </data>
+  <data name="wfb2sa_WFB2SA1510Execute" xml:space="preserve">
+    <value>Execute</value>
+  </data>
+  <data name="wfb2dc_lb_DUTY_YM" xml:space="preserve">
+    <value>Duty YM</value>
+  </data>
+  <data name="wfb2dc_lb_WORK_CD" xml:space="preserve">
+    <value>Work CD</value>
+  </data>
+  <data name="wfb2dc_lb_WS_CD" xml:space="preserve">
+    <value>WS CD</value>
+  </data>
+  <data name="wfb2dc_Required_DUTY_YM" xml:space="preserve">
+    <value>Duty YM is required field</value>
+  </data>
+  <data name="wfb2dc_WFB2DC1500_ExportXLS1" xml:space="preserve">
+    <value>Excel1</value>
+  </data>
+  <data name="wfb2dc_WFB2DC1500_ExportXLS2" xml:space="preserve">
+    <value>Excel2</value>
+  </data>
+  <data name="wfb2dc_WFB2DC1500_ExportXLS3" xml:space="preserve">
+    <value>Excel3</value>
+  </data>
+  <data name="wfb2dc_ERR_DUTY_YM" xml:space="preserve">
+    <value>Error Date Format Duty YM</value>
+  </data>
+  <data name="wfb2di_AFTER_HOUR" xml:space="preserve">
+    <value>AFTER_HOUR</value>
+  </data>
+  <data name="wfb2di_APPLY_OVERTIME_DT" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="wfb2di_APPROVE_OVERTIME_HOUR" xml:space="preserve">
+    <value>APPROVE_OVERTIME_HOUR</value>
+  </data>
+  <data name="wfb2di_BEFORE_HOUR" xml:space="preserve">
+    <value>BEFORE_HOUR</value>
+  </data>
+  <data name="wfb2di_btn_clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="wfb2di_btn_detail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="wfb2di_CLOCK_IN_DT" xml:space="preserve">
+    <value>CLOCK_IN_DT</value>
+  </data>
+  <data name="wfb2di_CLOCK_OUT_DT" xml:space="preserve">
+    <value>CLOCK_OUT_DT</value>
+  </data>
+  <data name="wfb2di_DUTY_ETIME" xml:space="preserve">
+    <value>DUTY_ETIME</value>
+  </data>
+  <data name="wfb2di_DUTY_STIME" xml:space="preserve">
+    <value>DUTY_STIME</value>
+  </data>
+  <data name="wfb2di_ERR_OVERTIME_DT_E" xml:space="preserve">
+    <value>Error Date Format OVERTIME_DT_E</value>
+  </data>
+  <data name="wfb2di_ERR_OVERTIME_DT_S" xml:space="preserve">
+    <value>Error Date Format OVERTIME_DT_S</value>
+  </data>
+  <data name="wfb2di_ERR_OVERTIME_DT_SE" xml:space="preserve">
+    <value>End Date must greater than Start Date</value>
+  </data>
+  <data name="wfb2di_ERR_OVERTIME_DT_YM" xml:space="preserve">
+    <value>Error Date Format YM</value>
+  </data>
+  <data name="wfb2di_lb_APPLY_OVERTIME_DT" xml:space="preserve">
+    <value>Apply_Overtime_dt</value>
+  </data>
+  <data name="wfb2di_lb_APPLY_OVERTIME_HOUR" xml:space="preserve">
+    <value>Apply Overtime Hour</value>
+  </data>
+  <data name="wfb2di_lb_DEPT_NAME" xml:space="preserve">
+    <value>Dept Name</value>
+  </data>
+  <data name="wfb2di_lb_DT_SE" xml:space="preserve">
+    <value>DT SE</value>
+  </data>
+  <data name="wfb2di_lb_EMP_ID" xml:space="preserve">
+    <value>EMP ID</value>
+  </data>
+  <data name="wfb2di_lb_EMP_NAME" xml:space="preserve">
+    <value>EMP Name</value>
+  </data>
+  <data name="wfb2di_lb_OVERTIME1" xml:space="preserve">
+    <value>OVERTIME1</value>
+  </data>
+  <data name="wfb2di_lb_OVERTIME2" xml:space="preserve">
+    <value>OVERTIME2</value>
+  </data>
+  <data name="wfb2di_lb_OVERTIME3" xml:space="preserve">
+    <value>OVERTIME3</value>
+  </data>
+  <data name="wfb2di_lb_OVERTIME4" xml:space="preserve">
+    <value>OVERTIME4</value>
+  </data>
+  <data name="wfb2di_lb_OVERTIME5" xml:space="preserve">
+    <value>OVERTIME5</value>
+  </data>
+  <data name="wfb2di_lb_OVERTIME6" xml:space="preserve">
+    <value>OVERTIME6</value>
+  </data>
+  <data name="wfb2di_lb_OVERTIME7" xml:space="preserve">
+    <value>OVERTIME7</value>
+  </data>
+  <data name="wfb2di_lb_OVERTIME8" xml:space="preserve">
+    <value>OVERTIME8</value>
+  </data>
+  <data name="wfb2di_lb_OVERTIME_CTL_HOUR" xml:space="preserve">
+    <value>OVERTIME_CTL_HOUR</value>
+  </data>
+  <data name="wfb2di_lb_OVERTIME_TITLE1" xml:space="preserve">
+    <value>OVERTIME_TOTAL</value>
+  </data>
+  <data name="wfb2di_lb_OVERTIME_TOTAL" xml:space="preserve">
+    <value>Overtime Total</value>
+  </data>
+  <data name="wfb2di_lb_YM" xml:space="preserve">
+    <value>YM</value>
+  </data>
+  <data name="wfb2di_SHIFT_CD" xml:space="preserve">
+    <value>SHIFT_CD</value>
+  </data>
+  <data name="wfb2di_REMARK" xml:space="preserve">
+    <value>REMARK</value>
+  </data>
+  <data name="wfb2di_RowNumber" xml:space="preserve">
+    <value>RowNumber</value>
+  </data>
+  <data name="wfb2di_VIOLATE_RULE_HOUR" xml:space="preserve">
+    <value>VIOLATE_RULE_HOUR</value>
+  </data>
+  <data name="wfb2di_WFB2DI0700Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2di_WORK_DAY_DESC" xml:space="preserve">
+    <value>Work Day Desc</value>
+  </data>
+  <data name="wfb2dd_btn_clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="wfb2dd_btn_FUNC" xml:space="preserve">
+    <value>To Salary</value>
+  </data>
+  <data name="wfb2dd_error_MANAGER_YM" xml:space="preserve">
+    <value>MANAGER_YM ERROR</value>
+  </data>
+  <data name="wfb2dd_ERR_START_DT" xml:space="preserve">
+    <value>START_DT ERROR</value>
+  </data>
+  <data name="wfb2dd_greaterthan_MANAGER_YM" xml:space="preserve">
+    <value>MANAGER_YM START  DATE  BIGGER THAN ENDDATE</value>
+  </data>
+  <data name="wfb2dd_IS_CALCULATE_N" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="wfb2dd_IS_CALCULATE_Y" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="wfb2dd_IS_CANCEL_N" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="wfb2dd_IS_CANCEL_Y" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="wfb2dd_lb_ADDRESS" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="wfb2dd_lb_AGE" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="wfb2dd_lb_ALLOWANCE_CD" xml:space="preserve">
+    <value>Allowance CD</value>
+  </data>
+  <data name="wfb2dd_lb_APPLICATION_NO" xml:space="preserve">
+    <value>Application No</value>
+  </data>
+  <data name="wfb2dd_lb_AREA_CD" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="wfb2dd_lb_BELONG_TO_DT" xml:space="preserve">
+    <value>Belong To DT</value>
+  </data>
+  <data name="wfb2dd_lb_CAR_NO" xml:space="preserve">
+    <value>Car No</value>
+  </data>
+  <data name="wfb2dd_lb_CHG_REASON" xml:space="preserve">
+    <value>Chg Reason</value>
+  </data>
+  <data name="wfb2dd_lb_CONTACT_ADDR" xml:space="preserve">
+    <value>Contack ADDR</value>
+  </data>
+  <data name="wfb2dd_lb_CONTACT_TEL" xml:space="preserve">
+    <value>Contack TEL</value>
+  </data>
+  <data name="wfb2dd_lb_DAILY_PAY" xml:space="preserve">
+    <value>Daily Pay</value>
+  </data>
+  <data name="wfb2dd_lb_DEPT_NO" xml:space="preserve">
+    <value>Dept No</value>
+  </data>
+  <data name="wfb2dd_lb_EMP_CD" xml:space="preserve">
+    <value>Emp CD</value>
+  </data>
+  <data name="wfb2dd_lb_EMP_CHG_CD" xml:space="preserve">
+    <value>Emp Chg </value>
+  </data>
+  <data name="wfb2dd_lb_EMP_ID" xml:space="preserve">
+    <value>Emp Id</value>
+  </data>
+  <data name="wfb2dd_lb_EMP_NAME" xml:space="preserve">
+    <value>Emp Name</value>
+  </data>
+  <data name="wfb2dd_lb_FACTORY_CD" xml:space="preserve">
+    <value>Factory</value>
+  </data>
+  <data name="wfb2dd_lb_FARE_PRICE" xml:space="preserve">
+    <value>Fare Price</value>
+  </data>
+  <data name="wfb2dd_lb_FUNC" xml:space="preserve">
+    <value>Func</value>
+  </data>
+  <data name="wfb2dd_lb_IFLOW_NO" xml:space="preserve">
+    <value>Iflow_No</value>
+  </data>
+  <data name="wfb2dd_lb_IS_CALCULATE" xml:space="preserve">
+    <value>Is_Calculate</value>
+  </data>
+  <data name="wfb2dd_lb_IS_CANCEL" xml:space="preserve">
+    <value>Is_Cancel</value>
+  </data>
+  <data name="wfb2dd_lb_JOIN_DT" xml:space="preserve">
+    <value>Join DT</value>
+  </data>
+  <data name="wfb2dd_lb_KILOMETER_AMOUNT" xml:space="preserve">
+    <value>Kilometer Amount</value>
+  </data>
+  <data name="wfb2dd_lb_LEVEL_CD" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="wfb2dd_lb_LINE_CD" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="wfb2dd_lb_MANAGER_YM" xml:space="preserve">
+    <value>Manager YM</value>
+  </data>
+  <data name="wfb2dd_lb_MOBILE_TEL_1" xml:space="preserve">
+    <value>Mobile TEL</value>
+  </data>
+  <data name="wfb2dd_lb_PARKING_TOOL" xml:space="preserve">
+    <value>Parking Tool</value>
+  </data>
+  <data name="wfb2dd_lb_PJOB_CD" xml:space="preserve">
+    <value>Pjob CD</value>
+  </data>
+  <data name="wfb2dd_lb_PLANT_CD" xml:space="preserve">
+    <value>Plant CD</value>
+  </data>
+  <data name="wfb2dd_lb_REGISTER_ADDR" xml:space="preserve">
+    <value>Register ADDR</value>
+  </data>
+  <data name="wfb2dd_lb_REMARK" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="wfb2dd_lb_SEARCH_YM" xml:space="preserve">
+    <value>Search Manager YM</value>
+  </data>
+  <data name="wfb2dd_lb_SINGLE_TRIP" xml:space="preserve">
+    <value>Single Trip</value>
+  </data>
+  <data name="wfb2dd_lb_SPECIAL" xml:space="preserve">
+    <value>Special</value>
+  </data>
+  <data name="wfb2dd_lb_START_DT" xml:space="preserve">
+    <value>Start DT</value>
+  </data>
+  <data name="wfb2dd_lb_TAKE_OUT_DT" xml:space="preserve">
+    <value>Take Out DT</value>
+  </data>
+  <data name="wfb2dd_lb_TOTAL_PAY" xml:space="preserve">
+    <value>Total Pay</value>
+  </data>
+  <data name="wfb2dd_lb_TRANSPORT_CD" xml:space="preserve">
+    <value>Transport CD</value>
+  </data>
+  <data name="wfb2dd_lb_TRANS_CALCULATE" xml:space="preserve">
+    <value>Calaulate Money：</value>
+  </data>
+  <data name="wfb2dd_lb_WORKING_DT" xml:space="preserve">
+    <value>Working DT</value>
+  </data>
+  <data name="wfb2dd_lb_WORK_SHIFT_CD" xml:space="preserve">
+    <value>Work Shift</value>
+  </data>
+  <data name="wfb2dd_lb_WS_CD" xml:space="preserve">
+    <value>WS CD</value>
+  </data>
+  <data name="wfb2dd_rb_NO" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="wfb2dd_rb_YES" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="wfb2dd_Required_EMP_ID" xml:space="preserve">
+    <value>Require Emp Id</value>
+  </data>
+  <data name="wfb2dd_required_MANAGER_YM_E" xml:space="preserve">
+    <value>Require Manager YM End</value>
+  </data>
+  <data name="wfb2dd_required_MANAGER_YM_S" xml:space="preserve">
+    <value>Require Manager YM Start</value>
+  </data>
+  <data name="wfb2dd_RowNumber" xml:space="preserve">
+    <value>Row Number</value>
+  </data>
+  <data name="wfb2dd_WFB2DD0100Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="wfb2dd_WFB2DD0100Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2dd_WFB2DD0100Detail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="wfb2dd_WFB2DD0100Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="wfb2dd_WFB2DD0100Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="wfb2dd_WFB2DD0100Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2dd_WFB2DD0101Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="wfb2dd_WFB2DD0101Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2dd_WFB2DD0101Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="wfb2dd_WFB2DD0101EditInsert" xml:space="preserve">
+    <value>Copy and Insert</value>
+  </data>
+  <data name="wfb2dd_WFB2DD0101Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="wfb2dd_WFB2DD0200Execute" xml:space="preserve">
+    <value>Execute</value>
+  </data>
+  <data name="wfb2dd_WFB2DD0200Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2hb_btn_upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="wfb2hb_COMPANY_CD" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="wfb2hb_DEPT_NO" xml:space="preserve">
+    <value>Dept No</value>
+  </data>
+  <data name="wfb2hb_EMP_CD" xml:space="preserve">
+    <value>Emp CD</value>
+  </data>
+  <data name="wfb2hb_EMP_NAME" xml:space="preserve">
+    <value>Emp Name</value>
+  </data>
+  <data name="wfb2hb_ERR_JOIN_DT" xml:space="preserve">
+    <value>Join DT Error</value>
+  </data>
+  <data name="wfb2hb_JOIN_DT" xml:space="preserve">
+    <value>Join DT</value>
+  </data>
+  <data name="wfb2hb_lb_GRADE_CD" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="wfb2hb_lb_LOGIN_CD" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="wfb2hb_REGISTER_ALL" xml:space="preserve">
+    <value>Register All</value>
+  </data>
+  <data name="wfb2hb_REGISTER_START" xml:space="preserve">
+    <value>Register Start</value>
+  </data>
+  <data name="wfb2hb_REGISTER_UPD" xml:space="preserve">
+    <value>Register Update</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0600Dtl1" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0700Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0700Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0701ExcelDown" xml:space="preserve">
+    <value>Excel Download</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0701ExcelImport" xml:space="preserve">
+    <value>Excel Import</value>
+  </data>
+  <data name="wfb2hb_WS_CD" xml:space="preserve">
+    <value>WS CD</value>
+  </data>
+  <data name="wfb2di_ERR_YM" xml:space="preserve">
+    <value>Error date format CALENDAR_YM</value>
+  </data>
+  <data name="wfb2di_lb_Abnormal" xml:space="preserve">
+    <value>Card Data</value>
+  </data>
+  <data name="wfb2di_lb_Abnormal2" xml:space="preserve">
+    <value>Overtime Data</value>
+  </data>
+  <data name="wfb2di_lb_CALENDAR_YM" xml:space="preserve">
+    <value>CALENDAR_YM</value>
+  </data>
+  <data name="wfb2di_lb_DEPT_EMPS" xml:space="preserve">
+    <value>Dept Emp Number</value>
+  </data>
+  <data name="wfb2di_lb_OVERTIME_AVG_HOUR" xml:space="preserve">
+    <value>OVERTIME_AVG_HOUR</value>
+  </data>
+  <data name="wfb2di_lb_OVERTIME_TARGET_VALUE" xml:space="preserve">
+    <value>Overtime Target Value</value>
+  </data>
+  <data name="wfb2di_lb_TARGET_TYPE" xml:space="preserve">
+    <value>Target Type</value>
+  </data>
+  <data name="wfb2di_WFB2DI0800Dtl" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="wfb2di_WFB2DI0800Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2di_DEPT_NO" xml:space="preserve">
+    <value>Dept NO</value>
+  </data>
+  <data name="wfb2di_EMP_ID" xml:space="preserve">
+    <value>Emp ID</value>
+  </data>
+  <data name="wfb2di_EMP_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="wfb2di_OVERTIME_CTL_CD" xml:space="preserve">
+    <value>Overtime Ctl</value>
+  </data>
+  <data name="wfb2di_OVERTIME_LEFT1" xml:space="preserve">
+    <value>duty_Left</value>
+  </data>
+  <data name="wfb2di_OVERTIME_LEFT2" xml:space="preserve">
+    <value>holiday_Left</value>
+  </data>
+  <data name="wfb2di_OVERTIME_TARGET" xml:space="preserve">
+    <value>target</value>
+  </data>
+  <data name="wfb2di_OVERTIME_TOTAL" xml:space="preserve">
+    <value>OVERTIME_TOTAL</value>
+  </data>
+  <data name="wfb2di_OVERTIME_TOTAL1" xml:space="preserve">
+    <value>OVERTIME_TOTAL1</value>
+  </data>
+  <data name="wfb2di_OVERTIME_TOTAL2" xml:space="preserve">
+    <value>OVERTIME_TOTAL2</value>
+  </data>
+  <data name="wfb2di_OVERTIME_TOTAL3" xml:space="preserve">
+    <value>OVERTIME_TOTAL3</value>
+  </data>
+  <data name="wfb2di_OVERTIME_TOTAL4" xml:space="preserve">
+    <value>OVERTIME_TOTAL4</value>
+  </data>
+  <data name="wfb2di_required_EMP_ID" xml:space="preserve">
+    <value>EMP_ID is required field</value>
+  </data>
+  <data name="wfb2df_btn_FUNC" xml:space="preserve">
+    <value>Salary Take Out</value>
+  </data>
+  <data name="wfb2df_error_MANAGER_YM" xml:space="preserve">
+    <value>Error YM</value>
+  </data>
+  <data name="wfb2df_error_MANAGER_YM_E" xml:space="preserve">
+    <value>Error End YM</value>
+  </data>
+  <data name="wfb2df_error_MANAGER_YM_S" xml:space="preserve">
+    <value>Error Start YM</value>
+  </data>
+  <data name="wfb2df_ERR_JOIN_DT" xml:space="preserve">
+    <value>Error Date</value>
+  </data>
+  <data name="wfb2df_greaterthan_MANAGER_YM" xml:space="preserve">
+    <value>Start Date Bigger than End Date</value>
+  </data>
+  <data name="wfb2df_lb_ACCOM_CALCULATE" xml:space="preserve">
+    <value>Accom Calculate</value>
+  </data>
+  <data name="wfb2df_lb_MANAGER_YM" xml:space="preserve">
+    <value>Manager YM</value>
+  </data>
+  <data name="wfb2df_lb_SEARCH_YM" xml:space="preserve">
+    <value>Search YM</value>
+  </data>
+  <data name="wfb2df_lb_TAKE_OUT_DT" xml:space="preserve">
+    <value>Salary Take Out</value>
+  </data>
+  <data name="wfb2df_required_MANAGER_YM" xml:space="preserve">
+    <value>Manager YM Error</value>
+  </data>
+  <data name="wfb2df_required_MANAGER_YM_E" xml:space="preserve">
+    <value>Manager YM End Error</value>
+  </data>
+  <data name="wfb2df_required_MANAGER_YM_S" xml:space="preserve">
+    <value>Manager YM Start Error</value>
+  </data>
+  <data name="wfb2df_WFB2DF0300ExcelDown" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="wfb2df_WFB2DF0300Execute" xml:space="preserve">
+    <value>Execute</value>
+  </data>
+  <data name="wfb2df_WFB2DF0300Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2ib_error_SALARY_YM" xml:space="preserve">
+    <value>SALARY YM ERROR</value>
+  </data>
+  <data name="wfb2ib_error_YM" xml:space="preserve">
+    <value>YM ERROR</value>
+  </data>
+  <data name="wfb2ib_error_YM_UPLOAD" xml:space="preserve">
+    <value>YM_UPLOAD ERROR</value>
+  </data>
+  <data name="WFB2IB_INS_MAX_AMOUNT" xml:space="preserve">
+    <value>INS_MAX_AMOUNT</value>
+  </data>
+  <data name="WFB2IB_INS_MAX_MONTH" xml:space="preserve">
+    <value>INS_MAX_MONTH</value>
+  </data>
+  <data name="WFB2IB_INS_MIN_AMOUNT" xml:space="preserve">
+    <value>INS_MIN_AMOUNT</value>
+  </data>
+  <data name="WFB2IB_INS_RATE_COMP" xml:space="preserve">
+    <value>NS_RATE_COMP</value>
+  </data>
+  <data name="WFB2IB_INS_RATE_PERSON" xml:space="preserve">
+    <value>INS_RATE_PERSON</value>
+  </data>
+  <data name="wfb2ib_lb_BILL_IN" xml:space="preserve">
+    <value>lb_BILL_IN</value>
+  </data>
+  <data name="wfb2ib_lb_DATA_UPLOAD" xml:space="preserve">
+    <value>lb_DATA_UPLOAD</value>
+  </data>
+  <data name="wfb2ib_lb_SALARY_YM" xml:space="preserve">
+    <value>lb_SALARY_YM</value>
+  </data>
+  <data name="wfb2ib_lb_UploadExcel" xml:space="preserve">
+    <value>lb_UploadExcel</value>
+  </data>
+  <data name="wfb2ib_lb_YM" xml:space="preserve">
+    <value>lb_YM</value>
+  </data>
+  <data name="wfb2ib_lb_YM_UPLOAD" xml:space="preserve">
+    <value>lb_YM_UPLOAD</value>
+  </data>
+  <data name="wfb2ib_required_SALARY_YM" xml:space="preserve">
+    <value>required_SALARY_YM</value>
+  </data>
+  <data name="wfb2ib_required_YM" xml:space="preserve">
+    <value>required_YM</value>
+  </data>
+  <data name="wfb2ib_required_YM_UPLOAD" xml:space="preserve">
+    <value>required_YM_UPLOAD</value>
+  </data>
+  <data name="wfb2ib_RowNumber" xml:space="preserve">
+    <value>Row Number</value>
+  </data>
+  <data name="wfb2ib_WFB2IB0300ExcelDown" xml:space="preserve">
+    <value>ExcelDown</value>
+  </data>
+  <data name="wfb2ib_WFB2IB0300Execute" xml:space="preserve">
+    <value>Execute</value>
+  </data>
+  <data name="wfb2ib_WFB2IB0300Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="wfb2ib_WFB2IB0400Execute" xml:space="preserve">
+    <value>Execute</value>
+  </data>
+  <data name="WFB2IB_YEAR_MONTH" xml:space="preserve">
+    <value>YEAR_MONTH</value>
+  </data>
+  <data name="wfb2dm_lb_CFN_FLAG1" xml:space="preserve">
+    <value>CFN_FLAG1</value>
+  </data>
+  <data name="wfb2dm_lb_CFN_FLAG2" xml:space="preserve">
+    <value>CFN_FLAG2</value>
+  </data>
+  <data name="wfb2dm_lb_DUTY_DT" xml:space="preserve">
+    <value>Duty Date</value>
+  </data>
+  <data name="wfb2dm_lb_SALARY_DT" xml:space="preserve">
+    <value>Salary Date</value>
+  </data>
+  <data name="wfb2dm_lb_SALARY_YM" xml:space="preserve">
+    <value>Salary Y/M</value>
+  </data>
+  <data name="wfb2dm_WFB2DM0100Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="wfb2dm_WFB2DM0100Exec" xml:space="preserve">
+    <value>Execute</value>
+  </data>
+  <data name="wfb2dm_Required_SALARY_YM" xml:space="preserve">
+    <value>Required Salary Y/M</value>
+  </data>
+  <data name="wfb2sl_lb_DATA_YM" xml:space="preserve">
+    <value>Year/Month</value>
+  </data>
+  <data name="wfb2sl_lb_DEPT_NO" xml:space="preserve">
+    <value>Deptment No.</value>
+  </data>
+  <data name="wfb2sl_lb_EMP_ID" xml:space="preserve">
+    <value>EMP_ID</value>
+  </data>
+  <data name="wfb2sl_lb_EMP_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="wfb2sl_lb_EMP_STATUS" xml:space="preserve">
+    <value>EMP_Status</value>
+  </data>
+  <data name="wfb2sl_lb_GRADE_CD" xml:space="preserve">
+    <value>Grade CD</value>
+  </data>
+  <data name="wfb2sl_lb_LEVEL_CD" xml:space="preserve">
+    <value>Level CD</value>
+  </data>
+  <data name="wfb2sl_lb_LICENSE_ID" xml:space="preserve">
+    <value>License ID</value>
+  </data>
+  <data name="wfb2sl_lb_PJOB_CD" xml:space="preserve">
+    <value>Pjob CD</value>
+  </data>
+  <data name="wfb2sl_lb_SALARY_DT" xml:space="preserve">
+    <value>Salary Date</value>
+  </data>
+  <data name="wfb2sl_lb_WS_CD" xml:space="preserve">
+    <value>WS_CD</value>
+  </data>
+  <data name="wfb2sl_RowNumber" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="wfb2sl_WFB2SL310Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="wfb2sl_WFB2SL310Generate" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2sl_WFB2SL310Go" xml:space="preserve">
+    <value>Creat PDF &amp; Send</value>
+  </data>
+  <data name="wfd2sl_Required_DATA_YM" xml:space="preserve">
+    <value>Required DATA Year</value>
+  </data>
+  <data name="wfb2ib_error_Excel_YM" xml:space="preserve">
+    <value>Excel_YM ERROR</value>
+  </data>
+  <data name="wfb2ib_error_SALARY_YM_A" xml:space="preserve">
+    <value>SALARY_YM ERROR</value>
+  </data>
+  <data name="wfb2ib_lb_AFT_INS_TOTAL" xml:space="preserve">
+    <value>AFT_INS_TOTAL</value>
+  </data>
+  <data name="wfb2ib_lb_BOSS_UPLOAD" xml:space="preserve">
+    <value>BOSS_UPLOAD</value>
+  </data>
+  <data name="wfb2ib_lb_BOSS_UPLOAD_FILE" xml:space="preserve">
+    <value>BOSS_UPLOAD_FILE</value>
+  </data>
+  <data name="wfb2ib_lb_DATA_EXPORT" xml:space="preserve">
+    <value>DATA_EXPORT</value>
+  </data>
+  <data name="wfb2ib_lb_Describtion" xml:space="preserve">
+    <value>Download:62、63、68</value>
+  </data>
+  <data name="wfb2ib_lb_DownLoad_Year" xml:space="preserve">
+    <value>DownLoad_Year</value>
+  </data>
+  <data name="wfb2ib_lb_ExportExcel" xml:space="preserve">
+    <value>ExportExcel</value>
+  </data>
+  <data name="wfb2ib_lb_INS_COST" xml:space="preserve">
+    <value>INS_COST</value>
+  </data>
+  <data name="wfb2ib_lb_INS_KIND" xml:space="preserve">
+    <value>INS_KIND</value>
+  </data>
+  <data name="wfb2ib_lb_PAYMENT_DATE" xml:space="preserve">
+    <value>PAYMENT_DATE</value>
+  </data>
+  <data name="wfb2ib_lb_SALARY_YM_A" xml:space="preserve">
+    <value>SALARY_YM</value>
+  </data>
+  <data name="wfb2ib_lb_Year" xml:space="preserve">
+    <value>Chinese Year</value>
+  </data>
+  <data name="wfb2ib_required_AFT_INS_TOTAL" xml:space="preserve">
+    <value>required_AFT_INS_TOTAL</value>
+  </data>
+  <data name="wfb2ib_required_Excel_YM" xml:space="preserve">
+    <value>required_Excel_YM</value>
+  </data>
+  <data name="wfb2ib_required_SALARY_YM_A" xml:space="preserve">
+    <value>required_SALARY_YM</value>
+  </data>
+  <data name="wfb2ib_required_txt_YEAR" xml:space="preserve">
+    <value>required_txt_YEAR</value>
+  </data>
+  <data name="wfb2ib_WFB2IB0500ExcelDown" xml:space="preserve">
+    <value>ExcelDown</value>
+  </data>
+  <data name="wfb2ib_WFB2IB0500Exec" xml:space="preserve">
+    <value>Execute</value>
+  </data>
+  <data name="wfb2ib_WFB2IB0600Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="wfb2ib_WFB2IB0600Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2ib_WFB2IB0600Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="wfb2ib_WFB2IB0601Download" xml:space="preserve">
+    <value>Sample Download</value>
+  </data>
+  <data name="wfb2ib_before_INS_COST" xml:space="preserve">
+    <value>before_INS_COST</value>
+  </data>
+  <data name="wfb2ib_INS_ACCU_AMOUNT" xml:space="preserve">
+    <value>ACCU_AMOUNT</value>
+  </data>
+  <data name="wfb2ib_INS_ACCU_OVER__AMOUNT" xml:space="preserve">
+    <value>ACCU_OVER__AMOUNT</value>
+  </data>
+  <data name="wfb2ib_INS_FOUR_AMOUNT" xml:space="preserve">
+    <value>FOUR_AMOUNT</value>
+  </data>
+  <data name="wfb2ib_INS_INS_COST" xml:space="preserve">
+    <value>INS_COST</value>
+  </data>
+  <data name="wfb2ib_INS_INS_COST_BASE" xml:space="preserve">
+    <value>INS_COST_BASE</value>
+  </data>
+  <data name="wfb2ib_INS_MONTH_AMOUNT" xml:space="preserve">
+    <value>MONTH_AMOUNT</value>
+  </data>
+  <data name="wfb2ib_INS_ONE_TIME_AMOUNT" xml:space="preserve">
+    <value>ONE_TIME_AMOUNT</value>
+  </data>
+  <data name="wfb2ib_lb_adjust" xml:space="preserve">
+    <value>ADJUST</value>
+  </data>
+  <data name="wfb2ib_lb_after_adjust" xml:space="preserve">
+    <value>AFTER_ADJUST</value>
+  </data>
+  <data name="wfb2ib_lb_before_adjust" xml:space="preserve">
+    <value>BEFORE_ADJUST</value>
+  </data>
+  <data name="wfb2ib_lb_EMP_ID" xml:space="preserve">
+    <value>EMP_ID</value>
+  </data>
+  <data name="wfb2ib_lb_explain" xml:space="preserve">
+    <value>AFTER_ADJUST - BEFORE_ADJUST</value>
+  </data>
+  <data name="wfb2ib_lb_PAYMENT_DATE_GRID" xml:space="preserve">
+    <value>PAYMENT_DATE_GRID</value>
+  </data>
+  <data name="wfb2ib_lb_PAYMENT_DATE_YM" xml:space="preserve">
+    <value>PAYMENT_DATE_YM</value>
+  </data>
+  <data name="wfb2ib_required_adjust" xml:space="preserve">
+    <value>required_adjust</value>
+  </data>
+  <data name="wfb2ib_required_EMP_ID" xml:space="preserve">
+    <value>required_EMP_ID</value>
+  </data>
+  <data name="wfb2ib_required_PAYMENT_DATE_YM" xml:space="preserve">
+    <value>required_PAYMENT_DATE_YM</value>
+  </data>
+  <data name="wfb2ib_WFB2IB0700Adjust" xml:space="preserve">
+    <value>WFB2IB0700Adjust</value>
+  </data>
+  <data name="wfb2ib_WFB2IB0700Save" xml:space="preserve">
+    <value>WFB2IB0700Save</value>
+  </data>
+  <data name="wfb2ib_WFB2IB0700Search" xml:space="preserve">
+    <value>WFB2IB0700Search</value>
+  </data>
+  <data name="wfb2ib_WFB2IB0700Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2df_lb_REMARK_1" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="wfb2sc_lb_COMPANY_CD" xml:space="preserve">
+    <value>Company CD:</value>
+  </data>
+  <data name="wfb2sc_lb_PAY_DT" xml:space="preserve">
+    <value>Pay Date</value>
+  </data>
+  <data name="wfb2sc_lb_PAY_ID" xml:space="preserve">
+    <value>Pay ID</value>
+  </data>
+  <data name="wfb2sc_lb_PLANT_CD" xml:space="preserve">
+    <value>Plant CD:</value>
+  </data>
+  <data name="wfb2sc_lb_PROCESS_STATUS" xml:space="preserve">
+    <value>Process Status</value>
+  </data>
+  <data name="wfb2sc_lb_SALARY_DT" xml:space="preserve">
+    <value>Salary Date</value>
+  </data>
+  <data name="wfb2sc_lb_SALARY_TYPE" xml:space="preserve">
+    <value>Salary Type</value>
+  </data>
+  <data name="wfb2sc_lb_SALARY_YM" xml:space="preserve">
+    <value>Salary YM</value>
+  </data>
+  <data name="wfb2sc_RowNumber" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="wfb2sc_WFB2C3100Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2sc_WFB2C3200Print" xml:space="preserve">
+    <value>Salary total count table</value>
+  </data>
+  <data name="wfb2sc_WFB2C3200Print2" xml:space="preserve">
+    <value>Salary Detail table</value>
+  </data>
+  <data name="wfb2sc_WFB2SC3100Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="wfb2sc_lb_PAY_KIND" xml:space="preserve">
+    <value>Pay_Kind</value>
+  </data>
+  <data name="wfb2sc_ERR_SALARY_YM" xml:space="preserve">
+    <value>Error Date Format (yyyy/mm)</value>
+  </data>
+  <data name="wfd2sc_ERR_SALARY_EDT" xml:space="preserve">
+    <value>Error End Date Format ex.2013/01/05</value>
+  </data>
+  <data name="wfd2sc_ERR_SALARY_SDT" xml:space="preserve">
+    <value>Error Start Date Format ex.2013/01/05</value>
+  </data>
+  <data name="wfb2sc_lb_OPERATION_ID" xml:space="preserve">
+    <value>Operation ID</value>
+  </data>
+  <data name="wfb2sc_lb_OPERATION_NAME" xml:space="preserve">
+    <value>Operation Name</value>
+  </data>
+  <data name="wfb2sc_lb_PROC_SOUCE" xml:space="preserve">
+    <value>PROC_SOUCE</value>
+  </data>
+  <data name="wfb2sc_lb_SALARY_REQ" xml:space="preserve">
+    <value>SALARY_REQ</value>
+  </data>
+  <data name="wfb2sc_WFB2SC1300Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2sc_WFB2SC1300Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="wfb2sc_WFB2SC1300Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="wfb2sc_WFB2SC1300Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2sc_WFB2SC1300Update" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="wfb2sc_CP_SALARY_DT" xml:space="preserve">
+    <value>start date can't bigger than end date</value>
+  </data>
+  <data name="wfb2sc_lb_SALARY_EDT" xml:space="preserve">
+    <value>SALARY End DT</value>
+  </data>
+  <data name="wfb2sc_lb_SALARY_SDT" xml:space="preserve">
+    <value>SALARY Start DT</value>
+  </data>
+  <data name="wfb2sc_WFB2SC5B00Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="wfb2sc_WFB2SC5B00Search" xml:space="preserve">
+    <value>search</value>
+  </data>
+  <data name="wfb2sc_WFB2SC5B0Excel" xml:space="preserve">
+    <value>Creat Excel</value>
+  </data>
+  <data name="wfb2ib_ERR_INS_CON_MAX_AMOUNT" xml:space="preserve">
+    <value>Error Con Max Amount</value>
+  </data>
+  <data name="WFB2IB_ERR_INS_CON_MAX_AMOUNT_Add" xml:space="preserve">
+    <value>Error Con Max Amount</value>
+  </data>
+  <data name="wfb2ib_ERR_INS_CON_MIN_AMOUNT" xml:space="preserve">
+    <value>Error Con Min Amount</value>
+  </data>
+  <data name="WFB2IB_ERR_INS_CON_MIN_AMOUNT_Add" xml:space="preserve">
+    <value>Error Con Min Amount</value>
+  </data>
+  <data name="WFB2IB_ERR_INS_INTEREST_MAX_AMOUNT" xml:space="preserve">
+    <value>Error Interest Max Amount</value>
+  </data>
+  <data name="WFB2IB_ERR_INS_INTEREST_MIN_AMOUNT" xml:space="preserve">
+    <value>Error Interest Max Amount</value>
+  </data>
+  <data name="wfb2ib_ERR_INS_MAX_MONTH" xml:space="preserve">
+    <value>Error Max Month</value>
+  </data>
+  <data name="WFB2IB_ERR_INS_MAX_MONTH_Add" xml:space="preserve">
+    <value>Error Max Month Add</value>
+  </data>
+  <data name="wfb2ib_ERR_INS_RATE_COMP" xml:space="preserve">
+    <value>Error Rate Comp</value>
+  </data>
+  <data name="WFB2IB_ERR_INS_RATE_COMP_Add" xml:space="preserve">
+    <value>Error Rate Comp</value>
+  </data>
+  <data name="wfb2ib_ERR_INS_RATE_PERSON" xml:space="preserve">
+    <value>Error Rate Person</value>
+  </data>
+  <data name="WFB2IB_ERR_INS_RATE_PERSON_Add" xml:space="preserve">
+    <value>Error Rate Person</value>
+  </data>
+  <data name="wfb2ib_ERR_INS_RENT_MAX_AMOUNT" xml:space="preserve">
+    <value>Error Rent Max Amount</value>
+  </data>
+  <data name="WFB2IB_ERR_INS_RENT_MAX_AMOUNT_Add" xml:space="preserve">
+    <value>Error Rent Max Amount</value>
+  </data>
+  <data name="wfb2ib_ERR_INS_RENT_MIN_AMOUNT" xml:space="preserve">
+    <value>Error Rent Min Amount</value>
+  </data>
+  <data name="WFB2IB_ERR_INS_RENT_MIN_AMOUNT_Add" xml:space="preserve">
+    <value>Error Rent Min Amount</value>
+  </data>
+  <data name="WFB2IB_ERR_INS_SALE_MAX_AMOUNT" xml:space="preserve">
+    <value>Error Sale Max Amount</value>
+  </data>
+  <data name="WFB2IB_ERR_INS_SALE_MIN_AMOUNT" xml:space="preserve">
+    <value>Error Sale Min Amount</value>
+  </data>
+  <data name="WFB2IB_ERR_INS_STOCK_MAX_AMOUNT" xml:space="preserve">
+    <value>Error Stock Max Amount</value>
+  </data>
+  <data name="WFB2IB_ERR_INS_STOCK_MIN_AMOUNT" xml:space="preserve">
+    <value>Error Stock Min Amount</value>
+  </data>
+  <data name="wfb2ib_ERR_YEAR_MONTH" xml:space="preserve">
+    <value>Error Year Month</value>
+  </data>
+  <data name="WFB2IB_ERR_YEAR_MONTH_Add" xml:space="preserve">
+    <value>Error Year Month</value>
+  </data>
+  <data name="WFB2IB_INS_INTEREST_MAX_AMOUNT" xml:space="preserve">
+    <value>Interest Max Amount</value>
+  </data>
+  <data name="WFB2IB_INS_INTEREST_MIN_AMOUNT" xml:space="preserve">
+    <value>Interest Min Amount</value>
+  </data>
+  <data name="WFB2IB_INS_RENT_MAX_AMOUNT" xml:space="preserve">
+    <value>Rent Max Amount</value>
+  </data>
+  <data name="WFB2IB_INS_RENT_MIN_AMOUNT" xml:space="preserve">
+    <value>Rent Min Amount</value>
+  </data>
+  <data name="WFB2IB_INS_SALE_MAX_AMOUNT" xml:space="preserve">
+    <value>Sale Max Amount</value>
+  </data>
+  <data name="WFB2IB_INS_SALE_MIN_AMOUNT" xml:space="preserve">
+    <value>Sale Min Amount</value>
+  </data>
+  <data name="WFB2IB_INS_STOCK_MAX_AMOUNT" xml:space="preserve">
+    <value>Stock Max Amount</value>
+  </data>
+  <data name="WFB2IB_INS_STOCK_MIN_AMOUNT" xml:space="preserve">
+    <value>Stock Min Amount</value>
+  </data>
+  <data name="wfb2ib_lb_INS_RATE_COMP" xml:space="preserve">
+    <value>Rate Company</value>
+  </data>
+  <data name="wfb2ib_lb_INS_RATE_PERSON" xml:space="preserve">
+    <value>Rate Person</value>
+  </data>
+  <data name="wfb2sc_ERR_CALENDAR_DT" xml:space="preserve">
+    <value>End_DT can't &lt;Star_DT</value>
+  </data>
+  <data name="wfb2sc_ERR_SALARY_EDT" xml:space="preserve">
+    <value>Error from Edt</value>
+  </data>
+  <data name="wfb2sc_ERR_SALARY_SDT" xml:space="preserve">
+    <value>Error from Sdt</value>
+  </data>
+  <data name="wfb2sc_lb_DUTY_EDT" xml:space="preserve">
+    <value>Duty_Edt</value>
+  </data>
+  <data name="wfb2sc_lb_DUTY_SDT" xml:space="preserve">
+    <value>Duty_Sdt</value>
+  </data>
+  <data name="wfb2sc_lb_PROCESS_STATUS2" xml:space="preserve">
+    <value>Handle_Status</value>
+  </data>
+  <data name="wfb2sc_lb_SALARY" xml:space="preserve">
+    <value>Salary</value>
+  </data>
+  <data name="wfb2sc_Required_SALARY_YM" xml:space="preserve">
+    <value>Salary YM is required field</value>
+  </data>
+  <data name="wfb2sc_WFB2C3200Print3" xml:space="preserve">
+    <value>Salary_Discrepancy_Excell</value>
+  </data>
+  <data name="wfb2sc_WFB2SC3200Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="wfb2hb_WFB2HB0100Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="wfb2ha_CP_START_DT" xml:space="preserve">
+    <value>start date can't bigger than end date</value>
+  </data>
+  <data name="wfb2hb_CP_START_DT" xml:space="preserve">
+    <value>start date can't bigger than end date</value>
+  </data>
+  <data name="wfb2dh_CP_APPLY_LEAVE_DT" xml:space="preserve">
+    <value>start date can't bigger than end date</value>
+  </data>
+  <data name="wfb299_NotChoiceMessage" xml:space="preserve">
+    <value>Not Choice Row</value>
+  </data>
+  <data name="wfb299_require_ddl_SYS_ID_Add" xml:space="preserve">
+    <value>require SYS_ID Add</value>
+  </data>
+  <data name="wfb299_require_txt_MODE_ID_Add" xml:space="preserve">
+    <value>require MODE_ID Add</value>
+  </data>
+  <data name="wfb2dd_WFB2DD0101Cal_DailyPay" xml:space="preserve">
+    <value>Calculate Daily Pay</value>
+  </data>
+  <data name="wfb299_CODE_VAL1_isError" xml:space="preserve">
+    <value>CODE_VAL1 must be english or number </value>
+  </data>
+  <data name="wfb299_lb_UPDATED_BY_ID" xml:space="preserve">
+    <value>Modify Person</value>
+  </data>
+  <data name="wfb2dd_EMP_ID_isError" xml:space="preserve">
+    <value>EMP_ID ERROR</value>
+  </data>
+  <data name="wfb2dd_btn_back" xml:space="preserve">
+    <value>Last Page</value>
+  </data>
+  <data name="wfb2dd_Del_Err_SelectMessage" xml:space="preserve">
+    <value> PLZ Choice first Row</value>
+  </data>
+  <data name="wfb2dd_lb_IS_CALCULATE_t" xml:space="preserve">
+    <value>Is Calculate:</value>
+  </data>
+  <data name="wfb2dd_lb_IS_CANCEL_t" xml:space="preserve">
+    <value>Is Cancel:</value>
+  </data>
+  <data name="wfb2dd_ERR_CAR_PARK_NO" xml:space="preserve">
+    <value>ERR_CAR_PARK_NO</value>
+  </data>
+  <data name="wfb2dd_ERR_UPDATED_DT_E" xml:space="preserve">
+    <value>ERR_UPDATED_DT_END</value>
+  </data>
+  <data name="wfb2dd_ERR_UPDATED_DT_S" xml:space="preserve">
+    <value>ERR_UPDATED_DT_START</value>
+  </data>
+  <data name="wfb2df_ERR_CAR_NO" xml:space="preserve">
+    <value>ERR_CAR_NO</value>
+  </data>
+  <data name="wfb2dd_error_MANAGER_YM_E" xml:space="preserve">
+    <value>END MANAGER_DT ERROR</value>
+  </data>
+  <data name="wfb2dd_error_MANAGER_YM_S" xml:space="preserve">
+    <value>START MANAGER_DT ERROR</value>
+  </data>
+  <data name="wfb2df04_ERR_MANAGER_DT" xml:space="preserve">
+    <value>MANAGER_DT ERROR</value>
+  </data>
+  <data name="wfb2DF_ROOM_NO_isError" xml:space="preserve">
+    <value>ROOM NO ERROR</value>
+  </data>
+  <data name="wfb2dg_CAR_NO_Error" xml:space="preserve">
+    <value>CAR NO ERROR</value>
+  </data>
+  <data name="wfb2dg_CAR_PARK_NO_Add_Error" xml:space="preserve">
+    <value>CAR PARK NO ERROR</value>
+  </data>
+  <data name="wfb2IB_CON_ERROR_Message" xml:space="preserve">
+    <value>INS_CON_AMOUNT ERROR</value>
+  </data>
+  <data name="wfb2IB_INTEREST_ERROR_Message" xml:space="preserve">
+    <value>INS_INTEREST_AMOUNT ERROR</value>
+  </data>
+  <data name="wfb2IB_RENT_ERROR_Message" xml:space="preserve">
+    <value>INS_RENT_AMOUNT ERROR</value>
+  </data>
+  <data name="wfb2IB_SALE_ERROR_Message" xml:space="preserve">
+    <value>INS_SALE_AMOUNT ERROR</value>
+  </data>
+  <data name="wfb2IB_STOCK_ERROR_Message" xml:space="preserve">
+    <value>INS_STOCK_AMOUNT ERROR</value>
+  </data>
+  <data name="wfb2_Del_NotChoiceMessage" xml:space="preserve">
+    <value>PLEASE CHOOSE ROWS</value>
+  </data>
+  <data name="wfb2sf_ERR_E_DT" xml:space="preserve">
+    <value>ERR_E_DT</value>
+  </data>
+  <data name="wfb2sf_ERR_HOPE_PAT_DT" xml:space="preserve">
+    <value>ERR_HOPE_PAT_DT</value>
+  </data>
+  <data name="wfb2sf_ERR_S_DT" xml:space="preserve">
+    <value>ERR_S_DT</value>
+  </data>
+  <data name="wfb2DF_CAR_NO_isError" xml:space="preserve">
+    <value>CAR_NO_isError</value>
+  </data>
+  <data name="wfb2DF_MOTOR_NO_isError" xml:space="preserve">
+    <value>MOTOR_NO_isError</value>
+  </data>
+  <data name="wfb2dg_NEEDSELECT" xml:space="preserve">
+    <value>Required Select Card</value>
+  </data>
+  <data name="wfb2dc_PLANT_CD" xml:space="preserve">
+    <value>PLANT CD</value>
+  </data>
+  <data name="wfb2dd_lb_END_DT" xml:space="preserve">
+    <value>End Day</value>
+  </data>
+  <data name="wfb2sb_lb_NOTICE" xml:space="preserve">
+    <value>Notice</value>
+  </data>
+  <data name="wfb2sb_lb_NOTICE_WORD" xml:space="preserve">
+    <value>if retired,please key in text box directly!!</value>
+  </data>
+</root>

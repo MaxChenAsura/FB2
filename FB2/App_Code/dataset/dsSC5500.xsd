@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsSC5500" targetNamespace="http://tempuri.org/dsIA1300.xsd" xmlns:mstns="http://tempuri.org/dsIA1300.xsd" xmlns="http://tempuri.org/dsIA1300.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="dbconnection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dbconnection (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.dbconnection.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SC5500PDFTableAdapter" GeneratorDataComponentClassName="SC5500PDFTableAdapter" Name="SC5500PDF" UserDataComponentName="SC5500PDFTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dbconnection (Web.config)" DbObjectName="SELECT A.INCOME_CD,A.SALARY_DT,COUNT(A.EMP_ID) CNT,SUM(A.TAX) TAX,SUM(B.AMOUNT) AMOUNT FROM (SELECT X.EMP_ID,X.SALARY_DT,(CASE X.TAX WHEN 0 THEN 'N' ELSE X.INCOME_CD END) AS INCOME_CD,X.TAX FROM ( SELECT EMP_ID,SALARY_DT,INCOME_CD,SUM(AMOUNT) TAX FROM TB_S_M_SALARY_PAY WHERE SALARY_TYPE = 'A' AND SALARY_ID = '4001' GROUP BY EMP_ID,SALARY_DT, INCOME_CD ) AS X ) AS A JOIN ( SELECT EMP_ID,SALARY_DT, SUM(AMOUNT * IS_PLUS) AMOUNT FROM TB_S_M_SALARY_PAY WHERE SALARY_TYPE = 'A' AND SALARY_ID &lt;&gt; '4001' GROUP BY EMP_ID,SALARY_DT) AS B ON A.EMP_ID = B.EMP_ID GROUP BY A.INCOME_CD,A.SALARY_DT" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="sc550" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="sc550" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="sc550" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select * from(
+Select A.INCOME_CD,A.SALARY_DT,Count(A.EMP_ID) CNT,Sum(A.TAX) TAX,Sum(B.AMOUNT) AMOUNT	
+From (Select X.EMP_ID,X.SALARY_DT,(Case X.TAX When 0 Then 'N' Else X.INCOME_CD End) As INCOME_CD,X.TAX From (
+	Select EMP_ID,SALARY_DT,INCOME_CD,Sum(AMOUNT) TAX 
+	From TB_S_M_SALARY_PAY
+Where SALARY_TYPE = 'A'
+And SALARY_ID = '4001'
+Group By EMP_ID,SALARY_DT, INCOME_CD
+	) As X ) As A	
+Join (	
+	Select 	EMP_ID,SALARY_DT,	Sum(AMOUNT * IS_PLUS) AMOUNT
+		From TB_S_M_SALARY_PAY
+	Where SALARY_TYPE = 'A'
+	And SALARY_ID &lt;&gt; '4001'
+	Group By EMP_ID,SALARY_DT) As B	
+On A.EMP_ID = B.EMP_ID	
+Group By A.INCOME_CD,A.SALARY_DT	)td
+where 1=1
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="INCOME_CD" DataSetColumn="INCOME_CD" />
+              <Mapping SourceColumn="CNT" DataSetColumn="CNT" />
+              <Mapping SourceColumn="TAX" DataSetColumn="TAX" />
+              <Mapping SourceColumn="AMOUNT" DataSetColumn="AMOUNT" />
+              <Mapping SourceColumn="SALARY_DT" DataSetColumn="SALARY_DT" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsSC5500" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsSC5500" msprop:Generator_UserDSName="dsSC5500">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SC5500PDF" msprop:Generator_TableClassName="SC5500PDFDataTable" msprop:Generator_TableVarName="tableSC5500PDF" msprop:Generator_RowChangedName="SC5500PDFRowChanged" msprop:Generator_TablePropName="SC5500PDF" msprop:Generator_RowDeletingName="SC5500PDFRowDeleting" msprop:Generator_RowChangingName="SC5500PDFRowChanging" msprop:Generator_RowEvHandlerName="SC5500PDFRowChangeEventHandler" msprop:Generator_RowDeletedName="SC5500PDFRowDeleted" msprop:Generator_RowClassName="SC5500PDFRow" msprop:Generator_UserTableName="SC5500PDF" msprop:Generator_RowEvArgName="SC5500PDFRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="INCOME_CD" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnINCOME_CD" msprop:Generator_ColumnPropNameInRow="INCOME_CD" msprop:Generator_ColumnPropNameInTable="INCOME_CDColumn" msprop:Generator_UserColumnName="INCOME_CD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CNT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCNT" msprop:Generator_ColumnPropNameInRow="CNT" msprop:Generator_ColumnPropNameInTable="CNTColumn" msprop:Generator_UserColumnName="CNT" type="xs:int" minOccurs="0" />
+              <xs:element name="TAX" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTAX" msprop:Generator_ColumnPropNameInRow="TAX" msprop:Generator_ColumnPropNameInTable="TAXColumn" msprop:Generator_UserColumnName="TAX" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AMOUNT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAMOUNT" msprop:Generator_ColumnPropNameInRow="AMOUNT" msprop:Generator_ColumnPropNameInTable="AMOUNTColumn" msprop:Generator_UserColumnName="AMOUNT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SALARY_DT" msprop:Generator_ColumnVarNameInTable="columnSALARY_DT" msprop:Generator_ColumnPropNameInRow="SALARY_DT" msprop:Generator_ColumnPropNameInTable="SALARY_DTColumn" msprop:Generator_UserColumnName="SALARY_DT" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

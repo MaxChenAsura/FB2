@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsSC5400" targetNamespace="http://tempuri.org/dsSC5400.xsd" xmlns:mstns="http://tempuri.org/dsSC5400.xsd" xmlns="http://tempuri.org/dsSC5400.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="dbconnection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dbconnection (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.dbconnection.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SC5400ExcelTableAdapter" GeneratorDataComponentClassName="SC5400ExcelTableAdapter" Name="SC5400Excel" UserDataComponentName="SC5400ExcelTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dbconnection (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT          V.DEPT_NO, V.DEPT_NAME_20, V.DEPT_NAME_40, P.EMP_ID, V.EMP_NAME, SUM(P.AMOUNT) AS AMOUNT,
+                                (SELECT          SUM(S.AMOUNT * S.IS_PLUS) AS TAX
+                                  FROM               TB_S_M_SALARY_PAY AS S INNER JOIN
+                                                              TB_S_M_SALARY_ITEM AS I ON S.SALARY_ID = I.SALARY_ID AND S.EMP_ID = P.EMP_ID AND 
+                                                              S.PAY_KIND = '9999' AND I.SALARY_CD = '4') AS TAX
+FROM              TB_S_M_STAFF_ARREARS_D AS P INNER JOIN
+                            VW_H_EMP_DATA AS V ON P.EMP_ID = V.EMP_ID
+GROUP BY   V.DEPT_NO, V.DEPT_NAME_20, V.DEPT_NAME_40, P.EMP_ID, V.EMP_NAME
+ORDER BY   V.DEPT_NO, P.EMP_ID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DEPT_NO" DataSetColumn="DEPT_NO" />
+              <Mapping SourceColumn="DEPT_NAME_20" DataSetColumn="DEPT_NAME_20" />
+              <Mapping SourceColumn="DEPT_NAME_40" DataSetColumn="DEPT_NAME_40" />
+              <Mapping SourceColumn="EMP_ID" DataSetColumn="EMP_ID" />
+              <Mapping SourceColumn="EMP_NAME" DataSetColumn="EMP_NAME" />
+              <Mapping SourceColumn="AMOUNT" DataSetColumn="AMOUNT" />
+              <Mapping SourceColumn="TAX" DataSetColumn="TAX" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsSC5400" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsSC5400" msprop:Generator_UserDSName="dsSC5400">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SC5400Excel" msprop:Generator_TableClassName="SC5400ExcelDataTable" msprop:Generator_TableVarName="tableSC5400Excel" msprop:Generator_RowChangedName="SC5400ExcelRowChanged" msprop:Generator_TablePropName="SC5400Excel" msprop:Generator_RowDeletingName="SC5400ExcelRowDeleting" msprop:Generator_RowChangingName="SC5400ExcelRowChanging" msprop:Generator_RowEvHandlerName="SC5400ExcelRowChangeEventHandler" msprop:Generator_RowDeletedName="SC5400ExcelRowDeleted" msprop:Generator_RowClassName="SC5400ExcelRow" msprop:Generator_UserTableName="SC5400Excel" msprop:Generator_RowEvArgName="SC5400ExcelRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DEPT_NO" msprop:Generator_ColumnVarNameInTable="columnDEPT_NO" msprop:Generator_ColumnPropNameInRow="DEPT_NO" msprop:Generator_ColumnPropNameInTable="DEPT_NOColumn" msprop:Generator_UserColumnName="DEPT_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEPT_NAME_20" msprop:Generator_ColumnVarNameInTable="columnDEPT_NAME_20" msprop:Generator_ColumnPropNameInRow="DEPT_NAME_20" msprop:Generator_ColumnPropNameInTable="DEPT_NAME_20Column" msprop:Generator_UserColumnName="DEPT_NAME_20" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEPT_NAME_40" msprop:Generator_ColumnVarNameInTable="columnDEPT_NAME_40" msprop:Generator_ColumnPropNameInRow="DEPT_NAME_40" msprop:Generator_ColumnPropNameInTable="DEPT_NAME_40Column" msprop:Generator_UserColumnName="DEPT_NAME_40" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_ID" msprop:Generator_ColumnVarNameInTable="columnEMP_ID" msprop:Generator_ColumnPropNameInRow="EMP_ID" msprop:Generator_ColumnPropNameInTable="EMP_IDColumn" msprop:Generator_UserColumnName="EMP_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_NAME" msprop:Generator_ColumnVarNameInTable="columnEMP_NAME" msprop:Generator_ColumnPropNameInRow="EMP_NAME" msprop:Generator_ColumnPropNameInTable="EMP_NAMEColumn" msprop:Generator_UserColumnName="EMP_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AMOUNT" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAMOUNT" msprop:Generator_ColumnPropNameInRow="AMOUNT" msprop:Generator_ColumnPropNameInTable="AMOUNTColumn" msprop:Generator_UserColumnName="AMOUNT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TAX" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTAX" msprop:Generator_ColumnPropNameInRow="TAX" msprop:Generator_ColumnPropNameInTable="TAXColumn" msprop:Generator_UserColumnName="TAX" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

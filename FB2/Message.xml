@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Message>
+  <addFailMessage-zh-TW>新增失敗!!</addFailMessage-zh-TW>
+  <addSuccessMessage-zh-TW>新增成功!!</addSuccessMessage-zh-TW>
+  <alreadyProcessMessage-zh-TW>此保費年月,已轉薪資作業,不允重新轉入</alreadyProcessMessage-zh-TW>
+  <announceFailMessage-zh-TW>薪資轉出失敗</announceFailMessage-zh-TW>
+  <announceSuccessMessage-zh-TW>薪資轉出成功</announceSuccessMessage-zh-TW>
+  <approveFailMessage-zh-TW>核可失敗</approveFailMessage-zh-TW>
+  <approveSuccessMessage-zh-TW>核可成功</approveSuccessMessage-zh-TW>
+  <assessAnnounceFailMessage-zh-TW>考核發佈失敗</assessAnnounceFailMessage-zh-TW>
+  <assessAnnounceSuccessMessage-zh-TW>考核發佈成功</assessAnnounceSuccessMessage-zh-TW>
+  <calFailMessage-zh-TW>結算失敗</calFailMessage-zh-TW>
+  <calSuccessMessage-zh-TW>結算完成</calSuccessMessage-zh-TW>
+  <CopyFailMessage-zh-TW>複製失敗</CopyFailMessage-zh-TW>
+  <CopySuccessMessage-zh-TW>複製完成</CopySuccessMessage-zh-TW>
+  <DataCheckFailMessage-zh-TW>資料確認作業失敗!</DataCheckFailMessage-zh-TW>
+  <DataCheckSuccessMessage-zh-TW>資料確認作業完成!</DataCheckSuccessMessage-zh-TW>
+  <DC080FailMessage-zh-TW>處理失敗</DC080FailMessage-zh-TW>
+  <DC080SuccessMessage-zh-TW>處理完成</DC080SuccessMessage-zh-TW>
+  <deleteAS400FailMessage-zh-TW>刪除傳票作業失敗。</deleteAS400FailMessage-zh-TW>
+  <deleteAS400Message-zh-TW>刪除傳票作業完成。</deleteAS400Message-zh-TW>
+  <deleteFailMessage-zh-TW>刪除失敗</deleteFailMessage-zh-TW>
+  <deleteSuccessMessage-zh-TW>刪除成功</deleteSuccessMessage-zh-TW>
+  <downFailMessage-zh-TW>匯出失敗</downFailMessage-zh-TW>
+  <downSuccessMessage-zh-TW>匯出成功</downSuccessMessage-zh-TW>
+  <execFailMessage-zh-TW>登錄作業失敗</execFailMessage-zh-TW>
+  <execSuccessMessage-zh-TW>登錄作業成功</execSuccessMessage-zh-TW>
+  <executeFailMessage-zh-TW>執行失敗</executeFailMessage-zh-TW>
+  <executeSuccessMessage-zh-TW>執行成功</executeSuccessMessage-zh-TW>
+  <FB2SAapproveFailMessage-zh-TW>核可失敗</FB2SAapproveFailMessage-zh-TW>
+  <FB2SAapproveSuccessMessage-zh-TW>提出核可作業完成!資料若經主管核可後,須至初任薪敘薪異動對象生成作業 產生異動對象名單!</FB2SAapproveSuccessMessage-zh-TW>
+  <FB2SAexecuteFailMessage-zh-TW>異動對象生成作業失敗!</FB2SAexecuteFailMessage-zh-TW>
+  <FB2SAexecuteSuccessMessage-zh-TW>異動對象生成作業完成!</FB2SAexecuteSuccessMessage-zh-TW>
+  <importFailMessage-zh-TW>匯入失敗</importFailMessage-zh-TW>
+  <importSuccessMessage-zh-TW>匯入成功</importSuccessMessage-zh-TW>
+  <modFailMessage-zh-TW>修改失敗</modFailMessage-zh-TW>
+  <modSuccessMessage-zh-TW>修改成功</modSuccessMessage-zh-TW>
+  <monthExecuteFailMessage-zh-TW>月結失敗</monthExecuteFailMessage-zh-TW>
+  <monthExecuteSuccessMessage-zh-TW>月結成功</monthExecuteSuccessMessage-zh-TW>
+  <noDownDataMessage-zh-TW>無匯出資料</noDownDataMessage-zh-TW>
+  <noOriDataToCompareMessage-zh-TW>無原始資料可比對</noOriDataToCompareMessage-zh-TW>
+  <noPreDataToCompareMessage-zh-TW>無前次資料可比對</noPreDataToCompareMessage-zh-TW>
+  <noThisDataToCompareMessage-zh-TW>無本次核可資料</noThisDataToCompareMessage-zh-TW>
+  <processFailMessage-zh-TW>保險轉薪資處理失敗</processFailMessage-zh-TW>
+  <processSuccessMessage-zh-TW>保險轉薪資處理完畢</processSuccessMessage-zh-TW>
+  <QryNotFoundMessage-zh-TW>查無資料</QryNotFoundMessage-zh-TW>
+  <rejectFailMessage-zh-TW>駁回失敗</rejectFailMessage-zh-TW>
+  <rejectSuccessMessage-zh-TW>駁回成功</rejectSuccessMessage-zh-TW>
+  <releaseFailMessage-zh-TW>提出核可失敗</releaseFailMessage-zh-TW>
+  <releaseSuccessMessage-zh-TW>提出核可成功</releaseSuccessMessage-zh-TW>
+  <salary_cal_ExecuteFailMessage-zh-TW>薪資計算作業失敗!</salary_cal_ExecuteFailMessage-zh-TW>
+  <salary_cal_ExecuteSuccessMessage-zh-TW>薪資計算作業完成!</salary_cal_ExecuteSuccessMessage-zh-TW>
+  <SE210FailMessage-zh-TW>不調薪對象生成失敗</SE210FailMessage-zh-TW>
+  <SE210SuccessMessage-zh-TW>不調薪對象生成完畢</SE210SuccessMessage-zh-TW>
+  <SF110ExecuteFailMessage-zh-TW>法扣金額轉入失敗</SF110ExecuteFailMessage-zh-TW>
+  <SF110ExecuteSuccessMessage-zh-TW>法扣金額轉入完成</SF110ExecuteSuccessMessage-zh-TW>
+  <SF120ExecuteFailMessage-zh-TW>法扣金額分配失敗</SF120ExecuteFailMessage-zh-TW>
+  <SF120ExecuteSuccessMessage-zh-TW>法扣金額分配完成</SF120ExecuteSuccessMessage-zh-TW>
+  <updateDataFailMessage-zh-TW>資料更新失敗!</updateDataFailMessage-zh-TW>
+  <updateDataSuccessMessage-zh-TW>資料更新完成!</updateDataSuccessMessage-zh-TW>
+  <updateFailMessage-zh-TW>一括更新失敗</updateFailMessage-zh-TW>
+  <updateSuccessMessage-zh-TW>一括更新成功</updateSuccessMessage-zh-TW>
+
+  <addFailMessage-zh-Hant>新增失敗!!</addFailMessage-zh-Hant>
+  <addSuccessMessage-zh-Hant>新增成功!!</addSuccessMessage-zh-Hant>
+  <alreadyProcessMessage-zh-Hant>此保費年月,已轉薪資作業,不允重新轉入</alreadyProcessMessage-zh-Hant>
+  <announceFailMessage-zh-Hant>薪資轉出失敗</announceFailMessage-zh-Hant>
+  <announceSuccessMessage-zh-Hant>薪資轉出成功</announceSuccessMessage-zh-Hant>
+  <approveFailMessage-zh-Hant>核可失敗</approveFailMessage-zh-Hant>
+  <approveSuccessMessage-zh-Hant>核可成功</approveSuccessMessage-zh-Hant>
+  <assessAnnounceFailMessage-zh-Hant>考核發佈失敗</assessAnnounceFailMessage-zh-Hant>
+  <assessAnnounceSuccessMessage-zh-Hant>考核發佈成功</assessAnnounceSuccessMessage-zh-Hant>
+  <calFailMessage-zh-Hant>結算失敗</calFailMessage-zh-Hant>
+  <calSuccessMessage-zh-Hant>結算完成</calSuccessMessage-zh-Hant>
+  <cancelPayFailMessage-zh-Hant>薪資取消關帳作業失敗!</cancelPayFailMessage-zh-Hant>
+  <cancelPaySuccessMessage-zh-Hant>薪資取消關帳作業完成!!</cancelPaySuccessMessage-zh-Hant>
+  <CopyFailMessage-zh-Hant>複製失敗</CopyFailMessage-zh-Hant>
+  <CopySuccessMessage-zh-Hant>複製完成</CopySuccessMessage-zh-Hant>
+  <DataCheckFailMessage-zh-Hant>資料確認作業失敗!</DataCheckFailMessage-zh-Hant>
+  <DataCheckSuccessMessage-zh-Hant>資料確認作業完成!</DataCheckSuccessMessage-zh-Hant>
+  <DC080FailMessage-zh-Hant>處理失敗</DC080FailMessage-zh-Hant>
+  <DC080SuccessMessage-zh-Hant>處理完成</DC080SuccessMessage-zh-Hant>
+  <deleteFailMessage-zh-Hant>刪除失敗</deleteFailMessage-zh-Hant>
+  <deleteSuccessMessage-zh-Hant>刪除成功</deleteSuccessMessage-zh-Hant>
+  <downFailMessage-zh-Hant>匯出失敗</downFailMessage-zh-Hant>
+  <downSuccessMessage-zh-Hant>匯出成功</downSuccessMessage-zh-Hant>
+  <execFailMessage-zh-Hant>登錄作業失敗</execFailMessage-zh-Hant>
+  <execSuccessMessage-zh-Hant>登錄作業成功</execSuccessMessage-zh-Hant>
+  <executeFailMessage-zh-Hant>執行失敗</executeFailMessage-zh-Hant>
+  <executePayFailMessage-zh-Hant>關帳作業失敗!</executePayFailMessage-zh-Hant>
+  <executePaySuccessMessage-zh-Hant>關帳作業完成!</executePaySuccessMessage-zh-Hant>
+  <executeSuccessMessage-zh-Hant>執行成功</executeSuccessMessage-zh-Hant>
+  <FB2SAapproveFailMessage-zh-Hant>核可失敗</FB2SAapproveFailMessage-zh-Hant>
+  <FB2SAapproveSuccessMessage-zh-Hant>提出核可作業完成!資料若經主管核可後,須至初任薪敘薪異動對象生成作業 產生異動對象名單!</FB2SAapproveSuccessMessage-zh-Hant>
+  <FB2SAexecuteFailMessage-zh-Hant>異動對象生成作業失敗!</FB2SAexecuteFailMessage-zh-Hant>
+  <FB2SAexecuteSuccessMessage-zh-Hant>異動對象生成作業完成!</FB2SAexecuteSuccessMessage-zh-Hant>
+  <importFailMessage-zh-Hant>匯入失敗</importFailMessage-zh-Hant>
+  <importSuccessMessage-zh-Hant>匯入成功</importSuccessMessage-zh-Hant>
+  <modFailMessage-zh-Hant>修改失敗</modFailMessage-zh-Hant>
+  <modSuccessMessage-zh-Hant>修改成功</modSuccessMessage-zh-Hant>
+  <monthExecuteFailMessage-zh-Hant>月結失敗</monthExecuteFailMessage-zh-Hant>
+  <monthExecuteSuccessMessage-zh-Hant>月結成功</monthExecuteSuccessMessage-zh-Hant>
+  <noDownDataMessage-zh-Hant>無匯出資料</noDownDataMessage-zh-Hant>
+  <noPreDataToCompareMessage-zh-Hant>無前次資料可比對</noPreDataToCompareMessage-zh-Hant>
+  <processFailMessage-zh-Hant>保險轉薪資處理失敗</processFailMessage-zh-Hant>
+  <processSuccessMessage-zh-Hant>保險轉薪資處理完畢</processSuccessMessage-zh-Hant>
+  <QryNotFoundMessage-zh-Hant>查無資料</QryNotFoundMessage-zh-Hant>
+  <rejectFailMessage-zh-Hant>駁回失敗</rejectFailMessage-zh-Hant>
+  <rejectSuccessMessage-zh-Hant>駁回成功</rejectSuccessMessage-zh-Hant>
+  <releaseFailMessage-zh-Hant>提出核可失敗</releaseFailMessage-zh-Hant>
+  <releaseSuccessMessage-zh-Hant>提出核可成功</releaseSuccessMessage-zh-Hant>
+  <salary_cal_ExecuteFailMessage-zh-Hant>薪資計算作業失敗!</salary_cal_ExecuteFailMessage-zh-Hant>
+  <salary_cal_ExecuteSuccessMessage-zh-Hant>薪資計算作業完成!</salary_cal_ExecuteSuccessMessage-zh-Hant>
+  <SE210FailMessage-zh-Hant>不調薪對象生成失敗</SE210FailMessage-zh-Hant>
+  <SE210SuccessMessage-zh-Hant>不調薪對象生成完畢</SE210SuccessMessage-zh-Hant>
+  <SF110ExecuteFailMessage-zh-Hant>法扣金額轉入失敗</SF110ExecuteFailMessage-zh-Hant>
+  <SF110ExecuteSuccessMessage-zh-Hant>法扣金額轉入完成</SF110ExecuteSuccessMessage-zh-Hant>
+  <SF120ExecuteFailMessage-zh-Hant>法扣金額分配失敗</SF120ExecuteFailMessage-zh-Hant>
+  <SF120ExecuteSuccessMessage-zh-Hant>法扣金額分配完成</SF120ExecuteSuccessMessage-zh-Hant>
+  <updateDataFailMessage-zh-Hant>資料更新失敗!</updateDataFailMessage-zh-Hant>
+  <updateDataSuccessMessage-zh-Hant>資料更新完成!</updateDataSuccessMessage-zh-Hant>
+  <updateFailMessage-zh-Hant>一括更新失敗</updateFailMessage-zh-Hant>
+  <updateSuccessMessage-zh-Hant>一括更新成功</updateSuccessMessage-zh-Hant>
+
+  <addFailMessage-en-US>Add Fail!!</addFailMessage-en-US>
+  <addSuccessMessage-en-US>Add Success!!</addSuccessMessage-en-US>
+  <alreadyProcessMessage-en-US>This SALARY_YM already process,can't process again</alreadyProcessMessage-en-US>
+  <announceFailMessage-en-US>Announce Fail</announceFailMessage-en-US>
+  <announceSuccessMessage-en-US>Announce Success</announceSuccessMessage-en-US>
+  <approveFailMessage-en-US>Approve Fail</approveFailMessage-en-US>
+  <approveSuccessMessage-en-US>Approve Success</approveSuccessMessage-en-US>
+  <assessAnnounceFailMessage-en-US>Assess Release Fail</assessAnnounceFailMessage-en-US>
+  <assessAnnounceSuccessMessage-en-US>Assess Release Success</assessAnnounceSuccessMessage-en-US>
+  <calFailMessage-en-US>Calculate Fail</calFailMessage-en-US>
+  <calSuccessMessage-en-US>Calculate Success</calSuccessMessage-en-US>
+  <CopyFailMessage-en-US>Copy Fail</CopyFailMessage-en-US>
+  <CopySuccessMessage-en-US>Copy Fail</CopySuccessMessage-en-US>
+  <DataCheckFailMessage-en-US>DataCheck Fail!</DataCheckFailMessage-en-US>
+  <DataCheckSuccessMessage-en-US>DataCheck Complete!</DataCheckSuccessMessage-en-US>
+  <DC080FailMessage-en-US>Process Fail</DC080FailMessage-en-US>
+  <DC080SuccessMessage-en-US>Process Complete</DC080SuccessMessage-en-US>
+  <deleteAS400FailMessage-en-US>Delete Summons Fail</deleteAS400FailMessage-en-US>
+  <deleteAS400Message-en-US>Delete Summons Success</deleteAS400Message-en-US>
+  <deleteFailMessage-en-US>Delete Fail</deleteFailMessage-en-US>
+  <deleteSuccessMessage-en-US>Delete Success</deleteSuccessMessage-en-US>
+  <downFailMessage-en-US>Download Fail</downFailMessage-en-US>
+  <downSuccessMessage-en-US>Download Success</downSuccessMessage-en-US>
+  <execFailMessage-en-US>Execute Fail</execFailMessage-en-US>
+  <execSuccessMessage-en-US>Execute Success</execSuccessMessage-en-US>
+  <executeFailMessage-en-US>Execute Fail</executeFailMessage-en-US>
+  <executeSuccessMessage-en-US>Execute Success</executeSuccessMessage-en-US>
+  <FB2SAapproveFailMessage-en-US>Release Fail</FB2SAapproveFailMessage-en-US>
+  <FB2SAapproveSuccessMessage-en-US>Release Complete!資料若經主管核可後,須至初任薪敘薪異動對象生成作業 產生異動對象名單!</FB2SAapproveSuccessMessage-en-US>
+  <FB2SAexecuteFailMessage-en-US>Execute Fail!</FB2SAexecuteFailMessage-en-US>
+  <FB2SAexecuteSuccessMessage-en-US>Execute Complete!</FB2SAexecuteSuccessMessage-en-US>
+  <importFailMessage-en-US>Import Fail</importFailMessage-en-US>
+  <importSuccessMessage-en-US>Import Success</importSuccessMessage-en-US>
+  <modFailMessage-en-US>Update Fail</modFailMessage-en-US>
+  <modSuccessMseeage-en-US>Update Success</modSuccessMseeage-en-US>
+  <monthExecuteFailMessage-en-US>Calculate Fail !!</monthExecuteFailMessage-en-US>
+  <monthExecuteSuccessMessage-en-US>Calculate Success !!</monthExecuteSuccessMessage-en-US>
+  <noDownDataMessage-en-US>No Eexport Data</noDownDataMessage-en-US>
+  <noOriDataToCompareMessage-en-US>No Original Data To Compare</noOriDataToCompareMessage-en-US>
+  <noPreDataToCompareMessage-en-US>No Previous Data To Compare</noPreDataToCompareMessage-en-US>
+  <noThisDataToCompareMessage-en-US>No This Approved Data</noThisDataToCompareMessage-en-US>
+  <processFailMessage-en-US>Process Fail</processFailMessage-en-US>
+  <processSuccessMessage-en-US>Process Complete</processSuccessMessage-en-US>
+  <QryNotFoundMessage-en-US>Data Not Found</QryNotFoundMessage-en-US>
+  <rejectFailMessage-en-US>Reject Fail</rejectFailMessage-en-US>
+  <rejectSuccessMessage-en-US>Reject Success</rejectSuccessMessage-en-US>
+  <releaseFailMessage-en-US>Release Fail</releaseFailMessage-en-US>
+  <releaseSuccessMessage-en-US>Release Success</releaseSuccessMessage-en-US>
+  <salary_cal_ExecuteFailMessage-en-US>Salary Calculation Fail</salary_cal_ExecuteFailMessage-en-US>
+  <salary_cal_ExecuteSuccessMessage-en-US>Salary Calculation Success</salary_cal_ExecuteSuccessMessage-en-US>
+  <SE210FailMessage-en-US>Generate Fail</SE210FailMessage-en-US>
+  <SE210SuccessMessage-en-US>Generate Success</SE210SuccessMessage-en-US>
+  <SF110ExecuteFailMessage-en-US>Execute Fail</SF110ExecuteFailMessage-en-US>
+  <SF110ExecuteSuccessMessage-en-US>Execute Complete</SF110ExecuteSuccessMessage-en-US>
+  <SF120ExecuteFailMessage-en-US>Execute Fail</SF120ExecuteFailMessage-en-US>
+  <SF120ExecuteSuccessMessage-en-US>Execute Complete</SF120ExecuteSuccessMessage-en-US>
+  <updateDataFailMessage-en-US>Data Update Fail!</updateDataFailMessage-en-US>
+  <updateDataSuccessMessage-en-US>Data Update Finish!</updateDataSuccessMessage-en-US>
+  <updateFailMessage-en-US>Update Fail</updateFailMessage-en-US>
+  <updateSuccessMessage-en-US>Update Success</updateSuccessMessage-en-US>
+
+  <addFailMessage-ja-JP>新增失敗!!</addFailMessage-ja-JP>
+  <addSuccessMessage-ja-JP>新增成功!!</addSuccessMessage-ja-JP>
+  <alreadyProcessMessage-ja-JP>此保費年月,已轉薪資作業,不允重新轉入</alreadyProcessMessage-ja-JP>
+  <announceFailMessage-ja-JP>薪資轉出失敗</announceFailMessage-ja-JP>
+  <announceSuccessMessage-ja-JP>薪資轉出成功</announceSuccessMessage-ja-JP>
+  <approveFailMessage-ja-JP>核可失敗</approveFailMessage-ja-JP>
+  <approveSuccessMessage-ja-JP>核可成功</approveSuccessMessage-ja-JP>
+  <assessAnnounceFailMessage-ja-JP>考核發佈失敗</assessAnnounceFailMessage-ja-JP>
+  <assessAnnounceSuccessMessage-ja-JP>考核發佈成功</assessAnnounceSuccessMessage-ja-JP>
+  <calFailMessage-ja-JP>結算失敗</calFailMessage-ja-JP>
+  <calSuccessMessage-ja-JP>結算完成</calSuccessMessage-ja-JP>
+  <CopyFailMessage-ja-JP>複製失敗</CopyFailMessage-ja-JP>
+  <CopySuccessMessage-ja-JP>複製完成</CopySuccessMessage-ja-JP>
+  <DataCheckFailMessage-ja-JP>資料確認作業失敗!</DataCheckFailMessage-ja-JP>
+  <DataCheckSuccessMessage-ja-JP>資料確認作業完成!</DataCheckSuccessMessage-ja-JP>
+  <DC080FailMessage-ja-JP>處理失敗</DC080FailMessage-ja-JP>
+  <DC080SuccessMessage-ja-JP>處理完成</DC080SuccessMessage-ja-JP>
+  <deleteAS400FailMessage-ja-JP>刪除傳票作業失敗。</deleteAS400FailMessage-ja-JP>
+  <deleteAS400Message-ja-JP>刪除傳票作業完成。</deleteAS400Message-ja-JP>
+  <deleteFailMessage-ja-JP>刪除失敗</deleteFailMessage-ja-JP>
+  <deleteSuccessMessage-ja-JP>刪除成功</deleteSuccessMessage-ja-JP>
+  <downFailMessage-ja-JP>匯出失敗</downFailMessage-ja-JP>
+  <downSuccessMessage-ja-JP>匯出成功</downSuccessMessage-ja-JP>
+  <execFailMessage-ja-JP>登錄作業失敗</execFailMessage-ja-JP>
+  <execSuccessMessage-ja-JP>登錄作業成功</execSuccessMessage-ja-JP>
+  <executeFailMessage-ja-JP>執行失敗</executeFailMessage-ja-JP>
+  <executeSuccessMessage-ja-JP>執行成功</executeSuccessMessage-ja-JP>
+  <FB2SAapproveFailMessage-ja-JP>核可失敗</FB2SAapproveFailMessage-ja-JP>
+  <FB2SAapproveSuccessMessage-ja-JP>提出核可作業完成!資料若經主管核可後,須至初任薪敘薪異動對象生成作業 產生異動對象名單!</FB2SAapproveSuccessMessage-ja-JP>
+  <FB2SAexecuteFailMessage-ja-JP>異動對象生成作業失敗!</FB2SAexecuteFailMessage-ja-JP>
+  <FB2SAexecuteSuccessMessage-ja-JP>異動對象生成作業完成!</FB2SAexecuteSuccessMessage-ja-JP>
+  <importFailMessage-ja-JP>匯入失敗</importFailMessage-ja-JP>
+  <importSuccessMessage-ja-JP>匯入成功</importSuccessMessage-ja-JP>
+  <modFailMessage-ja-JP>修改失敗</modFailMessage-ja-JP>
+  <modSuccessMessage-ja-JP>修改成功</modSuccessMessage-ja-JP>
+  <monthExecuteFailMessage-ja-JP>月結失敗</monthExecuteFailMessage-ja-JP>
+  <monthExecuteSuccessMessage-ja-JP>月結成功</monthExecuteSuccessMessage-ja-JP>
+  <noDownDataMessage-ja-JP>無匯出資料</noDownDataMessage-ja-JP>
+  <noOriDataToCompareMessage-ja-JP>無原始資料可比對</noOriDataToCompareMessage-ja-JP>
+  <noPreDataToCompareMessage-ja-JP>無前次資料可比對</noPreDataToCompareMessage-ja-JP>
+  <noThisDataToCompareMessage-ja-JP>無本次核可資料</noThisDataToCompareMessage-ja-JP>
+  <processFailMessage-ja-JP>保險轉薪資處理失敗</processFailMessage-ja-JP>
+  <processSuccessMessage-ja-JP>保險轉薪資處理完畢</processSuccessMessage-ja-JP>
+  <QryNotFoundMessage-ja-JP>查無資料</QryNotFoundMessage-ja-JP>
+  <rejectFailMessage-ja-JP>駁回失敗</rejectFailMessage-ja-JP>
+  <rejectSuccessMessage-ja-JP>駁回成功</rejectSuccessMessage-ja-JP>
+  <releaseFailMessage-ja-JP>提出核可失敗</releaseFailMessage-ja-JP>
+  <releaseSuccessMessage-ja-JP>提出核可成功</releaseSuccessMessage-ja-JP>
+  <salary_cal_ExecuteFailMessage-ja-JP>薪資計算作業失敗!</salary_cal_ExecuteFailMessage-ja-JP>
+  <salary_cal_ExecuteSuccessMessage-ja-JP>薪資計算作業完成!</salary_cal_ExecuteSuccessMessage-ja-JP>
+  <SE210FailMessage-ja-JP>不調薪對象生成失敗</SE210FailMessage-ja-JP>
+  <SE210SuccessMessage-ja-JP>不調薪對象生成完畢</SE210SuccessMessage-ja-JP>
+  <SF110ExecuteFailMessage-ja-JP>法扣金額轉入失敗</SF110ExecuteFailMessage-ja-JP>
+  <SF110ExecuteSuccessMessage-ja-JP>法扣金額轉入完成</SF110ExecuteSuccessMessage-ja-JP>
+  <SF120ExecuteFailMessage-ja-JP>法扣金額分配失敗</SF120ExecuteFailMessage-ja-JP>
+  <SF120ExecuteSuccessMessage-ja-JP>法扣金額分配完成</SF120ExecuteSuccessMessage-ja-JP>
+  <updateDataFailMessage-ja-JP>資料更新失敗!</updateDataFailMessage-ja-JP>
+  <updateDataSuccessMessage-ja-JP>資料更新完成!</updateDataSuccessMessage-ja-JP>
+  <updateFailMessage-ja-JP>一括更新失敗</updateFailMessage-ja-JP>
+  <updateSuccessMessage-ja-JP>一括更新成功</updateSuccessMessage-ja-JP>
+
+</Message>

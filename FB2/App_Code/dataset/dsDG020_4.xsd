@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsDG020_4" targetNamespace="http://tempuri.org/dsSC5400.xsd" xmlns:mstns="http://tempuri.org/dsSC5400.xsd" xmlns="http://tempuri.org/dsSC5400.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="dbconnection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dbconnection (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.dbconnection.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DG020_4ExcelTableAdapter" GeneratorDataComponentClassName="DG020_4ExcelTableAdapter" Name="DG020_4Excel" UserDataComponentName="DG020_4ExcelTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dbconnection (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT         TM.EMP_ID, TM.EMP_NAME, TM.DEPT_NO, TD.DEPT_NAME, 
+                          TD.DEPT_NAME_30, TD.DEPT_NAME_40, TE.WORK_SHIFT_CD, TE.PLANT_CD, 
+                          TM.CAR_BRAND, TM.PARKING_TOOL, TPM.PARKING_NAME, TM.CAR_NO, 
+                          TM.UPDATED_BY, TM.UPDATED_DT
+FROM             TB_D_M_PARKING_EMP_MAIN AS TM LEFT OUTER JOIN
+                          VW_H_DEPT_DATA AS TD ON TM.DEPT_NO = TD.DEPT_NO LEFT OUTER JOIN
+                          VW_H_EMP_DATA AS TE ON TM.EMP_ID = TE.EMP_ID LEFT OUTER JOIN
+                          TB_H_M_PJOB AS TP ON TP.PJOB_CD = TE.PJOB_CD LEFT OUTER JOIN
+                          TB_9_M_COMM_D AS TCD ON TM.CAR_BRAND = TCD.SUB_CD AND 
+                          TCD.SYS_CD = 'DG' AND TCD.MAIN_CD = 'CAR_BRAND' LEFT OUTER JOIN
+                          TB_D_M_PARKING_MAIN AS TPM ON TPM.CAR_PARK_NO = TM.CAR_PARK_NO</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DEPT_NO" DataSetColumn="DEPT_NO" />
+              <Mapping SourceColumn="EMP_ID" DataSetColumn="EMP_ID" />
+              <Mapping SourceColumn="EMP_NAME" DataSetColumn="EMP_NAME" />
+              <Mapping SourceColumn="DEPT_NAME" DataSetColumn="DEPT_NAME" />
+              <Mapping SourceColumn="CAR_NO" DataSetColumn="CAR_NO" />
+              <Mapping SourceColumn="UPDATED_DT" DataSetColumn="UPDATED_DT" />
+              <Mapping SourceColumn="PARKING_NAME" DataSetColumn="PARKING_NAME" />
+              <Mapping SourceColumn="UPDATED_BY" DataSetColumn="UPDATED_BY" />
+              <Mapping SourceColumn="DEPT_NAME_30" DataSetColumn="DEPT_NAME_30" />
+              <Mapping SourceColumn="DEPT_NAME_40" DataSetColumn="DEPT_NAME_40" />
+              <Mapping SourceColumn="WORK_SHIFT_CD" DataSetColumn="WORK_SHIFT_CD" />
+              <Mapping SourceColumn="PLANT_CD" DataSetColumn="PLANT_CD" />
+              <Mapping SourceColumn="CAR_BRAND" DataSetColumn="CAR_BRAND" />
+              <Mapping SourceColumn="PARKING_TOOL" DataSetColumn="PARKING_TOOL" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsDG020_4" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsDG020_4" msprop:Generator_UserDSName="dsDG020_4">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DG020_4Excel" msprop:Generator_TableClassName="DG020_4ExcelDataTable" msprop:Generator_TableVarName="tableDG020_4Excel" msprop:Generator_RowChangedName="DG020_4ExcelRowChanged" msprop:Generator_TablePropName="DG020_4Excel" msprop:Generator_RowDeletingName="DG020_4ExcelRowDeleting" msprop:Generator_RowChangingName="DG020_4ExcelRowChanging" msprop:Generator_RowEvHandlerName="DG020_4ExcelRowChangeEventHandler" msprop:Generator_RowDeletedName="DG020_4ExcelRowDeleted" msprop:Generator_RowClassName="DG020_4ExcelRow" msprop:Generator_UserTableName="DG020_4Excel" msprop:Generator_RowEvArgName="DG020_4ExcelRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DEPT_NO" msprop:Generator_ColumnVarNameInTable="columnDEPT_NO" msprop:Generator_ColumnPropNameInRow="DEPT_NO" msprop:Generator_ColumnPropNameInTable="DEPT_NOColumn" msprop:Generator_UserColumnName="DEPT_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_ID" msprop:Generator_ColumnVarNameInTable="columnEMP_ID" msprop:Generator_ColumnPropNameInRow="EMP_ID" msprop:Generator_ColumnPropNameInTable="EMP_IDColumn" msprop:Generator_UserColumnName="EMP_ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_NAME" msprop:Generator_ColumnVarNameInTable="columnEMP_NAME" msprop:Generator_ColumnPropNameInRow="EMP_NAME" msprop:Generator_ColumnPropNameInTable="EMP_NAMEColumn" msprop:Generator_UserColumnName="EMP_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEPT_NAME" msprop:Generator_ColumnVarNameInTable="columnDEPT_NAME" msprop:Generator_ColumnPropNameInRow="DEPT_NAME" msprop:Generator_ColumnPropNameInTable="DEPT_NAMEColumn" msprop:Generator_UserColumnName="DEPT_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CAR_NO" msprop:Generator_ColumnVarNameInTable="columnCAR_NO" msprop:Generator_ColumnPropNameInRow="CAR_NO" msprop:Generator_ColumnPropNameInTable="CAR_NOColumn" msprop:Generator_UserColumnName="CAR_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UPDATED_DT" msprop:Generator_ColumnVarNameInTable="columnUPDATED_DT" msprop:Generator_ColumnPropNameInRow="UPDATED_DT" msprop:Generator_ColumnPropNameInTable="UPDATED_DTColumn" msprop:Generator_UserColumnName="UPDATED_DT" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="PARKING_NAME" msprop:Generator_ColumnVarNameInTable="columnPARKING_NAME" msprop:Generator_ColumnPropNameInRow="PARKING_NAME" msprop:Generator_ColumnPropNameInTable="PARKING_NAMEColumn" msprop:Generator_UserColumnName="PARKING_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UPDATED_BY" msprop:Generator_ColumnVarNameInTable="columnUPDATED_BY" msprop:Generator_ColumnPropNameInRow="UPDATED_BY" msprop:Generator_ColumnPropNameInTable="UPDATED_BYColumn" msprop:Generator_UserColumnName="UPDATED_BY" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEPT_NAME_30" msprop:Generator_ColumnVarNameInTable="columnDEPT_NAME_30" msprop:Generator_ColumnPropNameInRow="DEPT_NAME_30" msprop:Generator_ColumnPropNameInTable="DEPT_NAME_30Column" msprop:Generator_UserColumnName="DEPT_NAME_30" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEPT_NAME_40" msprop:Generator_ColumnVarNameInTable="columnDEPT_NAME_40" msprop:Generator_ColumnPropNameInRow="DEPT_NAME_40" msprop:Generator_ColumnPropNameInTable="DEPT_NAME_40Column" msprop:Generator_UserColumnName="DEPT_NAME_40" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="WORK_SHIFT_CD" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnWORK_SHIFT_CD" msprop:Generator_ColumnPropNameInRow="WORK_SHIFT_CD" msprop:Generator_ColumnPropNameInTable="WORK_SHIFT_CDColumn" msprop:Generator_UserColumnName="WORK_SHIFT_CD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PLANT_CD" msprop:Generator_ColumnVarNameInTable="columnPLANT_CD" msprop:Generator_ColumnPropNameInRow="PLANT_CD" msprop:Generator_ColumnPropNameInTable="PLANT_CDColumn" msprop:Generator_UserColumnName="PLANT_CD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CAR_BRAND" msprop:Generator_ColumnVarNameInTable="columnCAR_BRAND" msprop:Generator_ColumnPropNameInRow="CAR_BRAND" msprop:Generator_ColumnPropNameInTable="CAR_BRANDColumn" msprop:Generator_UserColumnName="CAR_BRAND" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PARKING_TOOL" msprop:Generator_ColumnVarNameInTable="columnPARKING_TOOL" msprop:Generator_ColumnPropNameInRow="PARKING_TOOL" msprop:Generator_ColumnPropNameInTable="PARKING_TOOLColumn" msprop:Generator_UserColumnName="PARKING_TOOL" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DG020_4Excel" />
+      <xs:field xpath="mstns:EMP_ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

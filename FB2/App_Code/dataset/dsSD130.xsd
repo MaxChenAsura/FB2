@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsSD130" targetNamespace="http://tempuri.org/DataSet.xsd" xmlns:mstns="http://tempuri.org/DataSet.xsd" xmlns="http://tempuri.org/DataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="dbconnection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dbconnection (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.dbconnection.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SD130ExcelTableAdapter" GeneratorDataComponentClassName="SD130ExcelTableAdapter" Name="SD130Excel" UserDataComponentName="SD130ExcelTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dbconnection (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT          a.EMP_ID, c.EMP_NAME, c.DEPT_NO, c.PLANT_CD, c.PJOB_CD, c.JOIN_DT, c.EMP_CD, c.WS_CD, c.WORK_YEARS, 
+                            e.SUB_DESC AS FESTIVAL_TYPE_NAME, SUM(CASE WHEN SALARY_ID &lt;&gt; '4001' THEN (a.AMOUNT * a.IS_PLUS) 
+                            END) AS 節金金額, SUM(CASE WHEN SALARY_ID = '4001' THEN a.AMOUNT END) AS 稅額, 
+                            SUM(CASE WHEN SALARY_ID &lt;&gt; '4001' THEN (a.AMOUNT * a.IS_PLUS) END) 
+                            - SUM(CASE WHEN SALARY_ID = '4001' THEN a.AMOUNT END) AS '實領金額'
+FROM              TB_S_M_SALARY_PAY AS a LEFT OUTER JOIN
+                                (SELECT DISTINCT FESTIVAL_TYPE, FESTIVAL_DT, FESTIVAL_PAY_DT, SALARY_DT
+                                  FROM               TB_S_M_FESTIVAL_H AS zb) AS b ON a.SALARY_DT = b.SALARY_DT LEFT OUTER JOIN
+                            TB_S_R_FESTIVAL_D AS c ON b.FESTIVAL_TYPE = c.FESTIVAL_TYPE AND b.FESTIVAL_DT = c.FESTIVAL_DT AND 
+                            a.SALARY_DT = b.FESTIVAL_PAY_DT AND a.EMP_ID = c.EMP_ID LEFT OUTER JOIN
+                            TB_9_M_COMM_D AS e ON e.SYS_CD = 'SG' AND e.MAIN_CD = 'FESTIVAL_TYPE' AND 
+                            e.SUB_CD = c.FESTIVAL_TYPE
+WHERE          (a.COMPANY_CD = 'T')
+GROUP BY   a.EMP_ID, c.EMP_NAME, c.DEPT_NO, c.PLANT_CD, c.PJOB_CD, c.JOIN_DT, c.EMP_CD, c.WS_CD, c.WORK_YEARS, 
+                            e.SUB_DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="EMP_ID" DataSetColumn="EMP_ID" />
+              <Mapping SourceColumn="EMP_NAME" DataSetColumn="EMP_NAME" />
+              <Mapping SourceColumn="DEPT_NO" DataSetColumn="DEPT_NO" />
+              <Mapping SourceColumn="PLANT_CD" DataSetColumn="PLANT_CD" />
+              <Mapping SourceColumn="PJOB_CD" DataSetColumn="PJOB_CD" />
+              <Mapping SourceColumn="JOIN_DT" DataSetColumn="JOIN_DT" />
+              <Mapping SourceColumn="EMP_CD" DataSetColumn="EMP_CD" />
+              <Mapping SourceColumn="WS_CD" DataSetColumn="WS_CD" />
+              <Mapping SourceColumn="WORK_YEARS" DataSetColumn="WORK_YEARS" />
+              <Mapping SourceColumn="FESTIVAL_TYPE_NAME" DataSetColumn="FESTIVAL_TYPE_NAME" />
+              <Mapping SourceColumn="節金金額" DataSetColumn="節金金額" />
+              <Mapping SourceColumn="稅額" DataSetColumn="稅額" />
+              <Mapping SourceColumn="實領金額" DataSetColumn="實領金額" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsSD130" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsSD130" msprop:Generator_UserDSName="dsSD130">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SD130Excel" msprop:Generator_TableClassName="SD130ExcelDataTable" msprop:Generator_TableVarName="tableSD130Excel" msprop:Generator_RowChangedName="SD130ExcelRowChanged" msprop:Generator_TablePropName="SD130Excel" msprop:Generator_RowDeletingName="SD130ExcelRowDeleting" msprop:Generator_RowChangingName="SD130ExcelRowChanging" msprop:Generator_RowEvHandlerName="SD130ExcelRowChangeEventHandler" msprop:Generator_RowDeletedName="SD130ExcelRowDeleted" msprop:Generator_RowClassName="SD130ExcelRow" msprop:Generator_UserTableName="SD130Excel" msprop:Generator_RowEvArgName="SD130ExcelRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EMP_ID" msprop:Generator_ColumnVarNameInTable="columnEMP_ID" msprop:Generator_ColumnPropNameInRow="EMP_ID" msprop:Generator_ColumnPropNameInTable="EMP_IDColumn" msprop:Generator_UserColumnName="EMP_ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EMP_NAME" msprop:Generator_ColumnVarNameInTable="columnEMP_NAME" msprop:Generator_ColumnPropNameInRow="EMP_NAME" msprop:Generator_ColumnPropNameInTable="EMP_NAMEColumn" msprop:Generator_UserColumnName="EMP_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEPT_NO" msprop:Generator_ColumnVarNameInTable="columnDEPT_NO" msprop:Generator_ColumnPropNameInRow="DEPT_NO" msprop:Generator_ColumnPropNameInTable="DEPT_NOColumn" msprop:Generator_UserColumnName="DEPT_NO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PLANT_CD" msprop:Generator_ColumnVarNameInTable="columnPLANT_CD" msprop:Generator_ColumnPropNameInRow="PLANT_CD" msprop:Generator_ColumnPropNameInTable="PLANT_CDColumn" msprop:Generator_UserColumnName="PLANT_CD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PJOB_CD" msprop:Generator_ColumnVarNameInTable="columnPJOB_CD" msprop:Generator_ColumnPropNameInRow="PJOB_CD" msprop:Generator_ColumnPropNameInTable="PJOB_CDColumn" msprop:Generator_UserColumnName="PJOB_CD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="JOIN_DT" msprop:Generator_ColumnVarNameInTable="columnJOIN_DT" msprop:Generator_ColumnPropNameInRow="JOIN_DT" msprop:Generator_ColumnPropNameInTable="JOIN_DTColumn" msprop:Generator_UserColumnName="JOIN_DT" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="EMP_CD" msprop:Generator_ColumnVarNameInTable="columnEMP_CD" msprop:Generator_ColumnPropNameInRow="EMP_CD" msprop:Generator_ColumnPropNameInTable="EMP_CDColumn" msprop:Generator_UserColumnName="EMP_CD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="WS_CD" msprop:Generator_ColumnVarNameInTable="columnWS_CD" msprop:Generator_ColumnPropNameInRow="WS_CD" msprop:Generator_ColumnPropNameInTable="WS_CDColumn" msprop:Generator_UserColumnName="WS_CD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="WORK_YEARS" msprop:Generator_ColumnVarNameInTable="columnWORK_YEARS" msprop:Generator_ColumnPropNameInRow="WORK_YEARS" msprop:Generator_ColumnPropNameInTable="WORK_YEARSColumn" msprop:Generator_UserColumnName="WORK_YEARS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FESTIVAL_TYPE_NAME" msprop:Generator_ColumnVarNameInTable="columnFESTIVAL_TYPE_NAME" msprop:Generator_ColumnPropNameInRow="FESTIVAL_TYPE_NAME" msprop:Generator_ColumnPropNameInTable="FESTIVAL_TYPE_NAMEColumn" msprop:Generator_UserColumnName="FESTIVAL_TYPE_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="節金金額" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column節金金額" msprop:Generator_ColumnPropNameInRow="節金金額" msprop:Generator_ColumnPropNameInTable="節金金額Column" msprop:Generator_UserColumnName="節金金額" type="xs:decimal" minOccurs="0" />
+              <xs:element name="稅額" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column稅額" msprop:Generator_ColumnPropNameInRow="稅額" msprop:Generator_ColumnPropNameInTable="稅額Column" msprop:Generator_UserColumnName="稅額" type="xs:decimal" minOccurs="0" />
+              <xs:element name="實領金額" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="column實領金額" msprop:Generator_ColumnPropNameInRow="實領金額" msprop:Generator_ColumnPropNameInTable="實領金額Column" msprop:Generator_UserColumnName="實領金額" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

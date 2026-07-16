@@ -1,0 +1,100 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="../../Scripts/Basic.js"></script>
+    <script type="text/javascript">
+        $('html').bind('keypress', function (e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
+        });
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager" runat="server" AsyncPostBackTimeout="3600"></asp:ScriptManager>
+        <table width="1024" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" height="100%">
+            <tr>
+                <td>
+                    <!-- Table 1.0 Start -->
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="PageHeader">
+                        <tr>
+                            <td width="50%" height="40">FB2 人事系統</td>
+
+                            <td width="50%" height="25" align="right">
+                                <img src="../../images/toyotaLogo.gif"  width="250" height="40">
+                            </td>
+
+                        </tr>
+                    </table>
+                    <!-- Table 1.0 Start -->
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <!-- Table 1.1 Start -->
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr class="UserInfoBar">
+                            <td width="50%" height="20">
+                                <strong>
+                                    <a href="#" onclick="javascript:window.close()" />
+                                    Close
+                                </strong>
+                            </td>
+
+                            <td width="50%">
+                                <div align="right">
+                                    <strong>
+                                        <asp:Label ID="lb_emp_name" runat="server" Text=""></asp:Label>
+                                    </strong>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- Table 1.1 Start -->
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr class="ScreenInfoBar">
+                            <td width="50%" height="20">
+                                <strong>
+                                    <asp:Label ID="lb_fun_name" runat="server" Text=""></asp:Label>
+                                </strong>
+
+                            </td>
+
+                            <td width="50%">
+                                <div align="right">
+                                    <strong>
+                                        <asp:Label ID="lb_login_time" runat="server" Text=""></asp:Label>
+                                    </strong>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!-- message -->
+                    <div align="left">
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

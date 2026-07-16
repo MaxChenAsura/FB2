@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsSF130" targetNamespace="http://tempuri.org/dsSF130.xsd" xmlns:mstns="http://tempuri.org/dsSF130.xsd" xmlns="http://tempuri.org/dsSF130.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="dbconnection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dbconnection (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.dbconnection.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SF130PDFTableAdapter" GeneratorDataComponentClassName="SF130PDFTableAdapter" Name="SF130PDF" UserDataComponentName="SF130PDFTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dbconnection (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="dssf130" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="dssf130" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="dssf130" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select a.SALARY_DT,c.VENDOR_ID,b.SALARY_NAME,a.AMOUNT, a.ACCT_ID  from TB_S_M_ALLOCATION_D a
+left join VW_SALARYAND9999 b on b.SALARY_ID=a.PAY_KIND
+left join TB_S_M_ARREARS_TARGET c on a.EMP_ID=c.EMP_ID and a.DOC_NO=c.DOC_NO and a.SEQ=c.SEQ</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="VENDOR_ID" DataSetColumn="VENDOR_ID" />
+              <Mapping SourceColumn="SALARY_NAME" DataSetColumn="SALARY_NAME" />
+              <Mapping SourceColumn="AMOUNT" DataSetColumn="AMOUNT" />
+              <Mapping SourceColumn="SALARY_DT" DataSetColumn="SALARY_DT" />
+              <Mapping SourceColumn="ACCT_ID" DataSetColumn="ACCT_ID" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsSF130" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsSF130" msprop:Generator_UserDSName="dsSF130">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SF130PDF" msprop:Generator_TableClassName="SF130PDFDataTable" msprop:Generator_TableVarName="tableSF130PDF" msprop:Generator_TablePropName="SF130PDF" msprop:Generator_RowDeletingName="SF130PDFRowDeleting" msprop:Generator_RowChangingName="SF130PDFRowChanging" msprop:Generator_RowEvHandlerName="SF130PDFRowChangeEventHandler" msprop:Generator_RowDeletedName="SF130PDFRowDeleted" msprop:Generator_UserTableName="SF130PDF" msprop:Generator_RowChangedName="SF130PDFRowChanged" msprop:Generator_RowEvArgName="SF130PDFRowChangeEvent" msprop:Generator_RowClassName="SF130PDFRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="VENDOR_ID" msprop:Generator_ColumnVarNameInTable="columnVENDOR_ID" msprop:Generator_ColumnPropNameInRow="VENDOR_ID" msprop:Generator_ColumnPropNameInTable="VENDOR_IDColumn" msprop:Generator_UserColumnName="VENDOR_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SALARY_NAME" msprop:Generator_ColumnVarNameInTable="columnSALARY_NAME" msprop:Generator_ColumnPropNameInRow="SALARY_NAME" msprop:Generator_ColumnPropNameInTable="SALARY_NAMEColumn" msprop:Generator_UserColumnName="SALARY_NAME" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AMOUNT" msprop:Generator_ColumnVarNameInTable="columnAMOUNT" msprop:Generator_ColumnPropNameInRow="AMOUNT" msprop:Generator_ColumnPropNameInTable="AMOUNTColumn" msprop:Generator_UserColumnName="AMOUNT" type="xs:decimal" />
+              <xs:element name="SALARY_DT" msprop:Generator_ColumnVarNameInTable="columnSALARY_DT" msprop:Generator_ColumnPropNameInRow="SALARY_DT" msprop:Generator_ColumnPropNameInTable="SALARY_DTColumn" msprop:Generator_UserColumnName="SALARY_DT" type="xs:dateTime" />
+              <xs:element name="ACCT_ID" msprop:Generator_ColumnVarNameInTable="columnACCT_ID" msprop:Generator_ColumnPropNameInRow="ACCT_ID" msprop:Generator_ColumnPropNameInTable="ACCT_IDColumn" msprop:Generator_UserColumnName="ACCT_ID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="16" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
