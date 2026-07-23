@@ -2396,7 +2396,7 @@
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:TextBox ID="txt_EFFECT_EDT" runat="server" Text='<%#Bind("EFFECT_EDT", "{0:yyyy/MM/dd}")%>' ClientIDMode="Static" CssClass="date" Width="90px"></asp:TextBox>
-                                        <asp:CustomValidator ID="CustomValidatorEFFECT_EDT_5" runat="server" ValidateEmptyText="true"
+                                        <asp:CustomValidator ID="SH310" runat="server" ValidateEmptyText="true"
                                             ErrorMessage="<%$Resources:Resource,wfb2ia_ERR_EFFECT_EDATE%>" ClientValidationFunction="CheckDate" ForeColor="Red"
                                             ControlToValidate="txt_EFFECT_EDT" ValidationGroup="GroupF" Display="None">
                                         </asp:CustomValidator>

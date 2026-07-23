@@ -7,10 +7,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class WebContent_WFB2SH0100_Qry : BasePage
+public partial class WebContent_WFB2SH3100_Qry : BasePage
 {
     //宣告BO 物件
-    private CFB2SH0100BO sh010BO = new CFB2SH0100BO();
+    private CFB2SH3100BO sh310BO = new CFB2SH3100BO();
 
     //.NET的初始功能
     protected void Page_Load(object sender, EventArgs e)
@@ -43,7 +43,7 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
     {
         try
         {
-            DataTable dt = new DataTable();
+           /** DataTable dt = new DataTable();
             //dt = dj030BO.getEnvType();
             dt = utilities.getCommCode("HB", "WS_CD", "", "");
             ddl_WS_CD.Items.Add(new ListItem("", "-1"));//加個空白的預設值(text='',value='-1')
@@ -53,7 +53,7 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
                 {
                     ddl_WS_CD.Items.Add(new ListItem(dt.Rows[i]["sub_desc"].ToString(), dt.Rows[i]["sub_cd"].ToString()));
                 }
-            }
+            }**/
         }
         catch (Exception ex)
         {
@@ -81,13 +81,13 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
 
             //取得預設排序，傳入預設排序欄位
             if (ViewState["SortExpression"] == null)
-                getSortDirection("LEVEL_CD ASC, AWARD  ASC, AWARD_BASE ", "DESC");//序號的順序，不用寫order by, 在此排序('欄位A ASC, 欄位B '  DESC)
+                getSortDirection("PJOB_CD,AWARD ", "DESC");//序號的順序，不用寫order by, 在此排序('欄位A ASC, 欄位B '  DESC)
 
             //GridView基本設定
             gv_result.PageIndex = 0;  //初始頁
             gv_result.PageSize = pagesize;
             gv_result.DataSourceID = "ods1";
-            gv_result.DataKeyNames = new string[] { "LEVEL_CD", "WS_CD", "AWARD" }; //設定GridView Key
+            gv_result.DataKeyNames = new string[] { "PJOB_CD", "AWARD" }; //設定GridView Key
             gv_result.DataBind();
             
             HID_PageRow.Value = ""; //GridView有分頁此段必加
@@ -111,7 +111,7 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
             gv_result.PageSize = 10;
 
         gv_result.DataSourceID = "ods1";
-        gv_result.DataKeyNames = new string[] { "LEVEL_CD", "WS_CD", "AWARD" }; //設定GridView Key
+        gv_result.DataKeyNames = new string[] {  "PJOB_CD", "AWARD"}; //設定GridView Key
         getSortDirection(e.SortExpression);
         //end
     }
@@ -167,42 +167,7 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
         //設定新增列的下拉選單值
         if (e.Row.RowType == DataControlRowType.EmptyDataRow || e.Row.RowType == DataControlRowType.Footer)
         {
-            //資格
-            DataTable dt = new DataTable();
-            DropDownList ddl = new DropDownList();
-            ddl = (DropDownList)e.Row.FindControl("ddl_NEW_LEVEL_CD");
-            ddl.Items.Add(new ListItem("", ""));//加個空白的預設值(text='',value='-1')
-            dt = sh010BO.getEMPLevelData();
-            if (dt.Rows.Count > 0)
-            {
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    ddl.Items.Add(new ListItem(dt.Rows[i]["level"].ToString(), dt.Rows[i]["level"].ToString()));
-                }
-            }
-
-            //職種
-            ddl = (DropDownList)e.Row.FindControl("ddl_NEW_WS_CD");
-            ddl.Items.Add(new ListItem("", ""));//加個空白的預設值(text='',value='-1')
-            dt = utilities.getCommCode("HB", "WS_CD", "", "");
-            if (dt.Rows.Count > 0)
-            {
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    ddl.Items.Add(new ListItem(dt.Rows[i]["sub_desc"].ToString(), dt.Rows[i]["sub_cd"].ToString()));
-                }
-            }
-
-            //考績
-            ddl = (DropDownList)e.Row.FindControl("ddl_NEW_AWARD");
-            dt = utilities.getCommCode("SJ", "ASSESS_SCORE", "", "");
-            if (dt.Rows.Count > 0)
-            {
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    ddl.Items.Add(new ListItem(dt.Rows[i]["sub_cd"].ToString(), dt.Rows[i]["sub_cd"].ToString()));
-                }
-            }
+           
 
         }
 
@@ -290,15 +255,13 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
     #region button 事件
 
     //查詢功能
-    protected void WFB2SH0100Search_Click(object sender, EventArgs e)
+    protected void WFB2SH3100Search_Click(object sender, EventArgs e)
     {
         try
         {
             ViewState["Queryble"] = true;
             //把查詢值傳到hidden的查詢條件
-            hid_qry_AWARD.Value = txt_AWARD.Text;
-            hid_qry_LEVEL_CD.Value = txt_LEVEL_CD.Text;
-            hid_qry_WS_CD.Value = ddl_WS_CD.SelectedValue;
+            hid_qry_PJOB_CD.Value = txt_PJOB_CD.Text;
 
 
             ViewState["SetPerRow"] = true; //GridView有分頁需加這行，設定每頁幾筆變數
@@ -309,9 +272,9 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
             //GridView有分頁此段必加 begin
             if (ViewState["PerPageRow"] != null && ViewState["PerPageRow"].ToString() != "")
                 //
-                getGridView("LEVEL_CD", 0, Convert.ToInt32(ViewState["PerPageRow"]));
+                getGridView("PJOB_CD,AWARD", 0, Convert.ToInt32(ViewState["PerPageRow"]));
             else
-                getGridView("LEVEL_CD", 0, 10);
+                getGridView("PJOB_CD,AWARD", 0, 10);
             //end
 
             //不顯示編輯列及新增列
@@ -321,16 +284,16 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
             if (gv_result.Rows.Count == 0)
             {
                 gv_result.Visible = false;
-                WFB2SH0100Delete.Visible = false;
-                WFB2SH0100Edit.Visible = false;
+                WFB2SH3100Delete.Visible = false;
+                WFB2SH3100Edit.Visible = false;
                 ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('查無資料!');", true);
                 return;
             }
             if (gv_result.Rows.Count > 0)
             {
-                WFB2SH0100Add.Visible = true;
-                WFB2SH0100Delete.Visible = true;
-                WFB2SH0100Edit.Visible = true;
+                WFB2SH3100Add.Visible = true;
+                WFB2SH3100Delete.Visible = true;
+                WFB2SH3100Edit.Visible = true;
                 HID_Freeze.Value = "Y";
             }
 
@@ -343,32 +306,32 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
     }
 
     //新增
-    protected void WFB2SH0100Add_Click(object sender, EventArgs e)
+    protected void WFB2SH3100Add_Click(object sender, EventArgs e)
     {
         try
         {
             gv_result.PagerSettings.Visible = false;   //隱藏GRID的頁碼
             
             //查詢,清除的按鈕disabled
-            WFB2SH0100Search.Enabled = false;
+            WFB2SH3100Search.Enabled = false;
             btn_clear.Disabled = true;
             
             //畫面重新整理
             if (ViewState["PerPageRow"] != null && ViewState["PerPageRow"].ToString() != "")
-                getGridView("LEVEL_CD", 0, Convert.ToInt32(ViewState["PerPageRow"]));
+                getGridView("PJOB_CD,AWARD", 0, Convert.ToInt32(ViewState["PerPageRow"]));
             else
-                getGridView("LEVEL_CD", 0, 10);
+                getGridView("PJOB_CD,AWARD", 0, 10);
 
             //相關按鈕show, hide
-            WFB2SH0100Search.Enabled = false;
+            WFB2SH3100Search.Enabled = false;
             btn_clear.Disabled = true;
 
-            WFB2SH0100Ok.Visible = true;
+            WFB2SH3100Save.Visible = true;
             btn_cancel.Visible = true;
 
-            WFB2SH0100Add.Visible = false;
-            WFB2SH0100Edit.Visible = false;
-            WFB2SH0100Delete.Visible = false;
+            WFB2SH3100Add.Visible = false;
+            WFB2SH3100Edit.Visible = false;
+            WFB2SH3100Delete.Visible = false;
             gv_result.EditIndex = -1;
             gv_result.ShowFooter = true;
             gv_result.Visible = true;
@@ -390,7 +353,7 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
     }
 
     //修改功能
-    protected void WFB2SH0100Edit_Click(object sender, EventArgs e)
+    protected void WFB2SH3100Edit_Click(object sender, EventArgs e)
     {
         try
         {
@@ -416,15 +379,15 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
             }
 			
             //隱藏查詢清除按鈕
-            WFB2SH0100Search.Enabled = false;
+            WFB2SH3100Search.Enabled = false;
             btn_clear.Disabled = true;
 
-            WFB2SH0100Ok.Visible = true;
+            WFB2SH3100Save.Visible = true;
             btn_cancel.Visible = true;
 
-            WFB2SH0100Add.Visible = false;
-            WFB2SH0100Edit.Visible = false;
-            WFB2SH0100Delete.Visible = false;
+            WFB2SH3100Add.Visible = false;
+            WFB2SH3100Edit.Visible = false;
+            WFB2SH3100Delete.Visible = false;
             HID_Freeze.Value = "N";
 
         }
@@ -439,26 +402,25 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
     }
 
     //刪除
-    protected void WFB2SH0100Delete_Click(object sender, EventArgs e)
+    protected void WFB2SH3100Delete_Click(object sender, EventArgs e)
     {
         try
         {
             //存放PK值,(適用於PK值只有一個的情形)
             //List<string> envKey = new List<string>();
             //多個PK值使用
-            List<Tuple<string, string, string>> keysList = new List<Tuple<string, string, string>>();
+            List<Tuple<string, string>> keysList = new List<Tuple<string, string>>();
             for (int i = 0; i < this.gv_result.Rows.Count; i++)
             {
                 if (((CheckBox)gv_result.Rows[i].FindControl("cb_check")).Checked)
                 {
-                    keysList.Add(new Tuple<string, string, string>(gv_result.DataKeys[i].Values["LEVEL_CD"].ToString()
-                                                         , gv_result.DataKeys[i].Values["WS_CD"].ToString()
-                                                         , gv_result.DataKeys[i].Values["AWARD"].ToString()));
+                    keysList.Add(new Tuple<string, string>(gv_result.DataKeys[i].Values["PJOB_CD"].ToString()
+                                                         , gv_result.DataKeys[i].Values["AWARD"].ToString()             ));
                 }
             }
 
 
-            string msg = sh010BO.deleteData(keysList);
+            string msg = sh310BO.deleteITEM(keysList);
 
             
             //成功刪除的訊息
@@ -500,35 +462,31 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
     }
 
     //確認
-    protected void WFB2SH0100OK_Click(object sender, EventArgs e)
+    protected void WFB2SH3100SAVE_Click(object sender, EventArgs e)
     {
        
         try
         {
-            CFB2SH0100DAO sh010DAO ;
+            CFB2SH3100DAO sh310DAO ;
             //無筆數新增(DB無資料時-差別在於抓資料的方法不一樣)
             if (gv_result.Rows.Count == 0)
             {
 
-                DropDownList ddl_NEW_LEVEL_CD = (DropDownList)gv_result.Controls[0].Controls[0].FindControl("ddl_NEW_LEVEL_CD");
-                DropDownList ddl_NEW_WS_CD = (DropDownList)gv_result.Controls[0].Controls[0].FindControl("ddl_NEW_WS_CD");
-                DropDownList ddl_NEW_AWARD = (DropDownList)gv_result.Controls[0].Controls[0].FindControl("ddl_NEW_AWARD");
-                TextBox txt_NEW_AWARD_BASE = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD_BASE");
-                TextBox txt_NEW_AWARD_DESC = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD_DESC");
+                TextBox PJOB_CD = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_PJOB_CD");
+                TextBox AWARD = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD");
+                TextBox AWARD_DIFFER = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD_DIFFER");
+                TextBox AWARD_DESC = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD_DESC");
 
-                sh010DAO = new CFB2SH0100DAO();
-                sh010DAO = new CFB2SH0100DAO();
-                sh010DAO.LEVEL_CD = ddl_NEW_LEVEL_CD.SelectedValue;
-                sh010DAO.WS_CD = ddl_NEW_WS_CD.SelectedValue;
-                sh010DAO.AWARD = ddl_NEW_AWARD.SelectedValue;
-                sh010DAO.AWARD_BASE = txt_NEW_AWARD_BASE.Text;
-                sh010DAO.AWARD_DESC = txt_NEW_AWARD_DESC.Text;
+                CFB2SH3100DAO wfb2sh = new CFB2SH3100DAO();
+                wfb2sh.PJOB_CD = PJOB_CD.Text;
+                wfb2sh.AWARD = AWARD.Text;
+                wfb2sh.AWARD_DIFFER = Convert.ToDecimal(AWARD_DIFFER.Text);
+                wfb2sh.AWARD_DESC = AWARD_DESC.Text;
+                wfb2sh.CREATED_BY = SessionHandle.Current.emp_id;
+                wfb2sh.UPDATED_BY = SessionHandle.Current.emp_id;
+                wfb2sh.FUNC_ID = "FB2SH310";
 
-                sh010DAO.CREATED_BY = SessionHandle.Current.emp_id;
-                sh010DAO.UPDATED_BY = SessionHandle.Current.emp_id;
-                sh010DAO.FUNC_ID = "FB2SH010";
-
-                string msg = sh010BO.insertData(sh010DAO);
+                string msg = sh310BO.addAwardITEM(wfb2sh);
                 if (msg != "0")
                 {
                     gv_result.PagerSettings.Visible = false;   //隱藏GRID的頁碼
@@ -547,24 +505,22 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
                 if (gv_result.EditIndex == -1)
                 {
 
-                    DropDownList ddl_NEW_LEVEL_CD = (DropDownList)gv_result.FooterRow.FindControl("ddl_NEW_LEVEL_CD");
-                    DropDownList ddl_NEW_WS_CD = (DropDownList)gv_result.FooterRow.FindControl("ddl_NEW_WS_CD");
-                    DropDownList ddl_NEW_AWARD = (DropDownList)gv_result.FooterRow.FindControl("ddl_NEW_AWARD");
-                    TextBox txt_NEW_AWARD_BASE = (TextBox)gv_result.FooterRow.FindControl("txt_NEW_AWARD_BASE");
-                    TextBox txt_NEW_AWARD_DESC = (TextBox)gv_result.FooterRow.FindControl("txt_NEW_AWARD_DESC");
+                    TextBox PJOB_CD = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_PJOB_CD");
+                    TextBox AWARD = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD");
+                    TextBox AWARD_DIFFER = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD_DIFFER");
+                    TextBox AWARD_DESC = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD_DESC");
 
-                    sh010DAO = new CFB2SH0100DAO();
-                    sh010DAO.LEVEL_CD = ddl_NEW_LEVEL_CD.SelectedValue;
-                    sh010DAO.WS_CD = ddl_NEW_WS_CD.SelectedValue;
-                    sh010DAO.AWARD = ddl_NEW_AWARD.SelectedValue;
-                    sh010DAO.AWARD_BASE = txt_NEW_AWARD_BASE.Text;
-                    sh010DAO.AWARD_DESC = txt_NEW_AWARD_DESC.Text;
+                    CFB2SH3100DAO wfb2sh = new CFB2SH3100DAO();
+                    wfb2sh.PJOB_CD = PJOB_CD.Text;
+                    wfb2sh.AWARD = AWARD.Text;
+                    wfb2sh.AWARD_DIFFER = Convert.ToDecimal(AWARD_DIFFER.Text);
+                    wfb2sh.AWARD_DESC = AWARD_DESC.Text;
+                    wfb2sh.CREATED_BY = SessionHandle.Current.emp_id;
+                    wfb2sh.UPDATED_BY = SessionHandle.Current.emp_id;
+                    wfb2sh.FUNC_ID = "FB2SH310";
 
-                    sh010DAO.CREATED_BY = SessionHandle.Current.emp_id;
-                    sh010DAO.UPDATED_BY = SessionHandle.Current.emp_id;
-                    sh010DAO.FUNC_ID = "FB2SH010";
-
-                    string msg = sh010BO.insertData(sh010DAO);
+                    string msg = sh310BO.addAwardITEM(wfb2sh);
+                    
                     if (msg != "0")
                     {
                         gv_result.PagerSettings.Visible = false;   //隱藏GRID的頁碼
@@ -580,24 +536,23 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
                 else
                 {
                     //更新
-                    sh010DAO = new CFB2SH0100DAO();
+                    sh310DAO = new CFB2SH3100DAO();
 
                     //可以修改的值
-                    TextBox txt_EDIT_AWARD_BASE = (TextBox)gv_result.Rows[gv_result.EditIndex].FindControl("txt_EDIT_AWARD_BASE");
+                    TextBox txt_EDIT_AWARD_DIFFER = (TextBox)gv_result.Rows[gv_result.EditIndex].FindControl("txt_EDIT_AWARD_DIFFER ");
                     TextBox txt_EDIT_AWARD_DESC = (TextBox)gv_result.Rows[gv_result.EditIndex].FindControl("txt_EDIT_AWARD_DESC");
-                    sh010DAO.AWARD_BASE = txt_EDIT_AWARD_BASE.Text.Replace(",", "");
-                    sh010DAO.AWARD_DESC = txt_EDIT_AWARD_DESC.Text;
+                    sh310DAO.AWARD_DIFFER =Convert.ToDecimal( txt_EDIT_AWARD_DIFFER.Text.Replace(",", ""));
+                    sh310DAO.AWARD_DESC = txt_EDIT_AWARD_DESC.Text;
                    
 
                     //不可修改的值(pk值)
-                    sh010DAO.LEVEL_CD = gv_result.DataKeys[gv_result.EditIndex].Values["LEVEL_CD"].ToString();
-                    sh010DAO.WS_CD = gv_result.DataKeys[gv_result.EditIndex].Values["WS_CD"].ToString();
-                    sh010DAO.AWARD = gv_result.DataKeys[gv_result.EditIndex].Values["AWARD"].ToString();
-                    sh010DAO.CREATED_BY = SessionHandle.Current.emp_id;
-                    sh010DAO.UPDATED_BY = SessionHandle.Current.emp_id;
-                    sh010DAO.FUNC_ID = "FB2SH010";
+                    sh310DAO.PJOB_CD = gv_result.DataKeys[gv_result.EditIndex].Values["PJOB_CD"].ToString();
+                    sh310DAO.AWARD = gv_result.DataKeys[gv_result.EditIndex].Values["AWARD"].ToString();
+                    sh310DAO.CREATED_BY = SessionHandle.Current.emp_id;
+                    sh310DAO.UPDATED_BY = SessionHandle.Current.emp_id;
+                    sh310DAO.FUNC_ID = "FB2SH310";
 					
-                    string msg = sh010BO.updateData(sh010DAO);
+                    string msg = sh310BO.updateAwardITEM(sh310DAO);
                     if (msg != "0")
                     {
                         gv_result.PagerSettings.Visible = false;   //隱藏GRID的頁碼
@@ -619,20 +574,20 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
                 gv_result.PageSize = 10;
 
             gv_result.DataSourceID = "ods1";
-            gv_result.DataKeyNames = new string[] { "LEVEL_CD", "WS_CD", "AWARD" }; //設定GridView Key
+            gv_result.DataKeyNames = new string[] { "PJOB_CD", "AWARD" }; //設定GridView Key
             gv_result.EditIndex = -1;
             gv_result.ShowFooter = false;
 
 
             //enable查詢清除按鈕
-            WFB2SH0100Search.Enabled = true;
+            WFB2SH3100Search.Enabled = true;
             btn_clear.Disabled = false;
 
-            WFB2SH0100Ok.Visible = false;
+            WFB2SH3100Save.Visible = false;
             btn_cancel.Visible = false;
-            WFB2SH0100Add.Visible = true;
-            WFB2SH0100Edit.Visible = true;
-            WFB2SH0100Delete.Visible = true;
+            WFB2SH3100Add.Visible = true;
+            WFB2SH3100Edit.Visible = true;
+            WFB2SH3100Delete.Visible = true;
             HID_Freeze.Value = "Y";
 
         }
@@ -647,7 +602,7 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
     //取消
     protected void btn_cancel_Click(object sender, EventArgs e)
     {
-        WFB2SH0100Search.Enabled = true;
+        WFB2SH3100Search.Enabled = true;
         btn_clear.Disabled = false;
 
         gv_result.EditIndex = -1;
@@ -658,13 +613,13 @@ public partial class WebContent_WFB2SH0100_Qry : BasePage
         }
         else
         {
-            WFB2SH0100Edit.Visible = true;
-            WFB2SH0100Delete.Visible = true;
+            WFB2SH3100Edit.Visible = true;
+            WFB2SH3100Delete.Visible = true;
         }
 
-        WFB2SH0100Ok.Visible = false;
+        WFB2SH3100Save.Visible = false;
         btn_cancel.Visible = false;
-        WFB2SH0100Add.Visible = true;
+        WFB2SH3100Add.Visible = true;
     }
 
     #endregion

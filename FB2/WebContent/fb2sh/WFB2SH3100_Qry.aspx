@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="~/tw/co/toyota/kuozui/fb2sh/WFB2SH0100_Qry.aspx.cs" Inherits="WebContent_WFB2SH0100_Qry" Culture="auto" UICulture="auto" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="~/tw/co/toyota/kuozui/fb2sh/WFB2SH3100_Qry.aspx.cs" Inherits="WebContent_WFB2SH3100_Qry" Culture="auto" UICulture="auto" %>
 
 <%@ Register Assembly="ACESServerControl" Namespace="ACESServerControl" TagPrefix="aces" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -16,7 +16,7 @@
             $(".numFormat").mask('9.999');
             $(".decimal").css("text-align", "right").css("ime-mode", "disabled");
 
-            reComma("AWARD_BASE", 3);
+            //reComma("AWARD_BASE", 3);
             //GridView必須
             gridviewScroll();
             $.unblockUI();
@@ -155,30 +155,28 @@
                     <tr>
                         <th align="left" class="Body_TableHeader">
                             <%--考績--%>
-                            <asp:Label ID="Label10" runat="server" Text="<%$Resources:Resource,wfb2sh_lb_award%>"></asp:Label>:</th>
+                            <asp:Label ID="Label10" runat="server" Text="職務代碼"></asp:Label>:</th>
                         <td align="left" class="Body_label">
-                            <asp:TextBox ID="txt_AWARD" runat="server" Width="100px" ClientIDMode="Static" MaxLength="2"> </asp:TextBox>
+                            <asp:TextBox ID="txt_PJOB_CD" runat="server" Width="100px" ClientIDMode="Static" > </asp:TextBox>
                         </td>
                         <th align="left" class="Body_TableHeader">
-                            <%--資格--%>
-                            <asp:Label ID="Label11" runat="server" Text="<%$Resources:Resource,wfb2sh_lb_level_cd%>"></asp:Label>:</th>
+                           </th>
                         <td align="left" class="Body_label">
-                            <asp:TextBox ID="txt_LEVEL_CD" runat="server" Width="100px" ClientIDMode="Static" MaxLength="3"></asp:TextBox>
+                            
                         </td>
                         <th align="left" class="Body_TableHeader">
-                            <%--職種--%>
-                            <asp:Label ID="Label12" runat="server" Text="<%$Resources:Resource,wfb2sh_lb_ws_cd%>"></asp:Label>:</th>
+                            </th>
                         <td align="left" class="Body_label">
-                            <asp:DropDownList ID="ddl_WS_CD" runat="server" ClientIDMode="Static"></asp:DropDownList>
+                          
                         </td>
                     </tr>
                     <tr>
                         <th></th>
                         <td align="right" colspan="5">
                             
-                            <aces:Btn ID="WFB2SH0100Search" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_search%>" OnClick="WFB2SH0100Search_Click" OnClientClick="CheckSearch();" />
+                            <aces:Btn ID="WFB2SH3100Search" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_search%>" OnClick="WFB2SH3100Search_Click" OnClientClick="CheckSearch();" />
                             <%--
-                            <asp:Button ID="WFB2SH0100Search" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_search%>" OnClick="WFB2SH0100Search_Click" OnClientClick="CheckSearch();" />
+                            <asp:Button ID="WFB2SH3100Search" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_search%>" OnClick="WFB2SH3100Search_Click" OnClientClick="CheckSearch();" />
                              --%>
                             <input id="btn_clear" runat="server" type="button" value="<%$Resources:Resource,wfb2sh_btn_clear%>" onclick="ClearAll();" />
                         </td>
@@ -192,18 +190,18 @@
                         <td align="right" class="Body_label" colspan="6">
                             <div id="init_grid">
 
-                                <aces:Btn ID="WFB2SH0100Add" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_add%>" Visible="true" OnClick="WFB2SH0100Add_Click" />
-                                <aces:Btn ID="WFB2SH0100Delete" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_delete%>" Visible="false" OnClick="WFB2SH0100Delete_Click" OnClientClick="return doDelete();" />
-                                <aces:Btn ID="WFB2SH0100Edit" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_edit%>" Visible="false" OnClick="WFB2SH0100Edit_Click" OnClientClick="BlockUI();" />
-                                <aces:Btn ID="WFB2SH0100Ok" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_ok%>" Visible="false" OnClick="WFB2SH0100OK_Click" OnClientClick="return saveCheck()" />
+                                <aces:Btn ID="WFB2SH3100Add" runat="server" Text="新增" Visible="true" OnClick="WFB2SH3100Add_Click" />
+                                <aces:Btn ID="WFB2SH3100Delete" runat="server" Text="刪除" Visible="false" OnClick="WFB2SH3100Delete_Click" OnClientClick="return doDelete();" />
+                                <aces:Btn ID="WFB2SH3100Edit" runat="server" Text="修改" Visible="false" OnClick="WFB2SH3100Edit_Click" OnClientClick="BlockUI();" />
+                                <aces:Btn ID="WFB2SH3100Save" runat="server" Text="確認" Visible="false" OnClick="WFB2SH3100SAVE_Click" OnClientClick="return saveCheck()" />
                                 <%--
-                                <asp:Button ID="WFB2SH0100Add" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_add%>" Visible="true" OnClick="WFB2SH0100Add_Click"  />
-                                <asp:Button ID="WFB2SH0100Delete" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_delete%>" Visible="false" OnClick="WFB2SH0100Delete_Click" OnClientClick="return doDelete();" />
-                                <asp:Button ID="WFB2SH0100Edit" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_edit%>" Visible="false" OnClick="WFB2SH0100Edit_Click" OnClientClick="BlockUI();" />
-                                <asp:Button ID="WFB2SH0100OK" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_ok%>" Visible="false"  OnClick="WFB2SH0100OK_Click" OnClientClick="return saveCheck()"/>
+                                <asp:Button ID="WFB2SH3100Add" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_add%>" Visible="true" OnClick="WFB2SH3100Add_Click"  />
+                                <asp:Button ID="WFB2SH3100Delete" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_delete%>" Visible="false" OnClick="WFB2SH3100Delete_Click" OnClientClick="return doDelete();" />
+                                <asp:Button ID="WFB2SH3100Edit" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_edit%>" Visible="false" OnClick="WFB2SH3100Edit_Click" OnClientClick="BlockUI();" />
+                                <asp:Button ID="WFB2SH3100OK" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_ok%>" Visible="false"  OnClick="WFB2SH3100OK_Click" OnClientClick="return saveCheck()"/>
                                 --%>
 
-                                <asp:Button ID="btn_cancel" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_cancel%>" Visible="false" OnClientClick="return confirm('是否確定取消?');" OnClick="btn_cancel_Click" />
+                                <asp:Button ID="btn_cancel" runat="server" Text="清除" Visible="false" OnClientClick="return confirm('是否確定取消?');" OnClick="btn_cancel_Click" />
                             </div>
                         </td>
                     </tr>
@@ -211,19 +209,16 @@
             </table>
 
 
-            <asp:ObjectDataSource ID="ods1" runat="server" SelectMethod="getData"
-                SelectCountMethod="getCount" TypeName="CFB2SH0100DAO" EnablePaging="True"
+            <asp:ObjectDataSource ID="ods1" runat="server" SelectMethod="getAward_Data"
+                SelectCountMethod="getAwardCount" TypeName="CFB2SH3100DAO" EnablePaging="True"
                 SortParameterName="sortExpression" OnSelecting="obs1_Selecting"
                 OnSelected="ods1_Selected">
                 <SelectParameters>
                     <asp:Parameter Name="startRowIndex" Type="Int32" />
                     <asp:Parameter Name="maximumRows" Type="Int32" />
-                    <asp:ControlParameter ControlID="hid_qry_AWARD"
-                        Name="award" PropertyName="Value" Type="String" ConvertEmptyStringToNull="False" />
-                    <asp:ControlParameter ControlID="hid_qry_LEVEL_CD"
-                        Name="level_cd" PropertyName="Value" Type="String" ConvertEmptyStringToNull="False" />
-                    <asp:ControlParameter ControlID="hid_qry_WS_CD"
-                        Name="ws_cd" PropertyName="Value" Type="String" ConvertEmptyStringToNull="False" />
+                    <asp:ControlParameter ControlID="txt_PJOB_CD"
+                        Name="pjob_cd" PropertyName="Text" Type="String" ConvertEmptyStringToNull="False" />
+                   
                 </SelectParameters>
             </asp:ObjectDataSource>
             <asp:GridView ID="gv_result" runat="server" AllowPaging="True" AllowSorting="True" ClientIDMode="Static"
@@ -240,7 +235,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <%--序號--%>
-                    <asp:TemplateField HeaderText="<%$Resources:Resource,wfb2sh_lb_rownumber%>" HeaderStyle-Width="40px">
+                    <asp:TemplateField HeaderText="序號" HeaderStyle-Width="40px">
                         <ItemTemplate>
                             <asp:Label ID="lb_RowNumber" runat="server" Text='<%#Bind("RowNumber")%>' Width="40px"></asp:Label>
                         </ItemTemplate>
@@ -250,32 +245,32 @@
                         <FooterTemplate>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <%--資格--%>
-                    <asp:TemplateField HeaderText="<%$Resources:Resource,wfb2sh_lb_level_cd%>" HeaderStyle-Width="80px" ItemStyle-HorizontalAlign="Left" SortExpression="LEVEL_CD">
+                    <%--職務代碼--%>
+                    <asp:TemplateField HeaderText="職務代碼" HeaderStyle-Width="80px" ItemStyle-HorizontalAlign="Left" SortExpression="PJOB_CD">
                         <ItemTemplate>
-                            <asp:Label ID="lb_LEVEL_CD" runat="server" Text='<%#Bind("LEVEL_CD")%>' Width="80px"></asp:Label>
+                            <asp:Label ID="lb_PJOB_CD" runat="server" Text='<%#Bind("PJOB_CD")%>' Width="80px"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:Label ID="lb_LEVEL_CD" runat="server" Text='<%#Bind("LEVEL_CD")%>' Width="80px"></asp:Label>
+                            <asp:Label ID="lb_PJOB_CD" runat="server" Text='<%#Bind("PJOB_CD")%>' Width="80px"></asp:Label>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:DropDownList ID="ddl_NEW_LEVEL_CD" runat="server" ClientIDMode="Static"></asp:DropDownList>
+                            <asp:TextBox ID="txt_NEW_PJOB_CD" runat="server" Text='<%#Bind("PJOB_CD")%>' ClientIDMode="Static" Width="100px" ></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <%--職種--%>
-                    <asp:TemplateField HeaderText="<%$Resources:Resource,wfb2sh_lb_ws_cd%>" HeaderStyle-Width="100px" ItemStyle-HorizontalAlign="Left" SortExpression="WS_CD">
+                    <%--職務名稱--%>
+                    <asp:TemplateField HeaderText="職務名稱" HeaderStyle-Width="100px" ItemStyle-HorizontalAlign="Left" SortExpression="WS_CD">
                         <ItemTemplate>
-                            <asp:Label ID="lb_WS_CD" runat="server" Text='<%#Bind("WS_CD_DESC")%>' Width="100px"></asp:Label>
+                            <asp:Label ID="lb_PJOB_NAME" runat="server" Text='<%#Bind("PJOB_NAME")%>' Width="100px"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:Label ID="lb_WS_CD" runat="server" Text='<%#Bind("WS_CD_DESC")%>' Width="100px"></asp:Label>
+                            <asp:Label ID="lb_PJOB_NAME" runat="server" Text='<%#Bind("PJOB_NAME")%>' Width="100px"></asp:Label>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:DropDownList ID="ddl_NEW_WS_CD" runat="server" ClientIDMode="Static"></asp:DropDownList>
+                            <asp:Label ID="lb_PJOB_NAME" runat="server" Text='<%#Bind("PJOB_NAME")%>' Width="100px"></asp:Label>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <%--考績--%>
-                    <asp:TemplateField HeaderText="<%$Resources:Resource,wfb2sh_lb_award%>" HeaderStyle-Width="80px" ItemStyle-HorizontalAlign="Left" SortExpression="AWARD">
+                    <asp:TemplateField HeaderText="考績" HeaderStyle-Width="80px" ItemStyle-HorizontalAlign="Left" SortExpression="AWARD">
                         <ItemTemplate>
                             <asp:Label ID="lb_AWARD" runat="server" Text='<%#Bind("AWARD")%>' Width="80px"></asp:Label>
                         </ItemTemplate>
@@ -283,27 +278,27 @@
                             <asp:Label ID="lb_AWARD" runat="server" Text='<%#Bind("AWARD")%>' Width="80px"></asp:Label>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:DropDownList ID="ddl_NEW_AWARD" runat="server" ClientIDMode="Static" CssClass="MandatoryField" Width="80px"></asp:DropDownList>
+                           <asp:TextBox ID="txt_NEW_AWARD" runat="server" Text='<%#Bind("PJOB_CD")%>' ClientIDMode="Static" Width="100px" ></asp:TextBox>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <%--年終格差--%>
-                    <asp:TemplateField HeaderText="<%$Resources:Resource,wfb2sh_lb_award_base%>" HeaderStyle-Width="100px" ItemStyle-HorizontalAlign="Right" SortExpression="AWARD_BASE">
+                    <asp:TemplateField HeaderText="年獎格差" HeaderStyle-Width="100px" ItemStyle-HorizontalAlign="Right" SortExpression="AWARD_BASE">
                         <ItemTemplate>
-                            <asp:Label ID="lb_AWARD_BASE" runat="server" Text='<%#Bind("AWARD_BASE")%>' Width="100px"></asp:Label>
+                            <asp:Label ID="lb_AWARD_DIFFER" runat="server" Text='<%#Bind("AWARD_DIFFER")%>' Width="100px"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txt_EDIT_AWARD_BASE" runat="server" Text='<%#Bind("AWARD_BASE")%>' ClientIDMode="Static" Width="100px" CssClass="MandatoryField numFormat  decimal"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="EDIT_AWARD_BASE" runat="server" ErrorMessage="<%$Resources:Resource,wfb2sh_required_award_base%>"
-                                ControlToValidate="txt_EDIT_AWARD_BASE" ForeColor="Red" ValidationGroup="GroupA" Display="None"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txt_EDIT_AWARD_DIFFER" runat="server" Text='<%#Bind("AWARD_DIFFER")%>' ClientIDMode="Static" Width="100px" CssClass="MandatoryField numFormat  decimal"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="EDIT_AWARD_DIFFER" runat="server" ErrorMessage="年獎格差不可為空白"
+                                ControlToValidate="txt_EDIT_AWARD_DIFFER" ForeColor="Red" ValidationGroup="GroupA" Display="None"></asp:RequiredFieldValidator>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="txt_NEW_AWARD_BASE" runat="server" ClientIDMode="Static" Width="100px" CssClass="MandatoryField numFormat  decimal"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="NEW_AWARD_BASE" runat="server" ErrorMessage="<%$Resources:Resource,wfb2sh_required_award_base%>"
-                                ControlToValidate="txt_NEW_AWARD_BASE" ForeColor="Red" ValidationGroup="GroupA" Display="None"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txt_NEW_AWARD_DIFFER" runat="server" ClientIDMode="Static" Width="100px" CssClass="MandatoryField numFormat  decimal"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="NEW_AWARD_DIFFER" runat="server" ErrorMessage="<%$Resources:Resource,wfb2sh_required_award_base%>"
+                                ControlToValidate="txt_NEW_AWARD_DIFFER" ForeColor="Red" ValidationGroup="GroupA" Display="None"></asp:RequiredFieldValidator>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <%--年終格差說明--%>
-                    <asp:TemplateField HeaderText="<%$Resources:Resource,wfb2sh_lb_award_desc%>" HeaderStyle-Width="500px" ItemStyle-HorizontalAlign="Left" SortExpression="AWARD_DESC">
+                    <asp:TemplateField HeaderText="年獎格差說明" HeaderStyle-Width="500px" ItemStyle-HorizontalAlign="Left" SortExpression="AWARD_DESC">
                         <ItemTemplate>
                             <asp:Label ID="lb_AWARD_DESC" runat="server" Text='<%#Bind("AWARD_DESC")%>' Width="500px"></asp:Label>
                         </ItemTemplate>
@@ -323,39 +318,39 @@
                                 <asp:CheckBox ID="cb_all" runat="server" onclick="javascript:SelectAllCheckboxes(this);" Width="20px" />
                             </td>
                             <td>
-                                <asp:Label ID="Label1" runat="server" Text="<%$Resources:Resource,wfb2sh_lb_rownumber%>" Width="40px"></asp:Label>
+                                <asp:Label ID="Label1" runat="server" Text="序號" Width="40px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="Label2" runat="server" Text="<%$Resources:Resource,wfb2sh_lb_level_cd%>" Width="80px"></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Text="職務代號" Width="80px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="Label3" runat="server" Text="<%$Resources:Resource,wfb2sh_lb_ws_cd%>" Width="100px"></asp:Label>
+                                <asp:Label ID="Label3" runat="server" Text="職務名稱" Width="100px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="Label4" runat="server" Text="<%$Resources:Resource,wfb2sh_lb_award%>" Width="80px"></asp:Label>
+                                <asp:Label ID="Label4" runat="server" Text="考績" Width="80px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="Label5" runat="server" Text="<%$Resources:Resource,wfb2sh_lb_award_base%>" Width="100px"></asp:Label>
+                                <asp:Label ID="Label5" runat="server" Text="年獎格差" Width="100px"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="Label6" runat="server" Text="<%$Resources:Resource,wfb2sh_lb_award_desc%>" Width="500px"></asp:Label>
+                                <asp:Label ID="Label6" runat="server" Text="年獎格差說明" Width="500px"></asp:Label>
                             </td>
                         </tr>
                         <tr class="normal">
                             <td></td>
                             <td></td>
                             <td>
-                                <asp:DropDownList ID="ddl_NEW_LEVEL_CD" runat="server" ClientIDMode="Static" CssClass="MandatoryField" Width="80px"></asp:DropDownList>
+                                <asp:TextBox ID="txt_NEW_PJOB_CD" runat="server" Text='' ClientIDMode="Static" Width="100px" ></asp:TextBox>
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddl_NEW_WS_CD" runat="server" ClientIDMode="Static" CssClass="MandatoryField" Width="100px"></asp:DropDownList>
+                                <asp:Label ID="lb_NEW_PJOB_NAME" runat="server" Text='' Width="100px"></asp:Label>
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddl_NEW_AWARD" runat="server" ClientIDMode="Static" CssClass="MandatoryField" Width="80px"></asp:DropDownList>
+                                 <asp:TextBox ID="txt_NEW_AWARD" runat="server" Text='' ClientIDMode="Static" Width="80px" ></asp:TextBox>
                             </td>
                             <td>
-                                <asp:TextBox ID="txt_NEW_AWARD_BASE" runat="server" ClientIDMode="Static" Width="100px" CssClass="MandatoryField numFormat  decimal"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="NEW_AWARD_BASE2" runat="server" ErrorMessage="<%$Resources:Resource,wfb2sh_required_award_base%>"
+                                <asp:TextBox ID="txt_NEW_AWARD_DIFFER" runat="server" ClientIDMode="Static" Width="100px" CssClass="MandatoryField numFormat  decimal"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="NEW_AWARD_DIFFER2" runat="server" ErrorMessage="不可為空白"
                                     ControlToValidate="txt_NEW_AWARD_BASE" ForeColor="Red" ValidationGroup="GroupA" Display="None"></asp:RequiredFieldValidator>
                             </td>
                             <td>
@@ -386,9 +381,7 @@
                 </tr>
             </table>
             <!-- 查詢條件 -->
-            <asp:HiddenField ID="hid_qry_AWARD" runat="server" ClientIDMode="Static" />
-            <asp:HiddenField ID="hid_qry_LEVEL_CD" runat="server" ClientIDMode="Static" />
-            <asp:HiddenField ID="hid_qry_WS_CD" runat="server" ClientIDMode="Static" />
+            <asp:HiddenField ID="hid_qry_PJOB_CD" runat="server" ClientIDMode="Static" />
 
             <!-- 每頁的筆數 -->
             <asp:HiddenField ID="HID_PageRow" runat="server" ClientIDMode="Static" />

@@ -1,0 +1,1861 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class WebContent_WFB2SH3100_Qry : BasePage
+{
+
+    string fn = "";
+    string emp_id = "";
+
+    string QueryString = "";
+    //Service 物件
+    private CFB2SH3100BO service = new CFB2SH3100BO();
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "init", "iniForm();", true);
+        ViewState["Queryble"] = false;          //設定執行增/修時,改變查詢條件不會重查
+        gv_result.PagerSettings.Visible = true; //設定執行增/修時,隱藏GridView的換頁列
+        ViewState["Queryble2"] = false;          //設定執行增/修時,改變查詢條件不會重查
+        gv_result2.PagerSettings.Visible = true; //設定執行增/修時,隱藏GridView的換頁列
+        if (!IsPostBack)
+        {
+            //第一次進入時，頁碼為0
+            ViewState["NewPageIndex"] = 0; //第一次進入時，頁碼為0
+            ViewState["NewPageIndex2"] = 0;
+        }
+        //控制Gridview分頁，若有分頁直接copy這段
+        if (HID_PageRow.Value != "")
+        {
+            //ViewState["SetPerRow"] = true;
+            getGridView(ViewState["SortExpression"].ToString(), 0, Convert.ToInt32(HID_PageRow.Value));
+        }
+        if (HID_PageRow2.Value != "")
+        {
+            //ViewState["SetPerRow"] = true;
+            getGridView2(ViewState["SortExpression2"].ToString(), 0, Convert.ToInt32(HID_PageRow2.Value));
+        }
+    }
+    //查詢功能
+    protected void WFB2SH3100Search_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            ViewState["Queryble"] = true;
+            ViewState["SetPerRow"] = true; //GridView有分頁需加這行，設定每頁幾筆變數
+            ViewState["SortExpression"] = null; //排序欄位
+            ViewState["SortDirection"] = null; //排序順序，null = 回復成正常排序
+            ViewState["Queryble2"] = true;
+            ViewState["SetPerRow2"] = true; //GridView有分頁需加這行，設定每頁幾筆變數
+            ViewState["SortExpression2"] = null; //排序欄位
+            ViewState["SortDirection2"] = null; //排序順序，null = 回復成正常排序
+            //HID_PageRow.Value = "";
+
+            //GridView有分頁此段必加 begin
+            if (ViewState["PerPageRow"] != null && ViewState["PerPageRow"].ToString() != "")
+                getGridView("PJOB_CD", 0, Convert.ToInt32(ViewState["PerPageRow"]));
+            else
+                getGridView("PJOB_CD", 0, 10);
+            //end
+           //GridView2有分頁此段必加 begin
+            if (ViewState["PerPageRow2"] != null && ViewState["PerPageRow2"].ToString() != "")
+                getGridView2("PJOB_CD", 0, Convert.ToInt32(ViewState["PerPageRow2"]));
+            else
+                getGridView2("PJOB_CD", 0, 10);
+            //不顯示編輯列及新增列
+            gv_result.EditIndex = -1;
+            gv_result.ShowFooter = false; 
+
+            if (gv_result.Rows.Count > 0)
+            {
+                WFB2SH3100Add.Visible = true;
+                WFB2SH3100Edit.Visible = true;
+                WFB2SH3100Delete.Visible = true;
+            }
+            else
+            {
+                WFB2SH3100Edit.Visible = false;
+                WFB2SH3100Delete.Visible = false;
+                showMessage("QryNotFoundMessage");
+            }
+
+            gv_result2.EditIndex = -1;
+            gv_result2.ShowFooter = false;
+            if (gv_result.Rows.Count > 0)
+            {
+                WFB2SH3102Add.Visible = true;
+                WFB2SH3102Edit.Visible = true;
+                WFB2SH3102Delete.Visible = true;
+            }
+            else
+            {
+                WFB2SH3102Edit.Visible = false;
+                WFB2SH3102Delete.Visible = false;
+                showMessage("QryNotFoundMessage");
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+    private void getQryItem()
+    {
+        try
+        {
+            
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //產生員工資料
+    private void getDate()
+    {
+        try
+        {
+            /**
+            DataTable dt = service.getEmpData(emp_id);
+            if (dt.Rows.Count > 0)
+            {
+                DateTime tmp = new DateTime();
+                txt_EMP_ID.Text = dt.Rows[0]["EMP_ID"].ToString();
+                txt_EMP_NAME.Text = dt.Rows[0]["EMP_NAME"].ToString();
+                txt_LICENSE_ID.Text = dt.Rows[0]["LICENSE_ID"].ToString();
+
+                if (DateTime.TryParse(dt.Rows[0]["BIRTH_DT"].ToString(), out tmp))
+                    txt_BIRTH_DT.Text = tmp.ToString("yyyy/MM/dd");
+
+                txt_SUB_DESC2.Text = dt.Rows[0]["SUB_DESC"].ToString();
+                txt_DIV_DEPT_FULL_NAME.Text = dt.Rows[0]["DIV_DEPT_FULL_NAME"].ToString();
+
+                if (DateTime.TryParse(dt.Rows[0]["JOIN_DT"].ToString(), out tmp))
+                    txt_JOIN_DT.Text = tmp.ToString("yyyy/MM/dd");
+
+                if (DateTime.TryParse(dt.Rows[0]["LEAVE_DT"].ToString(), out tmp))
+                    txt_LEAVE_DT.Text = tmp.ToString("yyyy/MM/dd");
+            }**/
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    #region "Grid event"
+    //取得GridView Function //勞保資料
+    private void getGridView(string SortExpression, int pageindex, Int32 pagesize)
+    {
+        try
+        {
+            //GridView有分頁此段必加 begin
+            if (ViewState["PerPageRow"] == null || (ViewState["PerPageRow"] != null && ViewState["PerPageRow"] != HID_PageRow.Value && HID_PageRow.Value != ""))
+                ViewState["PerPageRow"] = HID_PageRow.Value;
+
+            ViewState["NewPageIndex"] = pageindex;
+            //end
+            //取得預設排序，傳入預設排序欄位
+            if (ViewState["SortExpression"] == null)
+                getSortDirection("PJOB_CD,AWARD");
+
+            //GridView基本設定
+            gv_result.PageIndex = 0;
+            gv_result.PageSize = pagesize;
+            gv_result.DataSourceID = "ods";
+            gv_result.DataKeyNames = new string[] { "PJOB_CD", "AWARD" }; //設定GridView Key
+            gv_result.DataBind();
+
+            HID_PageRow.Value = ""; //GridView有分頁此段必加
+        }
+        
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+    //GridView 每列Bind事件 //勞保資料
+    protected void gv_result_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.Header)
+            e.Row.CssClass = "header";
+
+        //wfb2sh CSS class on normal row.
+        if (e.Row.RowType == DataControlRowType.DataRow &&
+                  e.Row.RowState == DataControlRowState.Normal)
+            e.Row.CssClass = "normal";
+
+        //Add CSS class on alternate row.
+        if (e.Row.RowType == DataControlRowType.DataRow &&
+                  (e.Row.RowState == DataControlRowState.Alternate ||
+                   e.Row.RowState == DataControlRowState.Selected))
+            e.Row.CssClass = "alternate";
+
+        foreach (TableCell tc in e.Row.Cells)
+        {
+            tc.Attributes["style"] = "border-style:solid;border-width:1px; border-color:#FFFFFF";
+
+            if (tc.HasControls())
+            {
+                foreach (Control c in tc.Controls)
+                {
+                    if (c is CheckBox)
+                    {
+                        tc.Attributes["onclick"] = "event.cancelBubble=true;";
+                    }
+                }
+            }
+
+        }
+    }
+    //GridView排序事件 //勞保資料
+    protected void gv_result_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        gv_result.PageIndex = (int)ViewState["NewPageIndex"];
+        ViewState["SortExpression"] = e.SortExpression;
+        if (ViewState["PerPageRow"] != null && ViewState["PerPageRow"].ToString() != "")
+            gv_result.PageSize = Convert.ToInt32(ViewState["PerPageRow"]);
+        else
+            gv_result.PageSize = 10;
+        gv_result.DataSourceID = "ods";
+        //gv_result.DataKeyNames = new string[] { "PJOB_CD" };
+    }
+    //GridView每列產生完成事件，若有分頁此段必加，產生分頁資訊 //勞保資料
+    protected void gv_result_RowCreated(object sender, GridViewRowEventArgs e)
+    {
+        //設定新增列的下拉選單值
+        if (e.Row.RowType == DataControlRowType.EmptyDataRow || e.Row.RowType == DataControlRowType.Footer)
+        {
+            //異動類別
+            //DropDownList ddl = (DropDownList)e.Row.FindControl("ddl_NEW_CHG_APP_TYPE");
+            DataTable dt = new DataTable();
+            /**if (ddl != null)
+            {
+                dt = service.getCHG_APP_TYPE();
+                ddl.Items.Add(new ListItem("", "-1"));
+                if (dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        ddl.Items.Add(new ListItem(dt.Rows[i]["sub_desc"].ToString(), dt.Rows[i]["sub_cd"].ToString()));
+                    }
+                }
+            }**/
+
+        }
+        if (e.Row.RowType == DataControlRowType.Pager && gv_result.PageCount > 1)
+        {
+            TableCell tc = new TableCell();
+            tc.HorizontalAlign = HorizontalAlign.Right;
+            tc.Text = Resources.Resource.Grid_Total_Rows + ViewState["TotalCount"].ToString();
+            Table t = (Table)e.Row.Cells[0].Controls[0];
+            t.HorizontalAlign = HorizontalAlign.Left;
+            TableCell tc2 = new TableCell();
+            DropDownList ddllist = new DropDownList();
+            ddllist.ID = "ddlPerPageRow";
+            ddllist.Items.Add(new ListItem(Resources.Resource.Grid_PrePage_10_Rows, "10"));
+            ddllist.Items.Add(new ListItem(Resources.Resource.Grid_PrePage_20_Rows, "20"));
+            ddllist.Items.Add(new ListItem(Resources.Resource.Grid_PrePage_30_Rows, "30"));
+            ddllist.Items.Add(new ListItem(Resources.Resource.Grid_PrePage_40_Rows, "40"));
+            ddllist.Items.Add(new ListItem(Resources.Resource.Grid_PrePage_50_Rows, "50"));
+            if (HID_PageRow.Value != "")
+                ddllist.SelectedValue = HID_PageRow.Value;
+            ddllist.Attributes["onchange"] = "javascript:ShowRecord('grid')";
+            ddllist.AutoPostBack = true;
+            if (ViewState["PerPageRow"] != null && ViewState["PerPageRow"].ToString() != "")
+                ddllist.SelectedValue = ViewState["PerPageRow"].ToString();
+            tc2.Controls.Add(ddllist);
+            TableRow tr = (TableRow)e.Row.Cells[0].Controls[0].Controls[0];
+            tr.HorizontalAlign = HorizontalAlign.Right;
+            tr.Cells.Add(tc);
+            tr.Cells.AddAt(0, tc2);
+        }
+    }
+    protected void gv_result_DataBound(object sender, EventArgs e)
+    {
+        try
+        {
+            if (gv_result.PageCount == 1)
+            {
+                lb_TotalCount.Text = "頁數：1   總筆數：" + ViewState["TotalCount"].ToString();
+                if (ViewState["PerPageRow"] != null && ViewState["PerPageRow"].ToString() != "")
+                    ddlPerPageRow.SelectedValue = ViewState["PerPageRow"].ToString();
+                OnePage.Visible = true;
+            }
+            else
+                OnePage.Visible = false;
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+    //GridView分頁事件，有分頁必加此段
+    protected void gv_result_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        ViewState["NewPageIndex"] = e.NewPageIndex;
+        if (ViewState["PerPageRow"] != null && ViewState["PerPageRow"].ToString() != "")
+            gv_result.PageSize = Convert.ToInt32(ViewState["PerPageRow"]);
+        else
+            gv_result.PageSize = 10;
+
+        gv_result.DataSourceID = "ods";
+        gv_result.DataKeyNames = new string[] { "PJOB_CD,AWARD" };
+    }
+    #endregion
+
+    #region "Grid2 event"
+    //取得GridView Function //勞退資料
+    private void getGridView2(string SortExpression2, int pageindex2, Int32 pagesize2)
+    {
+        try
+        {
+            if (ViewState["PerPageRow2"] == null || (ViewState["PerPageRow2"] != null && ViewState["PerPageRow2"] != HID_PageRow2.Value && HID_PageRow2.Value != ""))
+                ViewState["PerPageRow2"] = HID_PageRow2.Value;
+            ViewState["NewPageIndex2"] = pageindex2;
+            //ViewState["SortExpression"] →BasePage.cs
+            if (ViewState["SortExpression2"] == null)
+                ViewState["SortExpression2"] = "PJOB_CD";    //排序方式(BasePage.cs)
+            gv_result2.Visible = true;
+            gv_result2.PageIndex = 0;
+            gv_result2.PageSize = pagesize2;
+            gv_result2.DataSourceID = "ods2";
+            gv_result2.DataKeyNames = new string[] { "PJOB_CD" };
+            gv_result2.DataBind();
+            
+            //if (gv_result2.Rows.Count == 0)
+           //     gv_result2.Visible = false;
+            gv_result2.ShowFooter = false;
+            HID_PageRow2.Value = "";
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+    //GridView 每列Bind事件 //勞退資料
+    protected void gv_result2_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+           
+        }
+
+        if (e.Row.RowType == DataControlRowType.Header)
+            e.Row.CssClass = "header";
+
+        //Add CSS class on normal row.
+        if (e.Row.RowType == DataControlRowType.DataRow &&
+                  e.Row.RowState == DataControlRowState.Normal)
+            e.Row.CssClass = "normal";
+
+        //Add CSS class on alternate row.
+        if (e.Row.RowType == DataControlRowType.DataRow &&
+                  (e.Row.RowState == DataControlRowState.Alternate ||
+                   e.Row.RowState == DataControlRowState.Selected))
+            e.Row.CssClass = "alternate";
+
+        foreach (TableCell tc in e.Row.Cells)
+        {
+            tc.Attributes["style"] = "border-style:solid;border-width:1px; border-color:#FFFFFF";
+
+            if (tc.HasControls())
+            {
+                foreach (Control c in tc.Controls)
+                {
+                    if (c is CheckBox)
+                    {
+                        tc.Attributes["onclick"] = "event.cancelBubble=true;";
+                    }
+                }
+            }
+
+        }
+    }
+    //GridView每列產生完成事件，若有分頁此段必加，產生分頁資訊 //勞退資料
+    protected void gv_result2_RowCreated(object sender, GridViewRowEventArgs e)
+    {
+        //設定新增列的下拉選單值
+        if (e.Row.RowType == DataControlRowType.EmptyDataRow || e.Row.RowType == DataControlRowType.Footer)
+        {
+            //異動類別
+           // DropDownList ddl = (DropDownList)e.Row.FindControl("ddl_NEW_CHG_APP_TYPE");
+            DataTable dt = new DataTable();
+           /** if (ddl != null)
+            {
+                dt = service.getCHG_APP_TYPE();
+                ddl.Items.Add(new ListItem("", "-1"));
+                if (dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        ddl.Items.Add(new ListItem(dt.Rows[i]["sub_desc"].ToString(), dt.Rows[i]["sub_cd"].ToString()));
+                    }
+                }
+            }**/
+
+        }
+        if (e.Row.RowType == DataControlRowType.Pager && gv_result2.PageCount > 1)
+        {
+            TableCell tc = new TableCell();
+            tc.HorizontalAlign = HorizontalAlign.Right;
+            tc.Text = Resources.Resource.Grid_Total_Rows + ViewState["TotalCount2"].ToString();
+            Table t = (Table)e.Row.Cells[0].Controls[0];
+            t.HorizontalAlign = HorizontalAlign.Left;
+            TableCell tc2 = new TableCell();
+            DropDownList ddllist = new DropDownList();
+            ddllist.ID = "ddlPerPageRow2";
+            ddllist.Items.Add(new ListItem(Resources.Resource.Grid_PrePage_10_Rows, "10"));
+            ddllist.Items.Add(new ListItem(Resources.Resource.Grid_PrePage_20_Rows, "20"));
+            ddllist.Items.Add(new ListItem(Resources.Resource.Grid_PrePage_30_Rows, "30"));
+            ddllist.Items.Add(new ListItem(Resources.Resource.Grid_PrePage_40_Rows, "40"));
+            ddllist.Items.Add(new ListItem(Resources.Resource.Grid_PrePage_50_Rows, "50"));
+            if (HID_PageRow2.Value != "")
+                ddllist.SelectedValue = HID_PageRow2.Value;
+            ddllist.Attributes["onchange"] = "javascript:ShowRecord('grid2')";
+            ddllist.AutoPostBack = true;
+            if (ViewState["PerPageRow2"] != null && ViewState["PerPageRow2"].ToString() != "")
+                ddllist.SelectedValue = ViewState["PerPageRow2"].ToString();
+            tc2.Controls.Add(ddllist);
+            TableRow tr = (TableRow)e.Row.Cells[0].Controls[0].Controls[0];
+            tr.HorizontalAlign = HorizontalAlign.Right;
+            tr.Cells.Add(tc);
+            tr.Cells.AddAt(0, tc2);
+        }
+    }
+    protected void gv_result2_DataBound(object sender, EventArgs e)
+    {
+        try
+        {
+            if (gv_result2.PageCount == 1)
+            {
+                lb_TotalCount2.Text = "頁數：1   總筆數：" + ViewState["TotalCount2"].ToString();
+                if (ViewState["PerPageRow2"] != null && ViewState["PerPageRow2"].ToString() != "")
+                    ddlPerPageRow2.SelectedValue = ViewState["PerPageRow2"].ToString();
+                OnePage2.Visible = true;
+            }
+            else
+                OnePage2.Visible = false;
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+    //GridView排序事件 //勞保資料
+    protected void gv_result2_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        gv_result2.PageIndex = (int)ViewState["NewPageIndex2"];
+        ViewState["SortExpression2"] = e.SortExpression;
+        if (ViewState["PerPageRow2"] != null && ViewState["PerPageRow2"].ToString() != "")
+            gv_result2.PageSize = Convert.ToInt32(ViewState["PerPageRow2"]);
+        else
+            gv_result2.PageSize = 10;
+        gv_result2.DataSourceID = "ods2";
+        gv_result2.DataKeyNames = new string[] { "PJOB_CD" };
+    }
+    protected void ods1_Selected2(object sender, ObjectDataSourceStatusEventArgs e)
+    {
+        ViewState["TotalCount2"] = e.ReturnValue;
+    }
+    protected void obs1_Selecting2(object sender, ObjectDataSourceSelectingEventArgs e)
+    {
+        //if (!IsPostBack)
+        //{
+        //    e.Cancel = true;
+        //}
+
+        if (ViewState["SortExpression2"] != null && ViewState["SortDirection2"] != null)
+            e.Arguments.SortExpression = ViewState["SortExpression2"] + " " + ViewState["SortDirection2"];
+    }
+    protected void gv_result2_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        ViewState["NewPageIndex2"] = e.NewPageIndex;
+        if (ViewState["PerPageRow2"] != null && ViewState["PerPageRow2"].ToString() != "")
+            gv_result2.PageSize = Convert.ToInt32(ViewState["PerPageRow2"]);
+        else
+            gv_result2.PageSize = 10;
+
+        gv_result2.DataSourceID = "ods2";
+        gv_result2.DataKeyNames = new string[] { "PJOB_CD" };
+    }
+    #endregion
+
+  
+    #region "grid Button Event"
+    //新增(考績格差設定)
+    protected void WFB2SH3100Add_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            ViewState["Queryble"] = true;  //設定執行增/修時,改變查詢條件不會重查
+            gv_result.PagerSettings.Visible = false; //設定執行增/修時,隱藏GridView的換頁列
+            //隱藏查詢清除按鈕
+            WFB2SH3100Search.Enabled = false;
+
+            WFB2SH3100Cancel.Enabled = false;
+
+            gv_result.ShowFooter = true;
+            if (ViewState["PerPageRow"] != null && ViewState["PerPageRow"].ToString() != "")
+                getGridView("PJOB_CD,AWARD", 0, Convert.ToInt32(ViewState["PerPageRow"]));
+            else
+                getGridView("PJOB_CD,AWARD", 0, 10);
+
+            WFB2SH3100Save.Visible = true;
+            WFB2SH3100Cancel.Visible = true;
+
+            WFB2SH3100Add.Visible = false;
+            WFB2SH3100Edit.Visible = false;
+            WFB2SH3100Delete.Visible = false;
+            gv_result.EditIndex = -1;
+            gv_result.Visible = true; 
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "')", true);
+        }
+
+    }
+
+    //確認按鈕(考績格差設定)
+    protected void WFB2SH3100Save_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            string errmsg = "";
+            //無筆數新增
+            if (gv_result.Rows.Count == 0)
+            {
+                TextBox PJOB_CD = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_PJOB_CD");
+                TextBox AWARD = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD");
+                TextBox AWARD_DIFFER = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD_DIFFER");
+                TextBox AWARD_DESC = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD_DESC");
+
+             
+                if (errmsg != "")
+                {
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + errmsg + "')", true);
+                    return;
+                }
+
+                CFB2SH3100DAO wfb2sh = new CFB2SH3100DAO();
+                wfb2sh.PJOB_CD = PJOB_CD.Text;
+                wfb2sh.AWARD = AWARD.Text;
+                wfb2sh.AWARD_DIFFER = Convert.ToDecimal( AWARD_DIFFER.Text);
+                wfb2sh.AWARD_DESC = AWARD_DESC.Text;
+                wfb2sh.CREATED_BY = SessionHandle.Current.emp_id;
+                wfb2sh.UPDATED_BY = SessionHandle.Current.emp_id;
+                wfb2sh.FUNC_ID = "FB2SH310";
+
+                string msg = service.addAwardITEM(wfb2sh);
+                if (msg != "0")
+                {
+                    gv_result.PagerSettings.Visible = false;
+                    msg = msg.Replace("\r\n", "");
+                    msg = msg.Replace("'", "");
+                    showMessage("addFailMessage", msg);
+                    return;
+                }
+                else
+                {
+                    showMessage("addSuccessMessage");
+                }
+
+            }
+            else
+            {
+                //有筆數新增
+                if (gv_result.EditIndex == -1)
+                {
+                    //新增
+                    TextBox PJOB_CD = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_PJOB_CD");
+                    TextBox AWARD = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD");
+                    TextBox AWARD_DIFFER = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD_DIFFER");
+                    TextBox AWARD_DESC = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD_DESC");
+
+                  
+                    if (errmsg != "")
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + errmsg + "')", true);
+                        return;
+                    }
+
+                    CFB2SH3100DAO wfb2sh = new CFB2SH3100DAO();
+                    wfb2sh.PJOB_CD = PJOB_CD.Text;
+                    wfb2sh.AWARD = AWARD.Text;
+                    wfb2sh.AWARD_DIFFER = Convert.ToDecimal(AWARD_DIFFER.Text);
+                    wfb2sh.AWARD_DESC = AWARD_DESC.Text;
+                    wfb2sh.CREATED_BY = SessionHandle.Current.emp_id;
+                    wfb2sh.UPDATED_BY = SessionHandle.Current.emp_id;
+                    wfb2sh.FUNC_ID = "FB2SH310";
+
+                    string msg = service.addAwardITEM(wfb2sh);
+                    if (msg != "0")
+                    {
+                        gv_result.PagerSettings.Visible = false;
+                        msg = msg.Replace("\r\n", "");
+                        msg = msg.Replace("'", "");
+                        showMessage("addFailMessage", msg);
+                        return;
+                    }
+                    else
+                    {
+                        showMessage("addSuccessMessage");
+                    }
+
+                }
+                else
+                {
+                    //更新
+                    Label PJOB_CD = (Label)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_PJOB_CD");
+                    Label AWARD = (Label)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD");
+                    TextBox AWARD_DIFFER = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD_DIFFER");
+                    TextBox AWARD_DESC = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_AWARD_DESC");
+
+
+
+                  
+
+                    if (errmsg != "")
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + errmsg + "')", true);
+                        return;
+                    }
+
+                    CFB2SH3100DAO wfb2sh = new CFB2SH3100DAO();
+                    wfb2sh.PJOB_CD = PJOB_CD.Text;
+                    wfb2sh.AWARD = AWARD.Text;
+                    wfb2sh.AWARD_DIFFER = Convert.ToDecimal(AWARD_DIFFER.Text);
+                    wfb2sh.AWARD_DESC = AWARD_DESC.Text;
+                    wfb2sh.UPDATED_BY = SessionHandle.Current.emp_id;
+                    wfb2sh.FUNC_ID = "FB2SH310";
+
+                    string msg = service.updateAwardITEM(wfb2sh);
+                    if (msg != "0")
+                    {
+                        gv_result.PagerSettings.Visible = false;
+                        msg = msg.Replace("\r\n", "");
+                        msg = msg.Replace("'", "");
+                        showMessage("modFailMessage", msg);
+                        return;
+                    }
+                    else
+                        showMessage("modSuccessMessage");
+
+                }
+            }
+
+            WFB2SH3100Save.Visible = false;
+            WFB2SH3100Cancel.Visible = false;
+            WFB2SH3100Add.Visible = true;
+            WFB2SH3100Delete.Visible = true;
+            WFB2SH3100Edit.Visible = true;
+            gv_result.EditIndex = -1;
+            if (ViewState["PerPageRow"] != null && ViewState["PerPageRow"].ToString() != "")
+                getGridView(ViewState["SortExpression"].ToString(), (int)ViewState["NewPageIndex"], Convert.ToInt32(ViewState["PerPageRow"]));
+            else
+                getGridView(ViewState["SortExpression"].ToString(), (int)ViewState["NewPageIndex"], 10);
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //修改(考績格差設定)
+    protected void WFB2SH3100Edit_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            gv_result.PagerSettings.Visible = false;
+            //檢查勾選項目
+            List<int> editindex = new List<int>();
+            for (int i = 0; i < this.gv_result.Rows.Count; i++)
+            {
+                if (((CheckBox)gv_result.Rows[i].FindControl("cb_check")).Checked)
+                {
+                    editindex.Add(i);
+                }
+            }
+            if (editindex.Count() == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('請選取一筆資料!')", true);
+                return;
+            }
+            if (editindex.Count() > 1)
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('請選取一筆資料!')", true);
+                return;
+            }
+            else
+            {
+                gv_result.EditIndex = editindex[0];
+            }
+            WFB2SH3100Save.Visible = true;
+            WFB2SH3100Cancel.Visible = true;
+
+            WFB2SH3100Add.Visible = false;
+            WFB2SH3100Delete.Visible = false;
+            WFB2SH3100Edit.Visible = false;
+
+            //getGridView("CHG_APP_TYPE,COMPANY_CD,COMPANY_SNAME,EFFECT_SDT", 0, 10);
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //刪除(考績格差設定)
+    protected void WFB2SH3100Delete_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            List<Tuple<string, string>> ins_type =
+                new List<Tuple<string, string>>();
+            for (int i = 0; i < this.gv_result.Rows.Count; i++)
+            {
+                if (((CheckBox)gv_result.Rows[i].FindControl("cb_check")).Checked)
+                {
+                    ins_type.Add(new Tuple<string, string>(
+                            txt_PJOB_CD.Text, lb_AWARD.Text));
+                }
+            }
+
+            if (ins_type.Count == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('請選取資料!')", true);
+                return;
+            }
+
+            string msg = service.deleteITEM(ins_type);
+            if (msg != "0")
+            {
+                msg = msg.Replace("\r\n", "");
+                msg = msg.Replace("'", "");
+                showMessage("deleteFailMessage", msg);
+            }
+            else
+            {
+                showMessage("deleteSuccessMessage");
+            }
+
+            if (ViewState["PerPageRow"] != null && ViewState["PerPageRow"].ToString() != "")
+                getGridView(ViewState["SortExpression"].ToString(), (int)ViewState["NewPageIndex"], Convert.ToInt32(ViewState["PerPageRow"]));
+            else
+                getGridView(ViewState["SortExpression"].ToString(), (int)ViewState["NewPageIndex"], 10);
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //取消按鈕(考績格差設定)
+    protected void WFB2SH3100Cancel_Click(object sender, EventArgs e)
+    {
+        HID_isAdd.Value = "";
+        if (ViewState["PerPageRow"] != null && ViewState["PerPageRow"].ToString() != "")
+            getGridView(ViewState["SortExpression"].ToString(), (int)ViewState["NewPageIndex"], Convert.ToInt32(ViewState["PerPageRow"]));
+        else
+            getGridView(ViewState["SortExpression"].ToString(), (int)ViewState["NewPageIndex"], 10);
+
+        gv_result.EditIndex = -1;
+        gv_result.ShowFooter = false;
+        if (gv_result.Rows.Count == 0)
+        {
+            gv_result.Visible = false;
+        }
+
+        WFB2SH3100Save.Visible = false;
+        WFB2SH3100Cancel.Visible = false;
+        WFB2SH3100Add.Visible = true;
+        WFB2SH3100Edit.Visible = true;
+        WFB2SH3100Delete.Visible = true;
+    }
+    #endregion
+
+    #region "grid2 Button Event"
+    //新增(考績基準獎金設定)
+    protected void WFB2SH3102Add_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            gv_result2.PagerSettings.Visible = false;
+            int oldPageIndex = this.gv_result2.PageIndex;
+
+            if (this.gv_result2.PageIndex > 0)
+                getGridView2("PJOB_CD", this.gv_result2.PageIndex, this.gv_result2.PageSize);
+            else
+            {
+                getGridView2("PJOB_CD", 0, 10);
+            }
+
+            //HID_isAdd.Value = "1";
+            WFB2SH3102Save.Visible = true;
+            WFB2SH3102Cancel.Visible = true;
+
+            WFB2SH3102Add.Visible = false;
+            WFB2SH3102Delete.Visible = false;
+            WFB2SH3102Edit.Visible = false;
+            this.gv_result2.ShowFooter = true;
+            this.gv_result2.Visible = true;
+            gv_result2.EditIndex = -1;
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "')", true);
+        }
+    }
+
+    //確認按鈕(考績基準獎金設定)
+    protected void WFB2SH3102Save_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            string errmsg = "";
+            //無筆數新增
+            if (gv_result2.Rows.Count == 0)
+            {
+                
+                TextBox PJOB_CD = (TextBox)gv_result2.Controls[0].Controls[0].FindControl("txt_NEW_PJOB_CD");
+                TextBox YEAR_S = (TextBox)gv_result2.Controls[0].Controls[0].FindControl("txt_NEW_YEAR_S");
+                TextBox YEAR_E = (TextBox)gv_result2.Controls[0].Controls[0].FindControl("txt_NEW_YEAR_E");
+                TextBox BOUNS_BASE = (TextBox)gv_result2.Controls[0].Controls[0].FindControl("txt_NEW_BOUNS_BASE");
+
+                
+                if (errmsg != "")
+                {
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + errmsg + "')", true);
+                    return;
+                }
+
+                CFB2SH3100DAO wfb2sh = new CFB2SH3100DAO();
+                wfb2sh.PJOB_CD = PJOB_CD.Text;
+                wfb2sh.YEAR_S = Convert.ToDecimal(YEAR_S.Text);
+                wfb2sh.YEAR_E = Convert.ToDecimal(YEAR_E.Text);
+                wfb2sh.BONUS_BASE = Convert.ToDecimal(BOUNS_BASE.Text);
+                wfb2sh.CREATED_BY = SessionHandle.Current.emp_id;
+                wfb2sh.UPDATED_BY = SessionHandle.Current.emp_id;
+                wfb2sh.FUNC_ID = "FB2SH310";
+
+                string msg = service.addBaseBounsITEM(wfb2sh);
+                if (msg != "0")
+                {
+                    gv_result2.PagerSettings.Visible = false;
+                    msg = msg.Replace("\r\n", "");
+                    msg = msg.Replace("'", "");
+                    showMessage("addFailMessage", msg);
+                    return;
+                }
+                else
+                {
+                    showMessage("addSuccessMessage");
+                }
+
+            }
+            else
+            {
+                //有筆數新增
+                if (gv_result2.EditIndex == -1)
+                {
+                    //新增
+                    TextBox PJOB_CD = (TextBox)gv_result2.Controls[0].Controls[0].FindControl("txt_NEW_PJOB_CD");
+                    TextBox YEAR_S = (TextBox)gv_result2.Controls[0].Controls[0].FindControl("txt_NEW_YEAR_S");
+                    TextBox YEAR_E = (TextBox)gv_result2.Controls[0].Controls[0].FindControl("txt_NEW_YEAR_E");
+                    TextBox BOUNS_BASE = (TextBox)gv_result2.Controls[0].Controls[0].FindControl("txt_NEW_BOUNS_BASE");
+
+                   
+                    if (errmsg != "")
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + errmsg + "')", true);
+                        return;
+                    }
+
+                    CFB2SH3100DAO wfb2sh = new CFB2SH3100DAO();
+                    wfb2sh.PJOB_CD = PJOB_CD.Text;
+                    wfb2sh.YEAR_S = Convert.ToDecimal(YEAR_S.Text);
+                    wfb2sh.YEAR_E = Convert.ToDecimal(YEAR_E.Text);
+                    wfb2sh.BONUS_BASE = Convert.ToDecimal(BOUNS_BASE.Text);
+                    wfb2sh.CREATED_BY = SessionHandle.Current.emp_id;
+                    wfb2sh.UPDATED_BY = SessionHandle.Current.emp_id;
+                    wfb2sh.FUNC_ID = "FB2SH310";
+
+                    string msg = service.addBaseBounsITEM(wfb2sh);
+                    if (msg != "0")
+                    {
+                        gv_result2.PagerSettings.Visible = false;
+                        msg = msg.Replace("\r\n", "");
+                        msg = msg.Replace("'", "");
+                        showMessage("addFailMessage", msg);
+                        return;
+                    }
+                    else
+                    {
+                        showMessage("addSuccessMessage");
+                    }
+
+                }
+                else
+                {
+                    //更新
+                    Label PJOB_CD = (Label)gv_result2.Controls[0].Controls[0].FindControl("txt_NEW_PJOB_CD");
+                    TextBox YEAR_S = (TextBox)gv_result2.Controls[0].Controls[0].FindControl("txt_NEW_YEAR_S");
+                    TextBox YEAR_E = (TextBox)gv_result2.Controls[0].Controls[0].FindControl("txt_NEW_YEAR_E");
+                    TextBox BOUNS_BASE = (TextBox)gv_result2.Controls[0].Controls[0].FindControl("txt_NEW_BOUNS_BASE");
+          
+                                       
+              
+                    if (errmsg != "")
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + errmsg + "')", true);
+                        return;
+                    }
+
+                    CFB2SH3100DAO wfb2sh = new CFB2SH3100DAO();
+                    wfb2sh.PJOB_CD = PJOB_CD.Text;
+                    wfb2sh.YEAR_S = Convert.ToDecimal(YEAR_S.Text);
+                    wfb2sh.YEAR_E = Convert.ToDecimal(YEAR_E.Text);
+                    wfb2sh.BONUS_BASE = Convert.ToDecimal(BOUNS_BASE.Text);
+                    wfb2sh.UPDATED_BY = SessionHandle.Current.emp_id;
+                    wfb2sh.FUNC_ID = "FB2SH310";
+
+                    string msg = service.updateBaseBounsITEM(wfb2sh);
+                    if (msg != "0")
+                    {
+                        gv_result2.PagerSettings.Visible = false;
+                        msg = msg.Replace("\r\n", "");
+                        msg = msg.Replace("'", "");
+                        showMessage("modFailMessage", msg);
+                        return;
+                    }
+                    else
+                        showMessage("modSuccessMessage");
+
+                }
+            }
+
+            WFB2SH3102Save.Visible = false;
+            WFB2SH3102Cancel.Visible = false;
+            WFB2SH3102Add.Visible = true;
+            WFB2SH3102Delete.Visible = true;
+            WFB2SH3102Edit.Visible = true;
+            gv_result2.EditIndex = -1;
+            if (ViewState["PerPageRow2"] != null && ViewState["PerPageRow2"].ToString() != "")
+                getGridView2(ViewState["SortExpression2"].ToString(), (int)ViewState["NewPageIndex2"], Convert.ToInt32(ViewState["PerPageRow2"]));
+            else
+                getGridView2(ViewState["SortExpression2"].ToString(), (int)ViewState["NewPageIndex2"], 10);
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //修改(考績基準獎金設定)
+    protected void WFB2SH3102Edit_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            gv_result2.PagerSettings.Visible = false;
+            //檢查勾選項目
+            List<int> editindex = new List<int>();
+            for (int i = 0; i < this.gv_result2.Rows.Count; i++)
+            {
+                if (((CheckBox)gv_result2.Rows[i].FindControl("cb_check2")).Checked)
+                {
+                    editindex.Add(i);
+                }
+            }
+            if (editindex.Count() == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('請選取一筆資料!')", true);
+                return;
+            }
+            if (editindex.Count() > 1)
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('請選取一筆資料!')", true);
+                return;
+            }
+            else
+            {
+                gv_result2.EditIndex = editindex[0];
+            }
+            WFB2SH3102Save.Visible = true;
+            WFB2SH3102Cancel.Visible = true;
+
+            WFB2SH3102Add.Visible = false;
+            WFB2SH3102Delete.Visible = false;
+            WFB2SH3102Edit.Visible = false;
+
+            //getGridView2("CHG_APP_TYPE,COMPANY_CD,COMPANY_SNAME,EFFECT_SDT", 0, 10);
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //刪除(考績基準獎金設定)
+    protected void WFB2SH3102Delete_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            List<Tuple<string>> ins_type =
+    new List<Tuple<string>>();
+            for (int i = 0; i < this.gv_result2.Rows.Count; i++)
+            {
+                if (((CheckBox)gv_result2.Rows[i].FindControl("cb_check2")).Checked)
+                {
+                    ins_type.Add(new Tuple<string>(
+                            txt_PJOB_CD.Text));
+                }
+            }
+
+            if (ins_type.Count == 0)
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('請選取資料!')", true);
+                return;
+            }
+
+            string msg = service.deleteBaseBounsITEM(ins_type);
+            if (msg != "0")
+            {
+                msg = msg.Replace("\r\n", "");
+                msg = msg.Replace("'", "");
+                showMessage("deleteFailMessage", msg);
+            }
+            else
+            {
+                showMessage("deleteSuccessMessage");
+            }
+
+            if (ViewState["PerPageRow2"] != null && ViewState["PerPageRow2"].ToString() != "")
+                getGridView2(ViewState["SortExpression2"].ToString(), (int)ViewState["NewPageIndex2"], Convert.ToInt32(ViewState["PerPageRow2"]));
+            else
+                getGridView2(ViewState["SortExpression2"].ToString(), (int)ViewState["NewPageIndex2"], 10);
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //取消按鈕(考績基準獎金設定)
+    protected void WFB2SH3102Cancel_Click(object sender, EventArgs e)
+    {
+        gv_result2.EditIndex = -1;
+        if (ViewState["PerPageRow2"] != null && ViewState["PerPageRow2"].ToString() != "")
+            getGridView2(ViewState["SortExpression"].ToString(), (int)ViewState["NewPageIndex2"], Convert.ToInt32(ViewState["PerPageRow2"]));
+        else
+            getGridView2(ViewState["SortExpression"].ToString(), (int)ViewState["NewPageIndex2"], 10);
+        if (gv_result2.Rows.Count == 0)
+        {
+            gv_result2.Visible = false;
+        }
+
+        WFB2SH3102Save.Visible = false;
+        WFB2SH3102Cancel.Visible = false;
+        WFB2SH3102Add.Visible = true;
+        WFB2SH3102Edit.Visible = true;
+        WFB2SH3102Delete.Visible = true;
+    }
+
+    #endregion
+  
+
+
+    //清除勾選按鈕
+    protected void HID_cancel_Click(object sender, EventArgs e)
+    {
+        for (int i = 0; i < gv_result.Rows.Count; i++)
+        {
+            ((CheckBox)gv_result.Rows[i].FindControl("cb_check")).Checked = false;
+        }
+
+        for (int i = 0; i < gv_result2.Rows.Count; i++)
+        {
+            ((CheckBox)gv_result2.Rows[i].FindControl("cb_check2")).Checked = false;
+        }
+
+
+    
+
+   
+    }
+
+    
+    //職務代號(考績格差設定)
+    protected void txt_NEW_PJOB_CD_TextChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            //職務代號
+            TextBox txt_NEW_PJOB_CD = new TextBox();
+            //職務代名稱
+            Label lbl_NEW_PJOB_NAME = new Label();
+
+            if (gv_result.Rows.Count == 0)
+            {
+                txt_NEW_PJOB_CD = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_PJOB_CD");
+                lbl_NEW_PJOB_NAME = (Label)gv_result.Controls[0].Controls[0].FindControl("lbl_NEW_PJOB_NAME");
+            }
+            else
+            {
+                txt_NEW_PJOB_CD = (TextBox)gv_result.Controls[0].Controls[0].FindControl("txt_NEW_PJOB_CD");
+                lbl_NEW_PJOB_NAME = (Label)gv_result.Controls[0].Controls[0].FindControl("lbl_NEW_PJOB_NAME");
+            }
+            if (txt_NEW_PJOB_CD != null)
+            {
+                DataTable dt = service.getPJOB_NAME(txt_NEW_PJOB_CD.Text);
+                if (dt.Rows.Count > 0)
+                {
+                    lbl_NEW_PJOB_NAME.Text = dt.Rows[0]["PJOB_DESC"].ToString();
+                }
+                else
+                {
+                    lbl_NEW_PJOB_NAME.Text = "";
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //職務代號(考績基準獎金設定)
+    protected void txt_NEW_PJOB_CD2_TextChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            //職務代號
+            TextBox txt_NEW_PJOB_CD = new TextBox();
+            //職務代名稱
+            Label lbl_NEW_PJOB_NAME = new Label();
+
+            if (gv_result.Rows.Count == 0)
+            {
+                txt_NEW_PJOB_CD = (TextBox)gv_result2.Controls[0].Controls[0].FindControl("txt_NEW_PJOB_CD");
+                lbl_NEW_PJOB_NAME = (Label)gv_result2.Controls[0].Controls[0].FindControl("lbl_NEW_PJOB_NAME");
+            }
+            else
+            {
+                txt_NEW_PJOB_CD = (TextBox)gv_result2.Controls[0].Controls[0].FindControl("txt_NEW_PJOB_CD");
+                lbl_NEW_PJOB_NAME = (Label)gv_result2.Controls[0].Controls[0].FindControl("lbl_NEW_PJOB_NAME");
+            }
+           if (txt_NEW_PJOB_CD != null)
+            {
+                DataTable dt = service.getPJOB_NAME(txt_NEW_PJOB_CD.Text);
+                if (dt.Rows.Count > 0)
+                {
+                    lbl_NEW_PJOB_NAME.Text = dt.Rows[0]["PJOB_DESC"].ToString();
+                }
+                else
+                {
+                    lbl_NEW_PJOB_NAME.Text = "";
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+    /**
+    //公司別1(健保)
+    protected void txt_NEW_COMPANY_CD1_TextChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            //公司別
+            TextBox txt_NEW_COMPANY_CD = new TextBox();
+            //公司簡稱
+            TextBox txt_NEW_COMPANY_SNAME = new TextBox();
+
+            if (gv_result1.Rows.Count == 0)
+            {
+                txt_NEW_COMPANY_CD = (TextBox)gv_result1.Controls[0].Controls[0].FindControl("txt_NEW_COMPANY_CD");
+                txt_NEW_COMPANY_SNAME = (TextBox)gv_result1.Controls[0].Controls[0].FindControl("txt_NEW_COMPANY_SNAME");
+            }
+            else
+            {
+                txt_NEW_COMPANY_CD = (TextBox)gv_result1.FooterRow.FindControl("txt_NEW_COMPANY_CD");
+                txt_NEW_COMPANY_SNAME = (TextBox)gv_result1.FooterRow.FindControl("txt_NEW_COMPANY_SNAME");
+            }
+            if (txt_NEW_COMPANY_CD != null && txt_NEW_COMPANY_SNAME != null)
+            {
+                DataTable dt = service.getCOMPANY_SNAME(txt_NEW_COMPANY_CD.Text);
+                if (dt.Rows.Count > 0)
+                {
+                    txt_NEW_COMPANY_SNAME.Text = dt.Rows[0]["COMPANY_SNAME"].ToString();
+                }
+                else
+                {
+                    txt_NEW_COMPANY_SNAME.Text = "";
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //轉出/退保1(修改)(健保)
+    protected void ddl_CHG_TYPE_OUT_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            DropDownList ddl = sender as DropDownList;
+            GridViewRow row = ddl.NamingContainer as GridViewRow; //取得是哪一列的textbox
+            int rowIndex = row.RowIndex;
+
+            //退保原因說明別
+            TextBox txt_CHG_REASON_CD = new TextBox();
+            //退保原因說明別名稱
+            TextBox txt_SUB_DESC = new TextBox();
+            if (rowIndex != -1)
+            {
+                txt_CHG_REASON_CD = (TextBox)gv_result1.Rows[rowIndex].FindControl("txt_CHG_REASON_CD");
+                txt_SUB_DESC = (TextBox)gv_result1.Rows[rowIndex].FindControl("txt_SUB_DESC");
+                if (txt_CHG_REASON_CD != null && txt_SUB_DESC != null)
+                {
+                    txt_CHG_REASON_CD.Text = "";
+                    txt_SUB_DESC.Text = "";
+                }
+
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //轉出/退保1(新增)(健保)
+    protected void ddl_NEW_CHG_TYPE_OUT_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            //退保原因說明別
+            TextBox txt_CHG_REASON_CD = new TextBox();
+            //退保原因說明別名稱
+            TextBox txt_SUB_DESC = new TextBox();
+            if (gv_result1.Rows.Count == 0)
+            {
+                txt_CHG_REASON_CD = (TextBox)gv_result1.Controls[0].Controls[0].FindControl("txt_NEW_CHG_REASON_CD");
+                txt_SUB_DESC = (TextBox)gv_result1.Controls[0].Controls[0].FindControl("txt_NEW_SUB_DESC");
+            }
+            else
+            {
+                txt_CHG_REASON_CD = (TextBox)gv_result1.FooterRow.FindControl("txt_NEW_CHG_REASON_CD");
+                txt_SUB_DESC = (TextBox)gv_result1.FooterRow.FindControl("txt_NEW_SUB_DESC");
+            }
+
+            if (txt_CHG_REASON_CD != null && txt_SUB_DESC != null)
+            {
+                txt_CHG_REASON_CD.Text = "";
+                txt_SUB_DESC.Text = "";
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //退保原因說明別1(修改)(健保)
+    protected void txt_CHG_REASON_CD_TextChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            TextBox txt = sender as TextBox;
+            GridViewRow row = txt.NamingContainer as GridViewRow; //取得是哪一列的textbox
+            int rowIndex = row.RowIndex;
+
+            //轉出/退保
+            DropDownList ddl_CHG_TYPE_OUT = new DropDownList();
+            //退保原因說明別
+            TextBox txt_CHG_REASON_CD = new TextBox();
+            //退保原因說明別名稱
+            TextBox txt_SUB_DESC = new TextBox();
+            if (rowIndex != -1)
+            {
+                ddl_CHG_TYPE_OUT = (DropDownList)gv_result1.Rows[rowIndex].FindControl("ddl_CHG_TYPE_OUT");
+                txt_CHG_REASON_CD = (TextBox)gv_result1.Rows[rowIndex].FindControl("txt_CHG_REASON_CD");
+                txt_SUB_DESC = (TextBox)gv_result1.Rows[rowIndex].FindControl("txt_SUB_DESC");
+                if (ddl_CHG_TYPE_OUT != null && txt_CHG_REASON_CD != null && txt_SUB_DESC != null)
+                {
+                    DataTable dt = service.getCHG_REASON_NAME(txt_CHG_REASON_CD.Text, ddl_CHG_TYPE_OUT.SelectedValue);
+                    if (dt.Rows.Count > 0)
+                    {
+                        txt_SUB_DESC.Text = dt.Rows[0]["SUB_DESC"].ToString();
+                    }
+                    else
+                    {
+                        txt_SUB_DESC.Text = "";
+                    }
+
+                }
+
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //退保原因說明別1(新增)(健保)
+    protected void txt_NEW_CHG_REASON_CD_TextChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            //轉出/退保
+            DropDownList ddl_CHG_TYPE_OUT = new DropDownList();
+            //退保原因說明別
+            TextBox txt_CHG_REASON_CD = new TextBox();
+            //退保原因說明別名稱
+            TextBox txt_SUB_DESC = new TextBox();
+            if (gv_result1.Rows.Count == 0)
+            {
+                ddl_CHG_TYPE_OUT = (DropDownList)gv_result1.Controls[0].Controls[0].FindControl("ddl_NEW_CHG_TYPE_OUT");
+                txt_CHG_REASON_CD = (TextBox)gv_result1.Controls[0].Controls[0].FindControl("txt_NEW_CHG_REASON_CD");
+                txt_SUB_DESC = (TextBox)gv_result1.Controls[0].Controls[0].FindControl("txt_NEW_SUB_DESC");
+            }
+            else
+            {
+                ddl_CHG_TYPE_OUT = (DropDownList)gv_result1.FooterRow.FindControl("ddl_NEW_CHG_TYPE_OUT");
+                txt_CHG_REASON_CD = (TextBox)gv_result1.FooterRow.FindControl("txt_NEW_CHG_REASON_CD");
+                txt_SUB_DESC = (TextBox)gv_result1.FooterRow.FindControl("txt_NEW_SUB_DESC");
+            }
+
+            if (ddl_CHG_TYPE_OUT != null && txt_CHG_REASON_CD != null && txt_SUB_DESC != null)
+            {
+                DataTable dt = service.getCHG_REASON_NAME(txt_CHG_REASON_CD.Text, ddl_CHG_TYPE_OUT.SelectedValue);
+                if (dt.Rows.Count > 0)
+                {
+                    txt_SUB_DESC.Text = dt.Rows[0]["SUB_DESC"].ToString();
+                }
+                else
+                {
+                    txt_SUB_DESC.Text = "";
+                }
+
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //身分證號4(健保眷屬)
+    protected void txt_NEW_LICENSE_ID_TextChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            //身分證號
+            TextBox txt_NEW_LICENSE_ID = new TextBox();
+            //眷屬姓名
+            TextBox txt_NEW_FAMILY_NAME = new TextBox();
+            //稱謂
+            TextBox txt_NEW_SUB_DESC = new TextBox();
+            //國籍名稱
+            TextBox txt_NEW_FAMILY_NATION_CD = new TextBox();
+            //出生日期
+            TextBox txt_NEW_FAMILY_BIRTH_DT = new TextBox();
+            if (gv_result4.Rows.Count == 0)
+            {
+                txt_NEW_LICENSE_ID = (TextBox)gv_result4.Controls[0].Controls[0].FindControl("txt_NEW_LICENSE_ID");
+                txt_NEW_FAMILY_NAME = (TextBox)gv_result4.Controls[0].Controls[0].FindControl("txt_NEW_FAMILY_NAME");
+                txt_NEW_SUB_DESC = (TextBox)gv_result4.Controls[0].Controls[0].FindControl("txt_NEW_SUB_DESC");
+                txt_NEW_FAMILY_NATION_CD = (TextBox)gv_result4.Controls[0].Controls[0].FindControl("txt_NEW_FAMILY_NATION_CD");
+                txt_NEW_FAMILY_BIRTH_DT = (TextBox)gv_result4.Controls[0].Controls[0].FindControl("txt_NEW_FAMILY_BIRTH_DT");
+            }
+            else
+            {
+                txt_NEW_LICENSE_ID = (TextBox)gv_result4.FooterRow.FindControl("txt_NEW_LICENSE_ID");
+                txt_NEW_FAMILY_NAME = (TextBox)gv_result4.FooterRow.FindControl("txt_NEW_FAMILY_NAME");
+                txt_NEW_SUB_DESC = (TextBox)gv_result4.FooterRow.FindControl("txt_NEW_SUB_DESC");
+                txt_NEW_FAMILY_NATION_CD = (TextBox)gv_result4.FooterRow.FindControl("txt_NEW_FAMILY_NATION_CD");
+                txt_NEW_FAMILY_BIRTH_DT = (TextBox)gv_result4.FooterRow.FindControl("txt_NEW_FAMILY_BIRTH_DT");
+            }
+            if (txt_NEW_LICENSE_ID != null && txt_NEW_FAMILY_NAME != null && txt_NEW_SUB_DESC != null &&
+                txt_NEW_FAMILY_NATION_CD != null && txt_NEW_FAMILY_BIRTH_DT != null)
+            {
+                DataTable dt =
+                    service.getLICENSE_ID(txt_EMP_ID.Text, txt_NEW_LICENSE_ID.Text);
+                if (dt.Rows.Count > 0)
+                {
+                    txt_NEW_FAMILY_NAME.Text = dt.Rows[0]["FAMILY_NAME"].ToString();
+                    txt_NEW_SUB_DESC.Text = dt.Rows[0]["FAMILY_RELATION_NAME"].ToString();
+                    txt_NEW_FAMILY_NATION_CD.Text = dt.Rows[0]["FAMILY_NATION_NAME"].ToString();
+                    DateTime tmp = new DateTime();
+                    if (DateTime.TryParse(dt.Rows[0]["FAMILY_BIRTH_DT"].ToString(), out tmp))
+                    {
+                        txt_NEW_FAMILY_BIRTH_DT.Text = tmp.ToString("yyyy/MM/dd");
+                    }
+                    else
+                    {
+                        txt_NEW_FAMILY_BIRTH_DT.Text = "";
+                    }
+                }
+                else
+                {
+                    txt_NEW_FAMILY_NAME.Text = "";
+                    txt_NEW_SUB_DESC.Text = "";
+                    txt_NEW_FAMILY_NATION_CD.Text = "";
+                    txt_NEW_FAMILY_BIRTH_DT.Text = "";
+                }
+            }
+
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //加保原因說明別4(修改)(健保眷屬)
+    protected void txt_CHG_TYPE_IN_TextChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            TextBox txt = sender as TextBox;
+            GridViewRow row = txt.NamingContainer as GridViewRow; //取得是哪一列的textbox
+            int rowIndex = row.RowIndex;
+
+            //加保原因說明別
+            TextBox txt_CHG_TYPE_IN = new TextBox();
+            //加保原因說明別名稱
+            TextBox txt_CHG_TYPE_IN_NAME = new TextBox();
+            if (rowIndex != -1)
+            {
+                txt_CHG_TYPE_IN = (TextBox)gv_result4.Rows[rowIndex].FindControl("txt_CHG_TYPE_IN");
+                txt_CHG_TYPE_IN_NAME = (TextBox)gv_result4.Rows[rowIndex].FindControl("txt_CHG_TYPE_IN_NAME");
+                if (txt_CHG_TYPE_IN != null && txt_CHG_TYPE_IN_NAME != null)
+                {
+                    DataTable dt = service.getCHG_TYPE_IN_NAME(txt_CHG_TYPE_IN.Text);
+                    if (dt.Rows.Count > 0)
+                    {
+                        txt_CHG_TYPE_IN_NAME.Text = dt.Rows[0]["SUB_DESC"].ToString();
+                    }
+                    else
+                    {
+                        txt_CHG_TYPE_IN_NAME.Text = "";
+                    }
+
+                }
+
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //加保原因說明別4(新增)(健保眷屬)
+    protected void txt_NEW_CHG_TYPE_IN_TextChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            //加保原因說明別
+            TextBox txt_NEW_CHG_TYPE_IN = new TextBox();
+            //加保原因說明別名稱
+            TextBox txt_NEW_CHG_TYPE_IN_NAME = new TextBox();
+            if (gv_result4.Rows.Count == 0)
+            {
+                txt_NEW_CHG_TYPE_IN = (TextBox)gv_result4.Controls[0].Controls[0].FindControl("txt_NEW_CHG_TYPE_IN");
+                txt_NEW_CHG_TYPE_IN_NAME = (TextBox)gv_result4.Controls[0].Controls[0].FindControl("txt_NEW_CHG_TYPE_IN_NAME");
+            }
+            else
+            {
+                txt_NEW_CHG_TYPE_IN = (TextBox)gv_result4.FooterRow.FindControl("txt_NEW_CHG_TYPE_IN");
+                txt_NEW_CHG_TYPE_IN_NAME = (TextBox)gv_result4.FooterRow.FindControl("txt_NEW_CHG_TYPE_IN_NAME");
+            }
+
+            if (txt_NEW_CHG_TYPE_IN != null && txt_NEW_CHG_TYPE_IN_NAME != null)
+            {
+                DataTable dt = service.getCHG_TYPE_IN_NAME(txt_NEW_CHG_TYPE_IN.Text);
+                if (dt.Rows.Count > 0)
+                {
+                    txt_NEW_CHG_TYPE_IN_NAME.Text = dt.Rows[0]["SUB_DESC"].ToString();
+                }
+                else
+                {
+                    txt_NEW_CHG_TYPE_IN_NAME.Text = "";
+                }
+
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //轉出/退保4(修改)(健保眷屬)
+    protected void ddl_CHG_TYPE_OUT_SelectedIndexChanged4(object sender, EventArgs e)
+    {
+        try
+        {
+            DropDownList ddl = sender as DropDownList;
+            GridViewRow row = ddl.NamingContainer as GridViewRow; //取得是哪一列的textbox
+            int rowIndex = row.RowIndex;
+
+            //退保原因說明別
+            TextBox txt_CHG_REASON_CD = new TextBox();
+            //退保原因說明別名稱
+            TextBox txt_CHG_REASON_CD_NAME = new TextBox();
+            if (rowIndex != -1)
+            {
+                txt_CHG_REASON_CD = (TextBox)gv_result4.Rows[rowIndex].FindControl("txt_CHG_REASON_CD");
+                txt_CHG_REASON_CD_NAME = (TextBox)gv_result4.Rows[rowIndex].FindControl("txt_CHG_REASON_CD_NAME");
+                if (txt_CHG_REASON_CD != null && txt_CHG_REASON_CD_NAME != null)
+                {
+                    txt_CHG_REASON_CD.Text = "";
+                    txt_CHG_REASON_CD_NAME.Text = "";
+                }
+
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //轉出/退保4(新增)(健保眷屬)
+    protected void ddl_NEW_CHG_TYPE_OUT_SelectedIndexChanged4(object sender, EventArgs e)
+    {
+        try
+        {
+            //退保原因說明別
+            TextBox txt_CHG_REASON_CD = new TextBox();
+            //退保原因說明別名稱
+            TextBox txt_NEW_CHG_REASON_CD_NAME = new TextBox();
+            if (gv_result4.Rows.Count == 0)
+            {
+                txt_CHG_REASON_CD = (TextBox)gv_result4.Controls[0].Controls[0].FindControl("txt_NEW_CHG_REASON_CD");
+                txt_NEW_CHG_REASON_CD_NAME = (TextBox)gv_result4.Controls[0].Controls[0].FindControl("txt_NEW_CHG_REASON_CD_NAME");
+            }
+            else
+            {
+                txt_CHG_REASON_CD = (TextBox)gv_result4.FooterRow.FindControl("txt_NEW_CHG_REASON_CD");
+                txt_NEW_CHG_REASON_CD_NAME = (TextBox)gv_result4.FooterRow.FindControl("txt_NEW_CHG_REASON_CD_NAME");
+            }
+
+            if (txt_CHG_REASON_CD != null && txt_NEW_CHG_REASON_CD_NAME != null)
+            {
+                txt_CHG_REASON_CD.Text = "";
+                txt_NEW_CHG_REASON_CD_NAME.Text = "";
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //退保原因說明別4(修改)(健保眷屬)
+    protected void txt_CHG_REASON_CD_TextChanged4(object sender, EventArgs e)
+    {
+        try
+        {
+            TextBox txt = sender as TextBox;
+            GridViewRow row = txt.NamingContainer as GridViewRow; //取得是哪一列的textbox
+            int rowIndex = row.RowIndex;
+
+            //轉出/退保
+            DropDownList ddl_CHG_TYPE_OUT = new DropDownList();
+            //退保原因說明別
+            TextBox txt_CHG_REASON_CD = new TextBox();
+            //退保原因說明別名稱
+            TextBox txt_CHG_REASON_CD_NAME = new TextBox();
+            if (rowIndex != -1)
+            {
+                ddl_CHG_TYPE_OUT = (DropDownList)gv_result4.Rows[rowIndex].FindControl("ddl_CHG_TYPE_OUT");
+                txt_CHG_REASON_CD = (TextBox)gv_result4.Rows[rowIndex].FindControl("txt_CHG_REASON_CD");
+                txt_CHG_REASON_CD_NAME = (TextBox)gv_result4.Rows[rowIndex].FindControl("txt_CHG_REASON_CD_NAME");
+                if (ddl_CHG_TYPE_OUT != null && txt_CHG_REASON_CD != null && txt_CHG_REASON_CD_NAME != null)
+                {
+                    DataTable dt = service.getCHG_REASON_NAME(txt_CHG_REASON_CD.Text, ddl_CHG_TYPE_OUT.SelectedValue);
+                    if (dt.Rows.Count > 0)
+                    {
+                        txt_CHG_REASON_CD_NAME.Text = dt.Rows[0]["SUB_DESC"].ToString();
+                    }
+                    else
+                    {
+                        txt_CHG_REASON_CD_NAME.Text = "";
+                    }
+
+                }
+
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //退保原因說明別4(新增)(健保眷屬)
+    protected void txt_NEW_CHG_REASON_CD_TextChanged4(object sender, EventArgs e)
+    {
+        try
+        {
+            //轉出/退保
+            DropDownList ddl_CHG_TYPE_OUT = new DropDownList();
+            //退保原因說明別
+            TextBox txt_CHG_REASON_CD = new TextBox();
+            //退保原因說明別名稱
+            TextBox txt_NEW_CHG_REASON_CD_NAME = new TextBox();
+            if (gv_result4.Rows.Count == 0)
+            {
+                ddl_CHG_TYPE_OUT = (DropDownList)gv_result4.Controls[0].Controls[0].FindControl("ddl_NEW_CHG_TYPE_OUT");
+                txt_CHG_REASON_CD = (TextBox)gv_result4.Controls[0].Controls[0].FindControl("txt_NEW_CHG_REASON_CD");
+                txt_NEW_CHG_REASON_CD_NAME = (TextBox)gv_result4.Controls[0].Controls[0].FindControl("txt_NEW_CHG_REASON_CD_NAME");
+            }
+            else
+            {
+                ddl_CHG_TYPE_OUT = (DropDownList)gv_result4.FooterRow.FindControl("ddl_NEW_CHG_TYPE_OUT");
+                txt_CHG_REASON_CD = (TextBox)gv_result4.FooterRow.FindControl("txt_NEW_CHG_REASON_CD");
+                txt_NEW_CHG_REASON_CD_NAME = (TextBox)gv_result4.FooterRow.FindControl("txt_NEW_CHG_REASON_CD_NAME");
+            }
+
+            if (ddl_CHG_TYPE_OUT != null && txt_CHG_REASON_CD != null && txt_NEW_CHG_REASON_CD_NAME != null)
+            {
+                DataTable dt = service.getCHG_REASON_NAME(txt_CHG_REASON_CD.Text, ddl_CHG_TYPE_OUT.SelectedValue);
+                if (dt.Rows.Count > 0)
+                {
+                    txt_NEW_CHG_REASON_CD_NAME.Text = dt.Rows[0]["SUB_DESC"].ToString();
+                }
+                else
+                {
+                    txt_NEW_CHG_REASON_CD_NAME.Text = "";
+                }
+
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //身分別5(減免設定)
+    protected void ddl_NEW_IDENTITY_KIND_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            //身分證/居留證
+            TextBox txt_NEW_LICENSE_ID = new TextBox();
+            //姓名
+            TextBox txt_NEW_EMP_NAME = new TextBox();
+            //稱謂
+            TextBox txt_NEW_APPELLATION = new TextBox();
+
+            //取得該列的再將值填入
+            if (gv_result5.Rows.Count == 0)
+            {
+                txt_NEW_LICENSE_ID = (TextBox)gv_result5.Controls[0].Controls[0].FindControl("txt_NEW_LICENSE_ID");
+                txt_NEW_EMP_NAME = (TextBox)gv_result5.Controls[0].Controls[0].FindControl("txt_NEW_EMP_NAME");
+                txt_NEW_APPELLATION = (TextBox)gv_result5.Controls[0].Controls[0].FindControl("txt_NEW_APPELLATION");
+            }
+            else
+            {
+                txt_NEW_LICENSE_ID = (TextBox)gv_result5.FooterRow.FindControl("txt_NEW_LICENSE_ID");
+                txt_NEW_EMP_NAME = (TextBox)gv_result5.FooterRow.FindControl("txt_NEW_EMP_NAME");
+                txt_NEW_APPELLATION = (TextBox)gv_result5.FooterRow.FindControl("txt_NEW_APPELLATION");
+            }
+
+            if (txt_NEW_LICENSE_ID != null &&
+                txt_NEW_EMP_NAME != null && txt_NEW_APPELLATION != null)
+            {
+                txt_NEW_LICENSE_ID.Text = "";
+                txt_NEW_EMP_NAME.Text = "";
+                txt_NEW_APPELLATION.Text = "";
+            }
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //身分證/居留證5(減免設定) //減免設定取員工名稱(方法一)
+    protected void txt_NEW_LICENSE_ID_TextChanged1(object sender, EventArgs e)
+    {
+        getEmpName5();
+    }
+
+    //身分證/居留證5(減免設定)
+    private void getEmpName5()
+    {
+        try
+        {
+            //身份別
+            DropDownList ddl_NEW_IDENTITY_KIND = new DropDownList();
+            //身分證號
+            TextBox txt_NEW_LICENSE_ID = new TextBox();
+            //姓名
+            TextBox txt_NEW_EMP_NAME = new TextBox();
+            //稱謂
+            TextBox txt_NEW_APPELLATION = new TextBox();
+            if (gv_result5.Rows.Count == 0)
+            {
+                ddl_NEW_IDENTITY_KIND = (DropDownList)gv_result5.Controls[0].Controls[0].FindControl("ddl_NEW_IDENTITY_KIND");
+                txt_NEW_LICENSE_ID = (TextBox)gv_result5.Controls[0].Controls[0].FindControl("txt_NEW_LICENSE_ID");
+                txt_NEW_EMP_NAME = (TextBox)gv_result5.Controls[0].Controls[0].FindControl("txt_NEW_EMP_NAME");
+                txt_NEW_APPELLATION = (TextBox)gv_result5.Controls[0].Controls[0].FindControl("txt_NEW_APPELLATION");
+            }
+            else
+            {
+                ddl_NEW_IDENTITY_KIND = (DropDownList)gv_result5.FooterRow.FindControl("ddl_NEW_IDENTITY_KIND");
+                txt_NEW_LICENSE_ID = (TextBox)gv_result5.FooterRow.FindControl("txt_NEW_LICENSE_ID");
+                txt_NEW_EMP_NAME = (TextBox)gv_result5.FooterRow.FindControl("txt_NEW_EMP_NAME");
+                txt_NEW_APPELLATION = (TextBox)gv_result5.FooterRow.FindControl("txt_NEW_APPELLATION");
+            }
+            if (ddl_NEW_IDENTITY_KIND != null && txt_NEW_LICENSE_ID != null &&
+                txt_NEW_EMP_NAME != null && txt_NEW_APPELLATION != null)
+            {
+                DataTable dt =
+                    service.getLICENSE_ID1(txt_EMP_ID.Text, txt_NEW_LICENSE_ID.Text, ddl_NEW_IDENTITY_KIND.SelectedValue);
+                if (dt.Rows.Count > 0)
+                {
+                    txt_NEW_EMP_NAME.Text = dt.Rows[0]["EMP_NAME"].ToString();
+                    txt_NEW_APPELLATION.Text = dt.Rows[0]["REATION_NAME"].ToString();
+                }
+                else
+                {
+                    txt_NEW_EMP_NAME.Text = "";
+                    txt_NEW_APPELLATION.Text = "";
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+
+    //減免設定取員工名稱
+    protected void hid_getEmpName5_Click(object sender, EventArgs e)
+    {
+        getEmpName5();
+    }
+
+
+    //減免代碼5(減免設定)
+    protected void txt_NEW_REDUCE_CD_TextChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            //減免代碼
+            TextBox txt_NEW_REDUCE_CD = new TextBox();
+            //減免等級說明
+            TextBox txt_NEW_REDUCE_DESC = new TextBox();
+            if (gv_result5.Rows.Count == 0)
+            {
+                txt_NEW_REDUCE_CD = (TextBox)gv_result5.Controls[0].Controls[0].FindControl("txt_NEW_REDUCE_CD");
+                txt_NEW_REDUCE_DESC = (TextBox)gv_result5.Controls[0].Controls[0].FindControl("txt_NEW_REDUCE_DESC");
+            }
+            else
+            {
+                txt_NEW_REDUCE_CD = (TextBox)gv_result5.FooterRow.FindControl("txt_NEW_REDUCE_CD");
+                txt_NEW_REDUCE_DESC = (TextBox)gv_result5.FooterRow.FindControl("txt_NEW_REDUCE_DESC");
+            }
+            if (txt_NEW_REDUCE_CD != null && txt_NEW_REDUCE_DESC != null)
+            {
+                DataTable dt =
+                    service.getREDUCE_DESC(txt_NEW_REDUCE_CD.Text);
+                if (dt.Rows.Count > 0)
+                {
+                    txt_NEW_REDUCE_DESC.Text = dt.Rows[0]["REDUCE_DESC"].ToString();
+                }
+                else
+                {
+                    txt_NEW_REDUCE_DESC.Text = "";
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
+    **/
+    //返回
+    protected void btn_back_Click(object sender, EventArgs e)
+    {
+        Session["SH3100_Is_Search"] = "Y";
+        if (fn == "FB2IA320")
+        {
+            Session["IA3200_Is_Search"] = "Y";
+            Response.Redirect("WFB2IA3200_Qry.aspx");
+        }
+        else
+            Response.Redirect("WFB2SH3100_Qry.aspx");
+    }
+}

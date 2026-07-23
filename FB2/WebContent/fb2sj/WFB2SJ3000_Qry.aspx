@@ -154,7 +154,6 @@
                         Name="assess_type" PropertyName="SelectedValue" Type="String" ConvertEmptyStringToNull="False" />
                 </SelectParameters>
             </asp:ObjectDataSource>
-
             <asp:GridView ID="gv_result" runat="server" AllowPaging="True" AllowSorting="true" ClientIDMode="Static"
                 AutoGenerateColumns="False" CssClass="grid-view" ShowFooter="True" OnSorting="gv_result_Sorting"
                 OnRowDataBound="gv_result_RowDataBound"  Width="1010px"
