@@ -93,13 +93,15 @@ public class CFB2SH3100DAO : BaseDAO
             Hashtable ht = new Hashtable();
             sb.Append(" select * From");
             sb.Append(" (select ROW_NUMBER() OVER(ORDER BY " + sortExpression + " ) As RowNumber,");
-            sb.Append(@"  A.PJOB_CD,A.AWARD,A.AWARD_DIFFER,A.AWARD_DESC
-                                from TB_S_M_FR_AWARD A with (nolock) ");
+            sb.Append(@"  A.PJOB_CD,B.PJOB_DESC,A.AWARD,A.AWARD_DIFFER,A.AWARD_DESC
+                                from TB_S_M_FR_AWARD A with (nolock) LEFT JOIN
+                                     TB_H_M_PJOB B ON A.PJOB_CD=B.PJOB_CD 
+                                     ");
             sb.Append(" where 1=1 ");
 
             if (pjob_cd != "")
             {
-                sb.Append(" and PJOB_CD  LIKE '%'+@PJOB_CD+'%' ");
+                sb.Append(" and A.PJOB_CD  LIKE '%'+@PJOB_CD+'%' ");
                 ht.Add("@PJOB_CD", pjob_cd);
             }
 
@@ -296,12 +298,14 @@ public class CFB2SH3100DAO : BaseDAO
             sb.Append(" select * From");
             sb.Append(" (select ROW_NUMBER() OVER(ORDER BY " + sortExpression + " ) As RowNumber,");
             sb.Append(@"  A.PJOB_CD,A.YEAR_S = @YEAR_S, YEAR_E = @YEAR_E, BONUS_BASE = @BONUS_BASE
-                                from TB_S_M_FR_BASEBONUS A with (nolock) ");
+                                from TB_S_M_FR_BASEBONUS A with (nolock)  LEFT JOIN
+                                     TB_H_M_PJOB B ON A.PJOB_CD=B.PJOB_CD 
+                                     ");
             sb.Append(" where 1=1 ");
 
             if (pjob_cd != "")
             {
-                sb.Append(" and PJOB_CD  LIKE '%'+@PJOB_CD+'%' ");
+                sb.Append(" and A.PJOB_CD  LIKE '%'+@PJOB_CD+'%' ");
                 ht.Add("@PJOB_CD", pjob_cd);
             }
 
@@ -459,7 +463,7 @@ public class CFB2SH3100DAO : BaseDAO
     }
 
     //刪除 TB_S_M_FR_BASEBONUS
-    public void deleteBaseBounsITEM(string pjob_cd)
+    public void deleteBaseBounsITEM(string pjob_cd, string year_s)
     {
         try
         {
@@ -468,11 +472,13 @@ public class CFB2SH3100DAO : BaseDAO
             //寫log
             sb.AppendLine(" update TB_S_M_FR_BASEBONUS set UPDATED_DT =getdate(),UPDATED_BY = @CURRENT_EMP,FUNC_ID = 'FB2SH3100' ");
             sb.Append(" where PJOB_CD = @PJOB_CD  ");
+            sb.Append(" AND YEAR_S = @PYEAR_S  ");
             ht.Add("@CURRENT_EMP", SessionHandle.Current.emp_id);
-            ht.Add("@PJOB_CD", PJOB_CD);//VARCHAR
+            ht.Add("@PJOB_CD", pjob_cd);//VARCHAR
+            ht.Add("@PJOB_CD", year_s);//VARCHAR
 
             sb.Append(" delete from TB_S_M_FR_BASEBONUS ");
-            sb.Append(" where PJOB_CD = @PJOB_CD  ");
+            sb.Append(" where PJOB_CD = @PJOB_CD   AND YEAR_S = @PYEAR_S ");
             //ht.Add("@ASSESS_TYPE", assess_type);
             //ht.Add("@WS_CD", ws_cd);
             //ht.Add("@LEVEL_CD", level_cd);
@@ -496,7 +502,7 @@ public class CFB2SH3100DAO : BaseDAO
             if (PJOB_CD != "")
             {
                 sb.Append(" and PJOB_CD = @PJOB_CD");
-                ht.Add("@PJOB_CD", PJOB_CD );
+                ht.Add("@PJOB_CD", pjob_cd);
             }
             return dbConn.Query(sb, ht);
         }

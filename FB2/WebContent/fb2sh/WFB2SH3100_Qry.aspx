@@ -13,8 +13,14 @@
             //日期格式心須
             $(".date").datepicker({ dateFormat: 'yy/mm/dd' });
             $('.date').mask('9999/99/99');
-            $(".numFormat").mask('9.999');
+            $(".numFormat").mask('99.9');
+            $(".numFormat2").mask('99999');
             $(".decimal").css("text-align", "right").css("ime-mode", "disabled");
+
+
+            // 設定職務名稱為唯讀
+            $("input[id$='txt_NEW_PJOB_DESC']").attr("readonly", true);
+            $("input[id$='txt_NEW_PJOB_DESC']").css("background-color", "transparent");
 
             //reComma("AWARD_BASE", 3);
             //GridView必須
@@ -22,6 +28,64 @@
             $.unblockUI();
         }
 
+        // ★ 自訂函式：處理 Pjob_Search 回傳值
+        function Pjob_Search(obj_cd, obj_desc, value) {
+            console.log("=== Pjob_Search callback START ===");
+            console.log("obj_cd:", obj_cd);
+            console.log("obj_desc:", obj_desc);
+            console.log("value:", value);
+            
+            var returnValue = value;
+            if (returnValue == undefined || returnValue === 'undefined') {
+                console.log("returnValue is undefined, exit");
+                return;
+            }
+
+            try {
+                var obj = jQuery.parseJSON(returnValue);
+                console.log("Parsed JSON:", obj);
+                console.log("CD:", obj.CD);
+                console.log("DESC:", obj.DESC);
+
+                // ★ 使用屬性選擇器找到 UpdatePanel 內的控制項
+                var $cdControl = $('[id$="' + obj_cd + '"]');
+                var $descControl = $('[id$="' + obj_desc + '"]');
+
+                console.log("Found CD control count:", $cdControl.length);
+                console.log("Found DESC control count:", $descControl.length);
+
+                if ($cdControl.length > 0) {
+                    console.log("CD control ID:", $cdControl.attr('id'));
+                    console.log("CD control NAME:", $cdControl.attr('name'));
+                    $cdControl.val(obj.CD);
+                    console.log("Set PJOB_CD to:", obj.CD);
+                    console.log("Current value:", $cdControl.val());
+
+                    // ★ 觸發 AutoPostBack（必須用實際的 name 屬性）
+                    var controlName = $cdControl.attr('name');
+                    console.log("Triggering __doPostBack with:", controlName);
+                    
+                    if (controlName && typeof __doPostBack !== 'undefined') {
+                        setTimeout(function() {
+                            __doPostBack(controlName, '');
+                        }, 100);
+                    } else {
+                        console.log("ERROR: Cannot trigger postback - controlName:", controlName, ", __doPostBack exists:", typeof __doPostBack !== 'undefined');
+                    }
+                }
+
+                if ($descControl.length > 0) {
+                    console.log("DESC control ID:", $descControl.attr('id'));
+                    $descControl.val(obj.DESC);
+                    console.log("Set PJOB_DESC to:", obj.DESC);
+                }
+                
+                console.log("=== Pjob_Search callback END ===");
+            } catch (ex) {
+                console.error("Error in Pjob_Search:", ex);
+                alert("發生錯誤: " + ex.message);
+            }
+        }
 
         function ShowRecord(obj) {
 
@@ -120,9 +184,7 @@
 
         //清空畫面
         function ClearAll() {
-            $("#txt_AWARD").val("");
-            $("#txt_LEVEL_CD").val("");
-            $("#ddl_WS_CD").val("-1");
+            $("#txt_PJOB_CD").val("");
         }
 
 
@@ -159,12 +221,12 @@
                         <td align="left" class="Body_label">
                             <asp:TextBox ID="txt_PJOB_CD" runat="server" Width="100px" ClientIDMode="Static" > </asp:TextBox>
                         </td>
-                        <th align="left" class="Body_TableHeader">
+                        <th align="left" class="Body_label">
                            </th>
                         <td align="left" class="Body_label">
                             
                         </td>
-                        <th align="left" class="Body_TableHeader">
+                        <th align="left" class="Body_label">
                             </th>
                         <td align="left" class="Body_label">
                           
@@ -182,17 +244,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="6">
-                            <hr />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right" class="Body_label" colspan="6">
-                            <div id="init_grid">
-
+                        <td  class="Body_label" colspan="6">
+                             <hr size="3">
+                               【<asp:Label ID="lb_LABOR" runat="server" Text="考績格差設定" align="left"></asp:Label>】
+                               <div id="init_grid" align="right">
                                 <aces:Btn ID="WFB2SH3100Add" runat="server" Text="新增" Visible="true" OnClick="WFB2SH3100Add_Click" />
                                 <aces:Btn ID="WFB2SH3100Delete" runat="server" Text="刪除" Visible="false" OnClick="WFB2SH3100Delete_Click" OnClientClick="return doDelete();" />
-                                <aces:Btn ID="WFB2SH3100Edit" runat="server" Text="修改" Visible="false" OnClick="WFB2SH3100Edit_Click" OnClientClick="BlockUI();" />
+                                <aces:Btn ID="WFB2SH3100EDIT" runat="server" Text="修改" Visible="false" OnClick="WFB2SH3100EDIT_Click" OnClientClick="BlockUI();" />
                                 <aces:Btn ID="WFB2SH3100Save" runat="server" Text="確認" Visible="false" OnClick="WFB2SH3100SAVE_Click" OnClientClick="return saveCheck()" />
                                 <%--
                                 <asp:Button ID="WFB2SH3100Add" runat="server" Text="<%$Resources:Resource,wfb2sh_btn_add%>" Visible="true" OnClick="WFB2SH3100Add_Click"  />
@@ -202,184 +260,145 @@
                                 --%>
 
                                 <asp:Button ID="btn_cancel" runat="server" Text="清除" Visible="false" OnClientClick="return confirm('是否確定取消?');" OnClick="btn_cancel_Click" />
-                            </div>
+                                </div>
+                     
+                                <asp:ObjectDataSource ID="ods1" runat="server" SelectMethod="getAward_Data"
+                                    SelectCountMethod="getAwardCount" TypeName="CFB2SH3100DAO" EnablePaging="True"
+                                    SortParameterName="sortExpression" OnSelecting="obs1_Selecting"
+                                    OnSelected="ods1_Selected">
+                                    <SelectParameters>
+                                        <asp:Parameter Name="startRowIndex" Type="Int32" />
+                                        <asp:Parameter Name="maximumRows" Type="Int32" />
+                                        <asp:ControlParameter ControlID="txt_PJOB_CD"
+                                            Name="pjob_cd" PropertyName="Text" Type="String" ConvertEmptyStringToNull="False" />
+       
+                                    </SelectParameters>
+                                </asp:ObjectDataSource>
+                                <asp:GridView ID="gv_result" runat="server" AllowPaging="True" AllowSorting="True" ClientIDMode="Static"
+                                    AutoGenerateColumns="False" CssClass="grid-view" ShowFooter="True" OnSorting="gv_result_Sorting"
+                                    OnRowDataBound="gv_result_RowDataBound" OnRowCreated="gv_result_RowCreated" Width="1020px"
+                                    OnPageIndexChanging="gv_result_PageIndexChanging" OnDataBound="gv_result_DataBound"
+                                    ShowHeaderWhenEmpty="true">
+                                    <Columns>
+                                        <asp:TemplateField HeaderStyle-Width="20px">
+                                            <HeaderTemplate>
+                                                <asp:CheckBox ID="cb_all" runat="server" onclick="javascript:SelectAllCheckboxes(this);" ClientIDMode="Static" Width="20px" />
+                                            </HeaderTemplate>
+                                            <ItemTemplate>
+                                                <asp:CheckBox ID="cb_check" runat="server" ClientIDMode="AutoID" Width="20px" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <%--序號--%>
+                                        <asp:TemplateField HeaderText="序號" HeaderStyle-Width="40px">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lb_RowNumber" runat="server" Text='<%#Bind("RowNumber")%>' Width="40px"></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:Label ID="lb_RowNumber" runat="server" Text='<%#Bind("RowNumber")%>' Width="40px"></asp:Label>
+                                            </EditItemTemplate>
+                                            <FooterTemplate>
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+                                        <%--職務代碼--%>
+                                        <asp:TemplateField HeaderText="職務代碼" HeaderStyle-Width="80px" ItemStyle-HorizontalAlign="Left" SortExpression="PJOB_CD">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lb_PJOB_CD" runat="server" Text='<%#Bind("PJOB_CD")%>' Width="80px"></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:Label ID="lb_PJOB_CD" runat="server" Text='<%#Bind("PJOB_CD")%>' Width="80px"></asp:Label>
+                                            </EditItemTemplate>
+                                            <FooterTemplate>
+                                                 <div style="text-align: left; width: 100%">
+                                                  <asp:TextBox ID="txt_NEW_PJOB_CD" runat="server" ClientIDMode="Static" BackColor="#FFD7D7" Width="50px" MaxLength="3" OnTextChanged="txt_NEW_PJOB_CD_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                                     <input id="btn_PJOB_CD" type="button" value="..." onclick="OpenSearch('Pjob_Search.aspx','txt_NEW_PJOB_CD', 'txt_NEW_PJOB_DESC','','Y');" />
+                                                  </div>
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+                                        <%--職務名稱--%>
+                                        <asp:TemplateField HeaderText="職務名稱" HeaderStyle-Width="100px" ItemStyle-HorizontalAlign="Left" SortExpression="WS_CD">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lb_PJOB_DESC" runat="server" Text='<%#Bind("PJOB_DESC")%>' Width="100px"></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:Label ID="lb_PJOB_DESC" runat="server" Text='<%#Bind("PJOB_DESC")%>' Width="100px"></asp:Label>
+                                            </EditItemTemplate>
+                                            <FooterTemplate>
+                                                <asp:TextBox ID="txt_NEW_PJOB_DESC" runat="server" ClientIDMode="Static" BorderWidth="0" Width="80px"></asp:TextBox>
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+                                        <%--考績--%>
+                                        <asp:TemplateField HeaderText="考績" HeaderStyle-Width="80px" ItemStyle-HorizontalAlign="Left" SortExpression="AWARD">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lb_AWARD" runat="server" Text='<%#Bind("AWARD")%>' Width="80px"></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:Label ID="lb_AWARD" runat="server" Text='<%#Bind("AWARD")%>' Width="80px"></asp:Label>
+                                            </EditItemTemplate>
+                                            <FooterTemplate>
+                                               <asp:TextBox ID="txt_NEW_AWARD" runat="server" ClientIDMode="Static" Width="100px"></asp:TextBox>
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+                                        <%--年終格差--%>
+                                        <asp:TemplateField HeaderText="年獎格差" HeaderStyle-Width="100px" ItemStyle-HorizontalAlign="Right" SortExpression="AWARD_BASE">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lb_AWARD_DIFFER" runat="server" Text='<%#Bind("AWARD_DIFFER")%>' Width="100px"></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:TextBox ID="txt_EDIT_AWARD_DIFFER" runat="server" Text='<%#Bind("AWARD_DIFFER")%>' ClientIDMode="Static" Width="100px" CssClass="MandatoryField numFormat  decimal"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="EDIT_AWARD_DIFFER" runat="server" ErrorMessage="年獎格差不可為空白"
+                                                    ControlToValidate="txt_EDIT_AWARD_DIFFER" ForeColor="Red" ValidationGroup="GroupA" Display="None"></asp:RequiredFieldValidator>
+                                            </EditItemTemplate>
+                                            <FooterTemplate>
+                                                <asp:TextBox ID="txt_NEW_AWARD_DIFFER" runat="server" ClientIDMode="Static" Width="100px" CssClass="MandatoryField numFormat  decimal"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="NEW_AWARD_DIFFER" runat="server" ErrorMessage="年獎格差不可為空白"
+                                                    ControlToValidate="txt_NEW_AWARD_DIFFER" ForeColor="Red" ValidationGroup="GroupA" Display="None"></asp:RequiredFieldValidator>
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+                                        <%--年終格差說明--%>
+                                        <asp:TemplateField HeaderText="年獎格差說明" HeaderStyle-Width="300px" ItemStyle-HorizontalAlign="Left" SortExpression="AWARD_DESC">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lb_AWARD_DESC" runat="server" Text='<%#Bind("AWARD_DESC")%>' Width="300px"></asp:Label>
+                                            </ItemTemplate>
+                                            <EditItemTemplate>
+                                                <asp:TextBox ID="txt_EDIT_AWARD_DESC" runat="server" Text='<%#Bind("AWARD_DESC")%>' MaxLength="50" ClientIDMode="Static" Width="500px"></asp:TextBox>
+                                            </EditItemTemplate>
+                                            <FooterTemplate>
+                                                <asp:TextBox ID="txt_NEW_AWARD_DESC" runat="server" MaxLength="50" ClientIDMode="Static" Width="300px"> </asp:TextBox>
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                    <HeaderStyle CssClass="GridviewScrollHeader" />
+                                    <PagerStyle CssClass="GridviewScrollPager" />
+
+                                </asp:GridView>
+                                <table id="OnePage" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" height="100%" runat="server" visible="false" style="padding-top: 5px; padding-left: 5px">
+                                    <tr height="100%" valign="top">
+                                        <td class="GridviewScrollPager TD">
+                                            <asp:DropDownList ID="ddlPerPageRow" runat="server" onchange="javascript:ShowRecord('')" ClientIDMode="Static" AutoPostBack="true">
+                                                <asp:ListItem Text="每頁10筆" Value="10"></asp:ListItem>
+                                                <asp:ListItem Text="每頁20筆" Value="20"></asp:ListItem>
+                                                <asp:ListItem Text="每頁30筆" Value="30"></asp:ListItem>
+                                                <asp:ListItem Text="每頁40筆" Value="40"></asp:ListItem>
+                                                <asp:ListItem Text="每頁50筆" Value="50"></asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
+                                        <td style="width: 5px"></td>
+                                        <td style="font-size: 14px;">
+                                            <asp:Label ID="lb_TotalCount" runat="server" Text=""></asp:Label>
+                                        </td>
+                                    </tr>
+                                </table>
                         </td>
+
                     </tr>
+                   
                 </tbody>
             </table>
 
 
-            <asp:ObjectDataSource ID="ods1" runat="server" SelectMethod="getAward_Data"
-                SelectCountMethod="getAwardCount" TypeName="CFB2SH3100DAO" EnablePaging="True"
-                SortParameterName="sortExpression" OnSelecting="obs1_Selecting"
-                OnSelected="ods1_Selected">
-                <SelectParameters>
-                    <asp:Parameter Name="startRowIndex" Type="Int32" />
-                    <asp:Parameter Name="maximumRows" Type="Int32" />
-                    <asp:ControlParameter ControlID="txt_PJOB_CD"
-                        Name="pjob_cd" PropertyName="Text" Type="String" ConvertEmptyStringToNull="False" />
-                   
-                </SelectParameters>
-            </asp:ObjectDataSource>
-            <asp:GridView ID="gv_result" runat="server" AllowPaging="True" AllowSorting="True" ClientIDMode="Static"
-                AutoGenerateColumns="False" CssClass="grid-view" ShowFooter="True" OnSorting="gv_result_Sorting"
-                OnRowDataBound="gv_result_RowDataBound" OnRowCreated="gv_result_RowCreated" Width="1020px"
-                OnPageIndexChanging="gv_result_PageIndexChanging" OnDataBound="gv_result_DataBound">
-                <Columns>
-                    <asp:TemplateField HeaderStyle-Width="20px">
-                        <HeaderTemplate>
-                            <asp:CheckBox ID="cb_all" runat="server" onclick="javascript:SelectAllCheckboxes(this);" ClientIDMode="Static" Width="20px" />
-                        </HeaderTemplate>
-                        <ItemTemplate>
-                            <asp:CheckBox ID="cb_check" runat="server" ClientIDMode="AutoID" Width="20px" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <%--序號--%>
-                    <asp:TemplateField HeaderText="序號" HeaderStyle-Width="40px">
-                        <ItemTemplate>
-                            <asp:Label ID="lb_RowNumber" runat="server" Text='<%#Bind("RowNumber")%>' Width="40px"></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:Label ID="lb_RowNumber" runat="server" Text='<%#Bind("RowNumber")%>' Width="40px"></asp:Label>
-                        </EditItemTemplate>
-                        <FooterTemplate>
-                        </FooterTemplate>
-                    </asp:TemplateField>
-                    <%--職務代碼--%>
-                    <asp:TemplateField HeaderText="職務代碼" HeaderStyle-Width="80px" ItemStyle-HorizontalAlign="Left" SortExpression="PJOB_CD">
-                        <ItemTemplate>
-                            <asp:Label ID="lb_PJOB_CD" runat="server" Text='<%#Bind("PJOB_CD")%>' Width="80px"></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:Label ID="lb_PJOB_CD" runat="server" Text='<%#Bind("PJOB_CD")%>' Width="80px"></asp:Label>
-                        </EditItemTemplate>
-                        <FooterTemplate>
-                            <asp:TextBox ID="txt_NEW_PJOB_CD" runat="server" Text='<%#Bind("PJOB_CD")%>' ClientIDMode="Static" Width="100px" ></asp:TextBox>
-                        </FooterTemplate>
-                    </asp:TemplateField>
-                    <%--職務名稱--%>
-                    <asp:TemplateField HeaderText="職務名稱" HeaderStyle-Width="100px" ItemStyle-HorizontalAlign="Left" SortExpression="WS_CD">
-                        <ItemTemplate>
-                            <asp:Label ID="lb_PJOB_NAME" runat="server" Text='<%#Bind("PJOB_NAME")%>' Width="100px"></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:Label ID="lb_PJOB_NAME" runat="server" Text='<%#Bind("PJOB_NAME")%>' Width="100px"></asp:Label>
-                        </EditItemTemplate>
-                        <FooterTemplate>
-                            <asp:Label ID="lb_PJOB_NAME" runat="server" Text='<%#Bind("PJOB_NAME")%>' Width="100px"></asp:Label>
-                        </FooterTemplate>
-                    </asp:TemplateField>
-                    <%--考績--%>
-                    <asp:TemplateField HeaderText="考績" HeaderStyle-Width="80px" ItemStyle-HorizontalAlign="Left" SortExpression="AWARD">
-                        <ItemTemplate>
-                            <asp:Label ID="lb_AWARD" runat="server" Text='<%#Bind("AWARD")%>' Width="80px"></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:Label ID="lb_AWARD" runat="server" Text='<%#Bind("AWARD")%>' Width="80px"></asp:Label>
-                        </EditItemTemplate>
-                        <FooterTemplate>
-                           <asp:TextBox ID="txt_NEW_AWARD" runat="server" Text='<%#Bind("PJOB_CD")%>' ClientIDMode="Static" Width="100px" ></asp:TextBox>
-                        </FooterTemplate>
-                    </asp:TemplateField>
-                    <%--年終格差--%>
-                    <asp:TemplateField HeaderText="年獎格差" HeaderStyle-Width="100px" ItemStyle-HorizontalAlign="Right" SortExpression="AWARD_BASE">
-                        <ItemTemplate>
-                            <asp:Label ID="lb_AWARD_DIFFER" runat="server" Text='<%#Bind("AWARD_DIFFER")%>' Width="100px"></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txt_EDIT_AWARD_DIFFER" runat="server" Text='<%#Bind("AWARD_DIFFER")%>' ClientIDMode="Static" Width="100px" CssClass="MandatoryField numFormat  decimal"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="EDIT_AWARD_DIFFER" runat="server" ErrorMessage="年獎格差不可為空白"
-                                ControlToValidate="txt_EDIT_AWARD_DIFFER" ForeColor="Red" ValidationGroup="GroupA" Display="None"></asp:RequiredFieldValidator>
-                        </EditItemTemplate>
-                        <FooterTemplate>
-                            <asp:TextBox ID="txt_NEW_AWARD_DIFFER" runat="server" ClientIDMode="Static" Width="100px" CssClass="MandatoryField numFormat  decimal"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="NEW_AWARD_DIFFER" runat="server" ErrorMessage="<%$Resources:Resource,wfb2sh_required_award_base%>"
-                                ControlToValidate="txt_NEW_AWARD_DIFFER" ForeColor="Red" ValidationGroup="GroupA" Display="None"></asp:RequiredFieldValidator>
-                        </FooterTemplate>
-                    </asp:TemplateField>
-                    <%--年終格差說明--%>
-                    <asp:TemplateField HeaderText="年獎格差說明" HeaderStyle-Width="500px" ItemStyle-HorizontalAlign="Left" SortExpression="AWARD_DESC">
-                        <ItemTemplate>
-                            <asp:Label ID="lb_AWARD_DESC" runat="server" Text='<%#Bind("AWARD_DESC")%>' Width="500px"></asp:Label>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txt_EDIT_AWARD_DESC" runat="server" Text='<%#Bind("AWARD_DESC")%>' MaxLength="50" ClientIDMode="Static" Width="500px"></asp:TextBox>
-                        </EditItemTemplate>
-                        <FooterTemplate>
-                            <asp:TextBox ID="txt_NEW_AWARD_DESC" runat="server" MaxLength="50" ClientIDMode="Static" Width="500px"> </asp:TextBox>
-                        </FooterTemplate>
-                    </asp:TemplateField>
-                </Columns>
-                <%--當DB無資料時，就會使用此table --%>
-                <EmptyDataTemplate>
-                    <table class="grid-view" width="1020px">
-                        <tr class="header">
-                            <td>
-                                <asp:CheckBox ID="cb_all" runat="server" onclick="javascript:SelectAllCheckboxes(this);" Width="20px" />
-                            </td>
-                            <td>
-                                <asp:Label ID="Label1" runat="server" Text="序號" Width="40px"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label ID="Label2" runat="server" Text="職務代號" Width="80px"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label ID="Label3" runat="server" Text="職務名稱" Width="100px"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label ID="Label4" runat="server" Text="考績" Width="80px"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label ID="Label5" runat="server" Text="年獎格差" Width="100px"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label ID="Label6" runat="server" Text="年獎格差說明" Width="500px"></asp:Label>
-                            </td>
-                        </tr>
-                        <tr class="normal">
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <asp:TextBox ID="txt_NEW_PJOB_CD" runat="server" Text='' ClientIDMode="Static" Width="100px" ></asp:TextBox>
-                            </td>
-                            <td>
-                                <asp:Label ID="lb_NEW_PJOB_NAME" runat="server" Text='' Width="100px"></asp:Label>
-                            </td>
-                            <td>
-                                 <asp:TextBox ID="txt_NEW_AWARD" runat="server" Text='' ClientIDMode="Static" Width="80px" ></asp:TextBox>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="txt_NEW_AWARD_DIFFER" runat="server" ClientIDMode="Static" Width="100px" CssClass="MandatoryField numFormat  decimal"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="NEW_AWARD_DIFFER2" runat="server" ErrorMessage="不可為空白"
-                                    ControlToValidate="txt_NEW_AWARD_BASE" ForeColor="Red" ValidationGroup="GroupA" Display="None"></asp:RequiredFieldValidator>
-                            </td>
-                            <td>
-                                <asp:TextBox ID="txt_NEW_AWARD_DESC" runat="server" MaxLength="50" ClientIDMode="Static" Width="500px"> </asp:TextBox>
-                            </td>
-                    </table>
-                </EmptyDataTemplate>
-                <HeaderStyle CssClass="GridviewScrollHeader" />
-                <PagerStyle CssClass="GridviewScrollPager" />
+            
 
-            </asp:GridView>
-
-            <table id="OnePage" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" height="100%" runat="server" visible="false" style="padding-top: 5px; padding-left: 5px">
-                <tr height="100%" valign="top">
-                    <td class="GridviewScrollPager TD">
-                        <asp:DropDownList ID="ddlPerPageRow" runat="server" onchange="javascript:ShowRecord('')" ClientIDMode="Static" AutoPostBack="true">
-                            <asp:ListItem Text="每頁10筆" Value="10"></asp:ListItem>
-                            <asp:ListItem Text="每頁20筆" Value="20"></asp:ListItem>
-                            <asp:ListItem Text="每頁30筆" Value="30"></asp:ListItem>
-                            <asp:ListItem Text="每頁40筆" Value="40"></asp:ListItem>
-                            <asp:ListItem Text="每頁50筆" Value="50"></asp:ListItem>
-                        </asp:DropDownList>
-                    </td>
-                    <td style="width: 5px"></td>
-                    <td style="font-size: 14px;">
-                        <asp:Label ID="lb_TotalCount" runat="server" Text=""></asp:Label>
-                    </td>
-                </tr>
-            </table>
+            
             <!-- 查詢條件 -->
             <asp:HiddenField ID="hid_qry_PJOB_CD" runat="server" ClientIDMode="Static" />
 

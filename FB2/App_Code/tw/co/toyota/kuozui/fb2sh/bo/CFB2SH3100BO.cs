@@ -150,7 +150,7 @@ public class CFB2SH3100BO : BaseService
     }
 
     //刪除 TB_S_M_FR_BASEBONUS
-    public string deleteBaseBounsITEM(List<Tuple<string>> deletKey)
+    public string deleteBaseBounsITEM(List<Tuple<string,string>> deletKey)
     {
         try
         {
@@ -158,7 +158,7 @@ public class CFB2SH3100BO : BaseService
             BeginTransaction();
             foreach (var item in deletKey)
             {
-                wfb2sh.deleteBaseBounsITEM(item.Item1);
+                wfb2sh.deleteBaseBounsITEM(item.Item1,item.Item2);
             }
             Commit();
             return "0";
