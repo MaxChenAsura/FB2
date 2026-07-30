@@ -9,10 +9,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NPOI.SS.UserModel;
 
-public partial class WebContent_WFB2SJ3300_Qry : BasePage
+public partial class WebContent_WFB2SJ3400_Qry : BasePage
 {
     //宣告BO 物件
-    private CFB2SJ3300BO sj3300BO = new CFB2SJ3300BO();
+    private CFB2SJ3400BO sj0230BO = new CFB2SJ3400BO();
 
     //.NET的初始功能
     protected void Page_Load(object sender, EventArgs e)
@@ -53,20 +53,11 @@ public partial class WebContent_WFB2SJ3300_Qry : BasePage
     {
         try
         {
-            createASSESS_TYPE();
 
-        }
-        catch (Exception ex)
-        {
-            logger.Error(ex.Message);
-            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
-        }
-    }
-    private void createASSESS_TYPE()
-    {
-        try
-        {
-            DataTable dt = utilities.getCommCode("SJ", "FASSESS_TYPE", "", "");
+            DataTable dt = new DataTable();
+            //
+            //考核類型
+            dt = utilities.getCommCode("FJ", "FASSESS_TYPE", "", "");
             ddl_ASSESS_TYPE.Items.Add(new ListItem("", "-1"));
             if (dt.Rows.Count > 0)
             {
@@ -75,13 +66,15 @@ public partial class WebContent_WFB2SJ3300_Qry : BasePage
                     ddl_ASSESS_TYPE.Items.Add(new ListItem(dt.Rows[i]["SUB_DESC"].ToString(), dt.Rows[i]["SUB_CD"].ToString()));
                 }
             }
+      
         }
         catch (Exception ex)
         {
             logger.Error(ex.Message);
-            ScriptManager.RegisterClientScriptBlock(ddl_ASSESS_TYPE, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
         }
     }
+
 
     #endregion
 
@@ -101,17 +94,17 @@ public partial class WebContent_WFB2SJ3300_Qry : BasePage
 
             //取得預設排序，傳入預設排序欄位
             if (ViewState["SortExpression"] == null)
-                getSortDirection("ASSESS_TYPE", "ASC");//序號的順序，不用寫order by, 在此排序('欄位A ASC, 欄位B '  DESC)
-
+                getSortDirection("ASSESS_YEAR", "ASC");//序號的順序，不用寫order by, 在此排序('欄位A ASC, 欄位B '  DESC)
             //GridView基本設定
             gv_result.PageIndex = 0;  //初始頁
             gv_result.PageSize = pagesize;
             gv_result.DataSourceID = "ods1";
-            gv_result.DataKeyNames = new string[] { "ASSESS_TYPE","WS_CD","LEVEL_CD" }; //設定GridView Key
+            gv_result.DataKeyNames = new string[] { "ASSESS_YEAR", "ASSESS_TYPE", "DEPT_NO_20" }; //設定GridView Key
             gv_result.DataBind();
+           
 
             HID_PageRow.Value = ""; //GridView有分頁此段必加
-            hashtable_set("SJ3300_ddlPerPageRow", ViewState["PerPageRow"]);
+            hashtable_set("SJ3400_ddlPerPageRow", ViewState["PerPageRow"]);
         }
         catch (Exception ex)
         {
@@ -132,7 +125,7 @@ public partial class WebContent_WFB2SJ3300_Qry : BasePage
             gv_result.PageSize = 10;
 
         gv_result.DataSourceID = "ods1";
-        gv_result.DataKeyNames = new string[] { "ASSESS_TYPE" }; //設定GridView Key
+        gv_result.DataKeyNames = new string[] { "ASSESS_YEAR", "ASSESS_TYPE", "DEPT_NO_20" }; //設定GridView Key
         getSortDirection(e.SortExpression);
         //end
     }
@@ -238,7 +231,7 @@ public partial class WebContent_WFB2SJ3300_Qry : BasePage
             gv_result.PageSize = 10;
 
         gv_result.DataSourceID = "ods1";
-        gv_result.DataKeyNames = new string[] { "ASSESS_TYPE"}; //設定GridView Key
+        gv_result.DataKeyNames = new string[] { "ASSESS_YEAR", "ASSESS_TYPE", "DEPT_NO_20"}; //設定GridView Key
     }
 
     //頁碼
@@ -273,8 +266,9 @@ public partial class WebContent_WFB2SJ3300_Qry : BasePage
 
     #region button 事件
     //查詢功能
-    protected void WFB2SJ3300Search_Click(object sender, EventArgs e)
+    protected void WFB2SJ3400Search_Click(object sender, EventArgs e)
     {
+
         try
         {
             //保留查詢條件
@@ -287,30 +281,28 @@ public partial class WebContent_WFB2SJ3300_Qry : BasePage
             ViewState["SortDirection"] = null; //排序順序，null = 回復成正常排序
             //HID_PageRow.Value = "";
 
+            //ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + hid_DEPT_NO_20.Value + ";" + txt_ASSESS_YEAR.Text + ";" + ddl_ASSESS_TYPE.SelectedValue + ";" + ddl_WS_CD.SelectedValue + ";" + ddl_SCORE_LEVEL_GROUP.SelectedValue + ";" + ddl_IS_MERGER.SelectedValue + "');", true);
+           // return;
             //GridView有分頁此段必加 begin
             if (ViewState["PerPageRow"] != null && ViewState["PerPageRow"].ToString() != "")
                 //
-                getGridView("WS_CD, LEVEL_CD", 0, Convert.ToInt32(ViewState["PerPageRow"]));
+                getGridView("ASSESS_YEAR", 0, Convert.ToInt32(ViewState["PerPageRow"]));
             else
-                getGridView("WS_CD, LEVEL_CD", 0, 10);
+                getGridView("ASSESS_YEAR", 0, 10);
             //end
-
             //不顯示編輯列及新增列
             gv_result.EditIndex = -1;
             gv_result.ShowFooter = false;
-
             if (gv_result.Rows.Count == 0)
             {
                 gv_result.Visible = false;
-                WFB2SJ3300Upd.Visible = false;
-                WFB2SJ3300Del.Visible = false;
+                WFB2SJ3400Upd.Visible = false;
                 ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('查無資料!');", true);
                 return;
             }
             if (gv_result.Rows.Count > 0)
             {
-                WFB2SJ3300Upd.Visible = true;
-                WFB2SJ3300Del.Visible = true;
+                WFB2SJ3400Upd.Visible = true;
                 //HID_Freeze.Value = "Y";
             }
 
@@ -322,24 +314,87 @@ public partial class WebContent_WFB2SJ3300_Qry : BasePage
         }
     }
 
- 
-    //新增
-    protected void WFB2SJ3300Add_Click(object sender, EventArgs e)
+
+    protected void WFB2SJ3400ReGen_Click(object sender, EventArgs e)
     {
         try
         {
-            //保留查詢資料
-            //setQryField(true);
-            Response.Redirect("WFB2SJ3300_Add.aspx?");
+            DataTable dt = sj0230BO.getAssessData(txt_ASSESS_YEAR.Text, ddl_ASSESS_TYPE.SelectedValue);
+            if (dt.Rows.Count > 0)
+            {
+                if (dt.Rows[0]["APPROVE_STATUS"].ToString() == "Y")
+                {
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('考核基本資料已核可,不允許重配置');", true);
+                    return;
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('無考核基本資料');", true);
+                return;
+            }
+            CFB2SJ3400DAO sj0230DAO = new CFB2SJ3400DAO();
+            sj0230DAO.ASSESS_TYPE = ddl_ASSESS_TYPE.SelectedValue;
+            sj0230DAO.ASSESS_YEAR = txt_ASSESS_YEAR.Text;
+            sj0230DAO.UPDATED_BY = SessionHandle.Current.emp_id;
+            sj0230DAO.FUNC_ID = "FB2SJ3400";
+            string msg = sj0230BO.reGenL2Data(sj0230DAO);
+            if (msg != "0")
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + msg + "');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('處理完成');", true);
+            }
         }
         catch (Exception ex)
         {
+            logger.Error(ex.Message);
             ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
         }
     }
-
+    protected void WFB2SJ3400ReGenDepEmps_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            DataTable dt = sj0230BO.getAssessData(txt_ASSESS_YEAR.Text, ddl_ASSESS_TYPE.SelectedValue);
+            if (dt.Rows.Count > 0)
+            {
+                if (dt.Rows[0]["APPROVE_STATUS"].ToString() == "Y")
+                {
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('考核基本資料已核可,不允許重配置');", true);
+                    return;
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('無考核基本資料');", true);
+                return;
+            }
+            CFB2SJ3400DAO sj0230DAO = new CFB2SJ3400DAO();
+            sj0230DAO.ASSESS_TYPE = ddl_ASSESS_TYPE.SelectedValue;
+            sj0230DAO.ASSESS_YEAR = txt_ASSESS_YEAR.Text;
+            sj0230DAO.UPDATED_BY = SessionHandle.Current.emp_id;
+            sj0230DAO.FUNC_ID = "FB2SJ3400";
+            string msg = sj0230BO.reGenData(sj0230DAO);
+            if (msg != "0")
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + msg + "');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('處理完成');", true);
+            }
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex.Message);
+            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message + "');", true);
+        }
+    }
     //修改
-    protected void WFB2SJ3300Upd_Click(object sender, EventArgs e)
+    protected void WFB2SJ3400Upd_Click(object sender, EventArgs e)
     {
         try
         {
@@ -360,14 +415,16 @@ public partial class WebContent_WFB2SJ3300_Qry : BasePage
             }
             else
             {
+
+               
                 // 儲存 換頁條件
-                hashtable_set("SJ3300_UPD_ASSESS_TYPE", gv_result.DataKeys[editindex[0]].Values["ASSESS_TYPE"].ToString());
-                //hashtable_set("SJ3300_UPD_WS_CD", gv_result.DataKeys[editindex[0]].Values["WS_CD"].ToString());
-                //hashtable_set("SJ3300_UPD_LEVEL_CD", gv_result.DataKeys[editindex[0]].Values["LEVEL_CD"].ToString());
+                hashtable_set("SJ3400_UPD_ASSESS_YEAR", gv_result.DataKeys[editindex[0]].Values["ASSESS_YEAR"].ToString());
+                hashtable_set("SJ3400_UPD_ASSESS_TYPE", gv_result.DataKeys[editindex[0]].Values["ASSESS_TYPE"].ToString());
+                hashtable_set("SJ3400_UPD_DEPT_NO_20", gv_result.DataKeys[editindex[0]].Values["DEPT_NO_20"].ToString());
                 //hashtable_set("SA1600_UPD_SALARY_ID", gv_result.DataKeys[editindex[0]].Values["SALARY_ID"].ToString());
                 //hashtable_set("SA1600_UPD_HIRE_TYPE", gv_result.DataKeys[editindex[0]].Values["HIRE_TYPE"].ToString());
                 //hashtable_set("SA1600_UPD_START_DT", gv_result.DataKeys[editindex[0]].Values["START_DT"].ToString());
-                Response.Redirect("WFB2SJ3300_Upd.aspx?");
+                Response.Redirect("WFB2SJ3400_Upd.aspx?");
             }
         }
         catch (Exception ex)
@@ -379,62 +436,7 @@ public partial class WebContent_WFB2SJ3300_Qry : BasePage
     
 
 
-    //刪除
-    protected void WFB2SJ3300Del_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            //多個PK值使用
-            List<Tuple<string>> keysList = new List<Tuple<string>>();
-            for (int i = 0; i < this.gv_result.Rows.Count; i++)
-            {
-                if (((CheckBox)gv_result.Rows[i].FindControl("cb_check")).Checked)
-                {
-                    keysList.Add(new Tuple<string>(
-                          gv_result.DataKeys[i].Values["ASSESS_TYPE"].ToString()));
-                }
-            }
-            if (keysList.Count() == 0)
-            {
-
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "alert", "alert('請選取資料!')", true);
-                return;
-            }
-
-
-
-            string msg = sj3300BO.deleteRATE(keysList);
-
-            //成功刪除的訊息
-            if (msg != "0")
-            {
-                showMessage("deleteFailMessage", msg);
-                return;
-            }
-            else
-            {
-                showMessage("deleteSuccessMessage");
-            }
-            //重整畫面
-            if (ViewState["PerPageRow"] != null && ViewState["PerPageRow"].ToString() != "")
-                getGridView(ViewState["SortExpression"].ToString(), (int)ViewState["NewPageIndex"], Convert.ToInt32(ViewState["PerPageRow"]));
-            else
-                getGridView(ViewState["SortExpression"].ToString(), (int)ViewState["NewPageIndex"], 10);
-
-            ViewState["NewPageIndex"] = gv_result.PageIndex;
-            if (ViewState["PerPageRow"] != null && ViewState["PerPageRow"].ToString() != "")
-                gv_result.PageSize = Convert.ToInt32(ViewState["PerPageRow"]);
-            else
-                gv_result.PageSize = 10;
-
-
-
-        }
-        catch (Exception ex)
-        {
-            ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "error", "alert('" + ex.Message.Replace("\r\n", "").Replace("'", "") + "');" + "');", true);
-        }
-    }
+    
   
     #endregion
 
@@ -445,13 +447,16 @@ public partial class WebContent_WFB2SJ3300_Qry : BasePage
     {
         try
         {
-            if (hashtable_get("SJ3300_Is_Search").ToString() == "Y")
+            if (hashtable_get("SJ3400_Is_Search").ToString() == "Y")
             {
+                txt_ASSESS_YEAR.Text = hashtable_get("SJ3400_txt_ASSESS_YEAR").ToString();
+                ddl_ASSESS_TYPE.SelectedValue = hashtable_get("SJ3400_txt_ASSESS_TYPE").ToString();
+               
+                txt_DEPT_NO_20.Text = hashtable_get("SJ3400_txt_DEPT_NO_20").ToString();
+                txt_DEPT_NAME_20.Text = hashtable_get("SJ3400_txt_DEPT_NAME_20").ToString();
 
-                ddl_ASSESS_TYPE.SelectedValue = hashtable_get("SJ3300_ddl_ASSESS_TYPE").ToString();
-
-                ViewState["PerPageRow"] = hashtable_get("SJ3300_ddlPerPageRow").ToString();
-                WFB2SJ3300Search_Click(null, null);
+                ViewState["PerPageRow"] = hashtable_get("SJ3400_ddlPerPageRow").ToString();
+                WFB2SJ3400Search_Click(null, null);
                 setQryField(false);
             }
         }
@@ -467,12 +472,15 @@ public partial class WebContent_WFB2SJ3300_Qry : BasePage
         {
             //hashtable_set("SA1600_ddl_STATUS", ddl_STATUS.SelectedValue);
            // hashtable_set("SA1600_ddl_SALARY_ID", ddl_SALARY_ID.SelectedValue);
-           // hashtable_set("SA1600_ddl_HIRE_TYPE", ddl_HIRE_TYPE.SelectedValue);
-            hashtable_set("SJ3300_ddl_ASSESS_TYPE", ddl_ASSESS_TYPE.SelectedValue);
+            // hashtable_set("SA1600_ddl_HIRE_TYPE", ddl_HIRE_TYPE.SelectedValue);
+            hashtable_set("SJ3400_txt_ASSESS_YEAR", txt_ASSESS_YEAR.Text);
+            hashtable_set("SJ3400_txt_ASSESS_TYPE", ddl_ASSESS_TYPE.SelectedValue);
+            hashtable_set("SJ3400_txt_DEPT_NO_20", txt_DEPT_NO_20.Text);
+            hashtable_set("SJ3400_txt_DEPT_NAME_20", txt_DEPT_NAME_20.Text);
         }
         else
         {
-            hashtable_set("SJ3300_Is_Search", "N");
+            hashtable_set("SJ3400_Is_Search", "N");
         }
     }
 

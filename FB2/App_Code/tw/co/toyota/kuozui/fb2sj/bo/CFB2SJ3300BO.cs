@@ -111,13 +111,13 @@ public class CFB2SJ3300BO : BaseService
         }
     }
     //刪除 TB_S_M_ASSESS_RATE
-    public string deleteRATE(List<Tuple<string>> disting_cd)
+    public string deleteRATE(List<Tuple<string>> liAssesType)
     {
         try
         {
             CFB2SJ3300DAO wfb2sj = new CFB2SJ3300DAO();
             BeginTransaction();
-            foreach (var item in disting_cd)
+            foreach (var item in liAssesType)
             {
                 wfb2sj.deleteRATE(item.Item1);
             }

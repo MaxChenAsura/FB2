@@ -1,0 +1,273 @@
+USE [FB2DB]
+GO
+
+/****** Object:  StoredProcedure [dbo].[SP_S_FASSESS_GEN_DEP20_PEO]    Script Date: 2026/7/29 下午 02:52:55 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[SP_S_FASSESS_GEN_DEP20_PEO] @ASSESS_YEAR VARCHAR(4),@ASSESS_TYPE VARCHAR(1),@DEPT_NO VARCHAR(7), 
+	@USERID varchar(20),
+	@FUNCID varchar(30)
+AS 
+BEGIN
+SET NOCOUNT ON;
+	--錯誤訊息
+	DECLARE @pRowCount INT =0;
+	DECLARE @pErr INT = 0;
+	DECLARE @pErrMsg VARCHAR(1000) = NULL;
+	
+	DECLARE @proc_id_previous VARCHAR(60) = 'SP_S_FASSESS_GEN_DEP20_PEO';
+	DECLARE @proc_id VARCHAR(60) = 'SP_S_FASSESS_GEN_DEP20_PEO';
+	DECLARE @proc_desc NVARCHAR(120) = '部長人數配置檔生成';
+	DECLARE @proc_scheduling VARCHAR(30) = 'CALL';
+	DECLARE @proc_log NVARCHAR(600) = NULL;
+	DECLARE @proc_status VARCHAR(1) = NULL;
+	DECLARE @proc_y_cnt INT;
+--宣告配置比例	
+	DECLARE @ws_cd varchar(1); --職種
+	DECLARE @level_cd varchar(3); --資格
+	DECLARE @rate_a decimal(3,0); --RATE_A
+	DECLARE @rate_b decimal(3,0); --RATE_B
+	DECLARE @rate_c decimal(3,0); --RATE_C
+	DECLARE @rate_d decimal(3,0); --RATE_D
+	DECLARE @rate_e decimal(3,0); --RATE_E
+	DECLARE @rate_f decimal(3,0); --RATE_F
+	DECLARE @rate_g decimal(3,0); --RATE_G
+	--宣告部(DEPT_20)依ASSESS_TYPE,WS_CD,LEVEL_CD計算出總數
+	DECLARE @dept_20_total decimal(3,0); 
+	DECLARE @dept_20_isout decimal(3,0); 
+	DECLARE @dept_no_20 varchar(7); --dept_no_20
+	DECLARE @dept_name_20 varchar(60); --dept_name
+	DECLARE @base_a decimal(3,0);
+	DECLARE @base_b decimal(3,0);
+	DECLARE @base_c decimal(3,0);
+	DECLARE @base_d decimal(3,0);
+	DECLARE @base_e decimal(3,0);
+	declare @strSQL nvarchar(4000);  --一定要nvarchar
+	declare @strSQL1 nvarchar(2000);  --一定要nvarchar,
+	declare @strSQL2 nvarchar(2000);  --一定要nvarchar,
+	DECLARE @isDept20 decimal(3,0);
+	DECLARE @isCKOut varchar(1);
+	
+	--檢查己使用cursor
+	if (select CURSOR_STATUS('global','cur_RATE'))>-3
+	begin
+		if (select CURSOR_STATUS('global','cur_RATE'))>=0 CLOSE cur_RATE;
+		DEALLOCATE cur_RATE;
+	end;
+	if (select CURSOR_STATUS('global','cur_assess_dept_20'))>-3
+	begin
+		if (select CURSOR_STATUS('global','cur_assess_dept_20'))>=0 CLOSE cur_assess_dept_20;
+		DEALLOCATE cur_assess_dept_20;
+	end;
+	if (select CURSOR_STATUS('global','cur_DEPT20_PEO'))>-3
+	begin
+		if (select CURSOR_STATUS('global','cur_DEPT20_PEO'))>=0 CLOSE cur_DEPT20_PEO;
+		DEALLOCATE cur_DEPT20_PEO;
+	end;
+	--刪除己產出資料
+	if @DEPT_NO<>''
+	begin
+		Delete from TB_S_M_FOREIGN_DEP20_PEO where ASSESS_YEAR=@ASSESS_YEAR and ASSESS_TYPE=@ASSESS_TYPE and DEPT_NO_20=@DEPT_NO;
+	end
+	else begin
+		Delete from TB_S_M_FOREIGN_DEP20_PEO where ASSESS_YEAR=@ASSESS_YEAR and ASSESS_TYPE=@ASSESS_TYPE ;
+	end
+
+	DECLARE cur_RATE CURSOR FOR
+		SELECT ASSESS_TYPE ,  RATE_A, RATE_B, RATE_C, RATE_D, RATE_E
+		FROM TB_S_M_FOREIGN_RATE
+		WHERE ASSESS_TYPE=@ASSESS_TYPE;
+
+    set @strSQL1 = 'select distinct  DEPT_NO,DEPT_NAME from TB_H_R_DEPT_DATA_AD where  dept_level=''20'' and DEPT_NO<>''KS00000''';
+	if @DEPT_NO<>'' set @strSQL1 = @strSQL1+ ' and DEPT_NO =''' +  @DEPT_NO  +''' ';
+	--print @strSQL1;
+	SET @strSQL = ' declare cur_assess_dept_20 CURSOR FOR '
+				  + @strSQL1;
+	--DECLARE cur_assess_dept_20 CURSOR FOR
+	--	select distinct  DEPT_NO,DEPT_NAME from TB_H_R_DEPT_DATA_AD where  dept_level='20' and DEPT_NO<>'KS00000'
+	exec sp_executesql @strSQL;
+
+	BEGIN TRANSACTION
+	BEGIN TRY
+   --開啓CURSOR
+    OPEN cur_RATE;
+	FETCH NEXT FROM cur_RATE
+	INTO
+	     @assess_type, @rate_a, @rate_b, @rate_c, @rate_d, @rate_e, @rate_f, @rate_g;
+
+   --print 's1';
+	WHILE(@@FETCH_STATUS=0)
+		BEGIN
+			 OPEN cur_assess_dept_20;
+				FETCH NEXT FROM cur_assess_dept_20
+				INTO
+					 @dept_no_20, @dept_name_20;
+			  WHILE(@@FETCH_STATUS=0)
+				BEGIN
+					--1.依ASSESS_TYPE,WS_CD,LEVEL_CD取得該部門人數					
+					----1.1工會.A員工-->部長 (詹振龍)  -->(真的部長..直接給管厘部的長官 (張世昌)
+					----1.2判斷是否非dept_level_20的部門
+					set @isCKOut='N';
+					
+					
+							
+							select @dept_20_total=count(*) from TB_S_M_FOREIGN_TARGET 
+							where ASSESS_YEAR=@ASSESS_YEAR and ASSESS_TYPE = @assess_type and
+									WS_CD=@ws_cd and DEPT_NO in(
+										 SELECT P.DEPT_NO 
+											FROM 
+												(select  ASSESS_YEAR, ASSESS_TYPE, LEVEL_RATE from TB_S_M_FOREIGN_DEPT_LEVEL  where DEPT_NO=@dept_no_20 and DEPT_LEVEL>='20') O left join  
+												TB_S_M_FOREIGN_DEPT_LEVEL P on SUBSTRING(P.LEVEL_RATE,1,len(O.LEVEL_RATE))=O.LEVEL_RATE    and O.ASSESS_YEAR=P.ASSESS_YEAR and O.ASSESS_TYPE=P.ASSESS_TYPE
+												WHERE O.ASSESS_YEAR=@ASSESS_YEAR and O.ASSESS_TYPE=@assess_type
+									);
+
+							select @dept_20_isout=count(x.emp_id) from
+							(
+							select distinct A.EMP_ID from TB_S_M_FOREIGN_DISTING_EMP A join TB_S_M_FOREIGN_DISTING B on A.DISTING_CD=B.DISTING_CD
+							where  A.ASSESS_YEAR=@ASSESS_YEAR and A.ASSESS_TYPE=@assess_type and  B.is_OUT='Y' and A.EMP_ID in(
+							select emp_id from TB_S_M_FOREIGN_TARGET where  ASSESS_YEAR=@ASSESS_YEAR and ASSESS_TYPE=@assess_type and
+								    WS_CD=@ws_cd 
+									and DEPT_NO in(
+										 SELECT P.DEPT_NO 
+											FROM 
+												(select ASSESS_YEAR, ASSESS_TYPE, LEVEL_RATE from TB_S_M_FOREIGN_DEPT_LEVEL  where DEPT_NO=@dept_no_20 and DEPT_LEVEL>='20') O left join  
+												TB_S_M_FOREIGN_DEPT_LEVEL P on SUBSTRING(P.LEVEL_RATE,1,len(O.LEVEL_RATE))=O.LEVEL_RATE and O.ASSESS_YEAR=P.ASSESS_YEAR and O.ASSESS_TYPE=P.ASSESS_TYPE
+												WHERE O.ASSESS_YEAR=@ASSESS_YEAR and O.ASSESS_TYPE=@assess_type 
+									)
+									 ))x;
+							if(@dept_20_isout>0)set @isCKOut='Y';
+
+							set @dept_20_total=@dept_20_total-@dept_20_isout								
+							
+						
+					--2.扣除外數
+					      --print 's2';
+					--3.依取得資料計算部級基準考績人數
+					--print @dept_no_20+'-'+@ws_cd+'-'+@isCKOut+'-'+@dept_20_total;
+
+					if(@dept_20_total>0)
+						begin
+							set @base_a=0;
+							set @base_b=0;
+							set @base_c=0;
+							set @base_d=0;
+							set @base_e=0;
+							---2.1總人數=1或2a時
+							if @dept_20_total=1 or @dept_20_total=2
+								begin						
+									set @base_c=@dept_20_total;						 
+								end
+							---2.2總人數>2時
+							if @dept_20_total>2
+								begin
+								   if(@ws_cd<>'G') begin						
+										set @base_a=round(@dept_20_total*(@rate_a/100),0);
+										set @base_e=round(@dept_20_total*(@rate_e/100),0);
+										set @base_b=round(@dept_20_total*((@rate_a+@rate_b)/100),0)-@base_a;	
+										--set @base_d=round(@base_a+@base_b-@base_e,0);	
+										--20230214Fix
+										set @base_d=round(@dept_20_total*((@rate_d+@rate_e)/100),0)-@base_e;
+										set @base_c=round(@dept_20_total-@base_a-@base_b-@base_d-@base_e,0);	
+									end;
+									 if(@ws_cd='G') begin	
+										set @base_c =round(@dept_20_total*0.3,0);
+										set @base_d =@dept_20_total-@base_c;
+									 end;			 
+								end
+								--print @dept_no_20+';'+STR(@dept_20_total)+';'+STR(@base_a)+';'+STR(@base_b)+';'+STR(@base_c)+';'+STR(@base_d)+';'+STR(@base_e);
+								--print @dept_20_total;
+							----2.3 insert TB_S_M_FOREIGN_DEP20_PEO
+							insert into TB_S_M_FOREIGN_DEP20_PEO(ASSESS_YEAR , ASSESS_TYPE , DEPT_NO_20 , DEPT_NAME_20 , 
+                                                                 BASE_A , BASE_B , BASE_C , BASE_D , BASE_E , BASE_TOT , 
+																 REAL_A , REAL_B , REAL_C , REAL_D , REAL_E , REAL_TOTAL , CHECK_OK , CHECK_REMARK , 
+																 OUT_REAL_A , OUT_REAL_B, OUT_REAL_C , OUT_REAL_D, OUT_REAL_E , CREATED_BY, CREATED_DT,
+																 UPDATED_BY, UPDATED_DT,FUNC_ID)values
+																(@ASSESS_YEAR, @assess_type, @dept_no_20, @dept_name_20, @base_a, @base_b, @base_c, @base_d, @base_e,@dept_20_total,
+																 0, 0, 0, 0, 0,0, '', '',
+																 0,0,0,0,0,@USERID,getDate(),@USERID,getDate(), @FUNCID);
+							
+							  
+					     end
+
+						if(@dept_20_total=0 and @isCKOut='Y')
+							begin
+								set @base_a=0;
+								set @base_b=0;
+								set @base_c=0;
+								set @base_d=0;
+								set @base_e=0;
+								
+								insert into TB_S_M_FOREIGN_DEP20_PEO(ASSESS_YEAR , ASSESS_TYPE , DEPT_NO_20 , DEPT_NAME_20 ,
+                                                                    BASE_A , BASE_B , BASE_C , BASE_D , BASE_E , BASE_TOT , 
+																	REAL_A , REAL_B , REAL_C , REAL_D , REAL_E , REAL_TOTAL , CHECK_OK , CHECK_REMARK , 
+																	OUT_REAL_A , OUT_REAL_B, OUT_REAL_C , OUT_REAL_D, OUT_REAL_E , CREATED_BY, CREATED_DT,
+																	UPDATED_BY, UPDATED_DT,FUNC_ID)values
+																	(@ASSESS_YEAR, @assess_type, @dept_no_20, @dept_name_20, 
+                                                                     @base_a, @base_b, @base_c, @base_d, @base_e,@dept_20_total,
+																	 0, 0, 0, 0, 0,0, '', '',
+																	 0,0,0,0,0,@USERID,getDate(),@USERID,getDate(), @FUNCID);
+							
+							  
+							 end
+					FETCH NEXT FROM cur_assess_dept_20
+					INTO
+						 @dept_no_20, @dept_name_20;
+				END;
+				--print 'end sub';
+				--關閉&釋放cursor
+				CLOSE cur_assess_dept_20;
+				DEALLOCATE cur_assess_dept_20;
+				--print 'end cur_assess_dept_20';
+		  FETCH NEXT FROM cur_RATE
+		  INTO
+				@assess_type, @ws_cd,  @rate_a, @rate_b, @rate_c, @rate_d, @rate_e, @rate_f, @rate_g;
+		END;
+	--關閉&釋放cursor
+	CLOSE cur_RATE;
+	DEALLOCATE cur_assess_dept_20;
+	DEALLOCATE cur_RATE;
+	COMMIT  TRANSACTION ;
+		END TRY
+	BEGIN CATCH
+	　　print ERROR_MESSAGE();
+		ROLLBACK TRANSACTION ;
+		SELECT @pErr = ERROR_NUMBER(), @pErrMsg = '[TB_H_R_SP_LOG:INSERT]'+ERROR_MESSAGE();
+		GOTO WriteLog;
+
+	END CATCH
+	print '123';
+
+WriteLog:
+	--新增SP記錄檔
+	IF @pErr = 0 BEGIN
+		SET @proc_status = 'Y';
+		SET @proc_log = '處理成功';
+	END
+	ELSE BEGIN
+		IF @proc_status IS NULL SET @proc_status = 'E';
+		SET @proc_log = left(@pErrMsg, 600);
+	END
+	
+	BEGIN TRANSACTION ADD_TB_H_R_SP_LOG
+		BEGIN TRY
+			INSERT INTO TB_H_R_SP_LOG(PROC_ID, PROC_BASE_DT, PROC_DESC, PROC_OTH_DESC, PROC_DT, PROC_STATUS, PROC_LOG, UPDATED_BY, FUNC_ID)
+			VALUES(@proc_id, @ASSESS_YEAR, @proc_desc, NULL, CURRENT_TIMESTAMP, @proc_status, @proc_log, @USERID, @FUNCID);
+		END TRY
+		BEGIN CATCH
+			ROLLBACK TRANSACTION ADD_TB_H_R_SP_LOG;
+			SELECT @pErr = ERROR_NUMBER(), @pErrMsg = '[ADD_TB_H_R_SP_LOG:INSERT]:' + ERROR_MESSAGE();
+		END CATCH
+	COMMIT TRANSACTION ADD_TB_H_R_SP_LOG;
+
+	RETURN (@pErr)
+END;
+
+
+
+GO
+
+
